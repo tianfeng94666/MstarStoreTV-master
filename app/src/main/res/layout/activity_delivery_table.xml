@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout"></include>
+
+    <LinearLayout
+        android:background="@color/white"
+        style="@style/padding_parent"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_customer_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="客户：千禧"
+            android:textColor="@color/text_color"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tv_delivery_order_number"
+                style="@style/text_tow_oneraw"
+                android:text="订单编号:1654120001" />
+
+            <TextView
+                android:id="@+id/tv_delivery_gold_price"
+                style="@style/text_tow_oneraw"
+                android:paddingLeft="16dp"
+                android:text="金价:208.04" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tv_delivery_number"
+                style="@style/text_tow_oneraw"
+                android:text="出库单号:2016-05-07" />
+
+            <TextView
+                android:id="@+id/tv_delivery_amount"
+                style="@style/text_tow_oneraw"
+                android:paddingLeft="16dp"
+                android:text="数量:1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tv_delivery_quality"
+                style="@style/text_tow_oneraw"
+                android:text="成色：bt960" />
+
+            <LinearLayout
+                style="@style/text_tow_oneraw"
+                android:paddingLeft="16dp"
+                android:text="金价:208.04">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总价："
+                    android:textColor="@color/text_color" />
+
+                <TextView
+                    android:id="@+id/tv_delivery_sum_money"
+                    android:textColor="@color/theme_red"
+                    android:text="¥23230.0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:background="@color/white"
+        android:id="@+id/lv_products"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+</LinearLayout>

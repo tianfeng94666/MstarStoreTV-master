@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <CheckBox
+        android:gravity="center"
+        android:id="@+id/tv_item_goods_type"
+        android:layout_margin="3dip"
+        android:button="@null"
+        android:background="@drawable/check_bg_style"
+        android:layout_width="140dip"
+        android:layout_height="55dip"
+        android:textColor="@color/color_filter_text"
+        android:textSize="@dimen/text_size_medium1"
+        />
+</LinearLayout>

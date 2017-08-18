@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="650dip"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+<LinearLayout
+    android:id="@+id/ll_title"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dip">
+    <TextView
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="60dip"
+        android:background="@color/awesome_gray"
+        android:gravity="center_vertical"
+        android:text="当前选择："
+        android:textSize="@dimen/setting_textsize" />
+    <TextView
+        android:id="@+id/titleName"
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:background="@color/awesome_gray"
+        android:gravity="center_vertical"
+        android:text=""
+        android:textSize="@dimen/setting_textsize" />
+</LinearLayout>
+
+
+        <ListView
+            android:id="@+id/id_listview"
+            android:listSelector="@color/gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_title" />
+
+        <View
+            android:id="@+id/id_view_line"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_below="@id/id_listview"
+            android:background="@color/color_line" />
+
+        <Button
+            android:id="@+id/id_cancle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="1dip"
+            android:textSize="@dimen/setting_textsize"
+            android:background="@drawable/cancel_nor_down"
+            android:text="确 认" />
+
+    </RelativeLayout>
+</RelativeLayout>

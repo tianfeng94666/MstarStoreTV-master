@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.qx.mstarstoretv.viewutils.CustomSelectButton
+        android:id="@+id/id_cus_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:tv_color="@color/theme_red"
+        app:tv_name="选择"
+        app:tv_size="16sp"
+        />
+
+</LinearLayout>

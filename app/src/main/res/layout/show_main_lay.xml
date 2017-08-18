@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_bg"
+    >
+
+    <include
+        layout="@layout/title_layout"
+        ></include>
+
+
+    <!--存放切换的几个Fragment-->
+    <FrameLayout
+        android:id="@+id/content"
+        style="@style/layout_vertical"
+        android:layout_weight="1"
+        >
+    </FrameLayout>
+
+
+    <!--风格线-->
+    <View
+        android:id="@+id/menu_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/tab_main"
+        android:background="@color/theme_bg" />
+
+    <include
+        android:id="@+id/tab_main"
+        layout="@layout/foot_layout">
+    </include>
+
+</LinearLayout>

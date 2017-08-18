@@ -1,0 +1,72 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="xxx_img_total_width">100dp</dimen>
+
+    <dimen name="margin5">5dp</dimen>
+    <dimen name="margin15">15dp</dimen>
+    <dimen name="margin10">10dp</dimen>
+    <dimen name="margin12">12dp</dimen>
+    <dimen name="m150">150dp</dimen>
+    <dimen name="m200">200dp</dimen>
+    <dimen name="m250">250dp</dimen>
+
+
+    <dimen name="m80">80dp</dimen>
+    <dimen name="m100">100dp</dimen>
+
+
+    <!-- 字体大小 ，系统默认值 -->
+    <dimen name="text_small">8sp</dimen>
+    <dimen name="text_size_extra_micro">10sp</dimen>
+    <dimen name="text_size_micro">12sp</dimen>
+    <dimen name="text_size_micro1">12sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_small_ultra">10sp</dimen>
+    <dimen name="text_size_small_medium">15sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_medium1">20sp</dimen>
+    <dimen name="text_size_big_large">22sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <dimen name="Text_Size_Pixel_21">14.0sp</dimen>
+
+    <!-- 间距值 -->
+    <dimen name="space_micro">2dp</dimen>
+    <dimen name="space_less_small">4dp</dimen>
+    <dimen name="space_small">8dp</dimen>
+    <dimen name="space_medium">16dp</dimen>
+    <dimen name="space_medium1">24dp</dimen>
+    <dimen name="space_large">32dp</dimen>
+    <dimen name="space_large_aaaa">40dp</dimen>
+    <dimen name="space_extra_large">48dp</dimen>
+    <dimen name="space_extra_large_pwd">66dp</dimen>
+    <dimen name="space_extra_large_pwdpwd">73dp</dimen>
+
+    <!--xlistView-->
+
+    <dimen name="header_height">60dp</dimen>
+    <dimen name="footer_height">90dp</dimen>
+    <dimen name="footer_padding">10dp</dimen>
+    <dimen name="pad_line_height">62dp</dimen>
+    <dimen name="pad_iv_padding">12dip</dimen>
+    <dimen name="pad_margin_left">8dp</dimen>
+    <dimen name="pad_text_padding">10dp</dimen>
+
+    <!--标准行高-->
+    <dimen name="standard_height">45dp</dimen>
+    <dimen name="margin2">2dp</dimen>
+    <!--TV productinfo-->
+    <dimen name="leftmargin">10px</dimen>
+    <dimen name="topmargin">10px</dimen>
+    <dimen name="rightmargin">10px</dimen>
+    <!--item lintHeight-->
+    <dimen name="itme_height">50dp</dimen>
+    <!--simpleStyleinfromeationActivity-->
+    <dimen name="simple_styleinfromation_height">70dp</dimen>
+    <dimen name="simple_styleinfromation_textsize">25sp</dimen>
+    <!--settingActivity-->
+    <dimen name="setting_textsize">25sp</dimen>
+    <!--stonesearchinfoactivity-->
+    <dimen name="stone_search_activity_height">65dp</dimen>
+</resources>

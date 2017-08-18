@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="theme_back">#444</color>
+
+    <color name="white">#ffffff</color>
+    <color name="awesome_red">#CBAC6B</color>
+    <color name="awesome_gray">#FDFDFD</color>
+    <color name="color_grey_st">#BABABA</color>
+    <color name="black">#000</color>
+    
+    <color name="color_line">#dadada</color>
+
+    <color name="theme_red">#f12b31</color>
+    <color name="theme_bg">#f0eff5</color>
+    <color name="theme_yell">#FFEF8C01</color>
+
+    <color name="theme_red_down">#f15f51</color>
+
+    <color name="color_filter_text">#444444</color>
+
+    <color name="color_gold_nor">#CBAC6B</color>
+    <color name="color_gold_down">#BD9F61</color>
+    <color name="color_black_st">#323232</color>
+    <color name="color_down">#cccccc</color>
+    <color name="color_bar">#f5f5f7</color>
+    <color name="transparent">#0000</color>
+    <color name="color_light_grey">#969696</color>
+    <color name="color_detach_line">#CFCFD1</color>
+
+    <color name="color_check_bg">#F8CDCF</color>
+    <!-- 天蓝色 -->
+    <color name="gray">#808080</color>
+
+    <color name="transparent_background">#00ffffff</color>
+
+    <color name="green">#FF7CB108</color>
+
+    <!--xlistview-->
+    <color name="background">#F7F4F0</color>
+    <color name="title_color">#333333</color>
+    <!--文字颜色-->
+    <color name="text_color">#444444</color>
+    <color name="text_color2">#666666</color>
+    <color name="text_color3">#999999</color>
+
+    <!--深一点灰字体颜色-->
+    <color name="text_deep_color">#585859</color>
+    <!--间隔view颜色-->
+    <color name="view_background">#f0eff5</color>
+    <!--textview浅灰色背景-->
+    <color name="textview_background">#F4F5F7</color>
+    <color name="finish_item_bg">#f5f5f7</color>
+
+    <color name="colorSeekBarDefault">#c3c3c3</color>
+</resources>

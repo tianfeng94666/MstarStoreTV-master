@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="65dp">
+    <ImageView
+        android:id="@+id/id_ig_back"
+        android:layout_width="65dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="6dip"
+        android:layout_marginTop="5dip"
+        android:layout_marginBottom="5dip"
+        android:padding="10dip"
+        android:src="@drawable/icon_return" />
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab"
+        android:background="@color/white"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:tabSelectedTextColor="@color/theme_red"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        app:tabGravity="fill"
+        app:tabTextColor="@color/black">
+
+    </android.support.design.widget.TabLayout>
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="-2dp"
+        android:layout_height="1dp"
+        android:background="@color/color_line"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

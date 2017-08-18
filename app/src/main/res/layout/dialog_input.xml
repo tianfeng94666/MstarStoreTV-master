@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dip">
+
+        <TextView
+            android:id="@+id/titleName"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:background="@color/awesome_gray"
+            android:gravity="center"
+            android:text="当前选择"
+            android:textSize="15dip" />
+
+        <LinearLayout
+         android:gravity="center_horizontal"
+            android:layout_below="@id/titleName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <ImageView
+                android:id="@+id/iv_reduce"
+                android:layout_width="35dp"
+                android:layout_marginRight="2dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_acc" />
+
+            <EditText
+                android:id="@+id/specTitle"
+                android:layout_width="200dp"
+                android:layout_height="50dip"
+                android:background="@drawable/edit_for_line_bg"
+                android:gravity="center"
+                android:hint="请输入合法规格" />
+
+            <ImageView
+                android:id="@+id/iv_add"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_add" />
+        </LinearLayout>
+
+
+
+        <View
+            android:id="@+id/id_view_line"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_below="@id/id_listview"
+            android:background="@color/color_line" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_alignParentBottom="true"
+    android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/id_cancle"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dip"
+        android:background="@drawable/cancel_nor_down"
+        android:text="取消" />
+    <Button
+        android:id="@+id/bt_confirm"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dip"
+        android:background="@drawable/confirm_red"
+        android:text="确 认" />
+</LinearLayout>
+
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/id_rel_title"
+            android:layout_marginBottom="40dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_type"
+                    style="@style/margin_topAndBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="16dp"
+                        android:gravity="center_vertical"
+                        android:text="类型"
+                        android:textSize="@dimen/setting_textsize"
+                        android:textColor="@color/text_color" />
+
+                    <TextView
+                        android:id="@+id/tv_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
+                        android:textSize="@dimen/setting_textsize"
+                        android:textColor="@color/theme_red" />
+                </LinearLayout>
+
+
+                <GridView
+                    android:id="@+id/gv_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:horizontalSpacing="10dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="10"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:scrollbars="none"
+                    android:verticalSpacing="10dp"></GridView>
+                <TextView
+                    android:id="@+id/tv_isshow_more"
+                    android:gravity="center"
+                    android:text="显示更多"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="@dimen/setting_textsize"
+                    android:background="@color/theme_bg"
+                    android:textColor="@color/text_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/color_line" />
+
+
+                <RelativeLayout
+                    style="@style/padding_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tv_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:layout_alignParentLeft="true"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/icon_acc"
+                        android:text="规格"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/setting_textsize" />
+
+                    <ImageView
+                        android:id="@+id/iv_weight_reduce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                       android:layout_toLeftOf="@id/et_weight"
+                        android:src="@drawable/icon_acc" />
+
+                    <EditText
+                        android:id="@+id/et_weight"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="2dp"
+                        android:layout_weight="1.5"
+                        android:background="@color/white"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:inputType="number|numberDecimal"
+                        android:text="0"
+                        android:layout_toLeftOf="@+id/iv_weight_add"
+                        android:textSize="@dimen/setting_textsize" />
+
+
+
+                    <ImageView
+                        android:id="@+id/iv_weight_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/icon_add"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    style="@style/padding_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tv_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:layout_alignParentLeft="true"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/icon_acc"
+                        android:text="数量"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/setting_textsize" />
+
+                    <ImageView
+                        android:id="@+id/iv_amount_reduce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_toLeftOf="@+id/et_amount"
+                        android:src="@drawable/icon_acc" />
+
+                    <EditText
+                        android:id="@+id/et_amount"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="2dp"
+                        android:layout_weight="1.5"
+                        android:background="@color/white"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:inputType="number|numberDecimal"
+                        android:text="0"
+                        android:layout_toLeftOf="@+id/iv_amount_add"
+                        android:textSize="@dimen/setting_textsize" />
+
+
+
+                    <ImageView
+                        android:id="@+id/iv_amount_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/icon_add" />
+
+
+                </RelativeLayout>
+
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/color_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_shape"
+                    style="@style/margin_topAndBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/setting_textsize"
+                        android:paddingLeft="16dp"
+                        android:text="形状"
+                        android:textColor="@color/text_color" />
+                </LinearLayout>
+
+                <com.qx.mstarstoretv.viewutils.CustomGridView
+                    android:id="@+id/gv_shape"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:horizontalSpacing="4dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="20"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:scrollbars="none"
+                    android:verticalSpacing="4dp"></com.qx.mstarstoretv.viewutils.CustomGridView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/color_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_color"
+                    style="@style/margin_topAndBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="16dp"
+                        android:text="颜色"
+                        android:textSize="@dimen/setting_textsize"
+                        android:textColor="@color/text_color" />
+
+                    <TextView
+                        android:id="@+id/tv_color"
+                        android:textSize="@dimen/setting_textsize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:textColor="@color/theme_red" />
+
+                </LinearLayout>
+
+                <GridView
+                    android:id="@+id/gv_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:horizontalSpacing="10dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="10"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:scrollbars="none"
+                    android:verticalSpacing="10dp"></GridView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/color_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_quality"
+                    style="@style/margin_topAndBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="16dp"
+                        android:text="净度"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/setting_textsize"
+                        android:textColor="@color/text_color" />
+
+                    <TextView
+                        android:id="@+id/tv_quality"
+                        android:textSize="@dimen/setting_textsize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
+                        android:textColor="@color/theme_red" />
+                </LinearLayout>
+
+
+                <GridView
+                    android:id="@+id/gv_quality"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:horizontalSpacing="10dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="10"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:scrollbars="none"
+                    android:verticalSpacing="10dp"></GridView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/color_line" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/theme_red"
+                android:gravity="center"
+                android:text="确定"
+                android:textSize="@dimen/setting_textsize"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_reset"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/gray"
+                android:gravity="center"
+                android:text="重置"
+                android:textSize="@dimen/setting_textsize"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+
+</RelativeLayout>

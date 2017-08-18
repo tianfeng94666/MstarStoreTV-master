@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ImageView
+    android:id="@+id/iv_back"
+    android:src="@drawable/icon_return"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="5dp"
+    android:padding="15dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_download_name"
+        android:textColor="@color/black"
+        android:layout_above="@+id/tv_websit"
+        android:layout_centerHorizontal="true"
+        android:text="安卓最新版"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="4dp"
+        android:id="@+id/tv_websit"
+        android:textColor="@color/theme_red"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/iv_downlaoad"
+        android:text="网页下载点这里"
+        android:autoLink="web"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_marginTop="8dp"
+        android:id="@+id/iv_downlaoad"
+        android:src="@drawable/ios_download"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

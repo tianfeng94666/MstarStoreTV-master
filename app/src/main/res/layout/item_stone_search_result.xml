@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/itme_height"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@color/white"
+    android:id="@+id/ll_item_stone"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/ll_check"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/itme_height"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="@null">
+
+        <CheckBox
+            android:id="@+id/cb_ischeck_stone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_marginLeft="32dp"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_medium"
+            android:text="@null" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_item_weight"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/itme_height"
+        android:textSize="@dimen/text_size_medium"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="克拉" />
+    <TextView
+        android:id="@+id/tv_item_price"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:paddingRight="5dp"
+        android:layout_height="@dimen/itme_height"
+
+        android:background="@drawable/table_head"
+        android:gravity="right|center_vertical"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:textSize="@dimen/text_size_medium"
+        android:text="克拉" />
+
+    <TextView
+        android:id="@+id/tv_item_shape"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/itme_height"
+        android:textSize="@dimen/text_size_medium"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="克拉" />
+
+    <TextView
+        android:id="@+id/tv_item_color"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/itme_height"
+        android:textSize="@dimen/text_size_medium"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="克拉" />
+
+    <TextView
+        android:id="@+id/tv_item_purity"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/itme_height"
+        android:textSize="@dimen/text_size_medium"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="克拉" />
+
+    <TextView
+        android:id="@+id/tv_item_cut"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/itme_height"
+        android:textSize="@dimen/text_size_medium"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="克拉" />
+
+    <TextView
+        android:id="@+id/tv_item_polish"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/itme_height"
+        android:textSize="@dimen/text_size_medium"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="克拉" />
+
+    <TextView
+        android:id="@+id/tv_item_symmetric"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/itme_height"
+        android:textSize="@dimen/text_size_medium"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="克拉" />
+
+    <TextView
+        android:id="@+id/tv_item_fluorescence"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/itme_height"
+        android:textSize="@dimen/text_size_medium"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="克拉" />
+
+    <TextView
+        android:id="@+id/tv_item_certauth"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/itme_height"
+        android:textSize="@dimen/text_size_medium"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="克拉" />
+    <TextView
+        android:id="@+id/tv_item_cerauth_number"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="@dimen/itme_height"
+        android:textSize="@dimen/text_size_medium"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="克拉" />
+    <TextView
+        android:id="@+id/tv_item_quoted_price"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/itme_height"
+        android:background="@drawable/table_head"
+        android:gravity="center"
+        android:text="报价"
+        android:textSize="@dimen/text_size_medium"
+        android:textColor="@color/theme_red" />
+</LinearLayout>

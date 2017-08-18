@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomSelectButton">
+        <attr name="tv_name" format="string"></attr>
+        <attr name="tv_size" format="dimension"></attr>
+        <attr name="tv_color" format="color"></attr>
+        <attr name="tv_background" format="color"></attr>
+        <attr name="tv_style" format="integer"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="CustomselectStringButton">
+    <attr name="tv_string_name" format="string"></attr>
+    <attr name="tv_string_size" format="dimension"></attr>
+    <attr name="tv_string_color" format="color"></attr>
+    <attr name="tv_string_background" format="color"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontalSpacing" format="dimension" />
+        <attr name="verticalSpacing" format="dimension" />
+        <attr name="numColumns" format="integer" /><!--这个属性为新加的-->
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_LayoutParams">
+        <attr name="layout_breakLine" format="boolean" />
+        <attr name="layout_horizontalSpacing" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ScrollViewContainer">
+        <attr name="children_count" format="enum">
+            <enum name="TWO" value="2"></enum>
+            <enum name="THREE" value="3"></enum>
+        </attr>
+    </declare-styleable>
+
+
+    <style name="ScrollableDialogStyle">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/ScrollableDialogAnimations</item>
+    </style>
+
+    <style name="ScrollableDialogAnimations">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+    </style>
+
+
+    <declare-styleable name="ScrollableLayout">
+        <attr name="scrollable_maxScroll"          format="dimension" />
+        <attr name="scrollable_scrollerFlywheel"   format="boolean" />
+        <attr name="scrollable_considerIdleMillis" format="integer" />
+        <attr name="scrollable_defaultCloseUp"     format="boolean" />
+        <attr name="scrollable_friction"           format="float" />
+
+        <attr name="scrollable_closeUpAnimationMillis" format="integer" />
+        <attr name="scrollable_closeUpAnimatorInterpolator" format="reference" />
+
+        <attr name="scrollable_autoMaxScroll"       format="boolean" />
+        <attr name="scrollable_autoMaxScrollViewId" format="reference" />
+    </declare-styleable>
+
+    <attr name="indicatorView_amount" format="integer"/>
+    <declare-styleable name="IndicatorView">
+        <attr name="indicatorView_amount"/>
+    </declare-styleable>
+
+<!--RangSeekBar-->
+    <declare-styleable name="RangeSeekBar">
+        <attr name="max" format="float"/>
+        <attr name="min" format="float"/>
+        <attr name="reserve" format="float"/>
+        <attr name="cells" format="integer"/>
+        <attr name="hideProgressHint" format="boolean"/>
+        <attr name="lineColorSelected" format="color"/>
+        <attr name="lineColorEdge" format="color"/>
+        <attr name="thumbPrimaryColor" format="color"/>
+        <attr name="thumbSecondaryColor" format="color"/>
+        <attr name="markTextArray" format="reference"/>
+        <attr name="seekBarResId" format="reference"/>
+        <!-- must use 9 path ！！！-->
+        <attr name="progressHintResId" format="reference"/>
+        <attr name="textPadding" format="dimension" />
+        <attr name="textSize" format="dimension" />
+        <attr name="hintBGHeight" format="dimension" />
+        <attr name="hintBGWith" format="dimension" />
+        <attr name="hintBGPadding" format="dimension" />
+        <attr name="seekBarHeight" format="dimension"/>
+        <attr name="thumbSize" format="dimension"/>
+        <attr name="cellMode" format="enum">
+            <enum name="number" value="0"/>
+            <enum name="other" value="1"/>
+        </attr>
+        <attr name="seekBarMode" format="enum">
+            <enum name="single" value="1"/>
+            <enum name="range" value="2"/>
+        </attr>
+
+    </declare-styleable>
+
+    <declare-styleable name="RoundCornerImageView">
+        <attr name="rciv_radius" format="dimension"/>
+    </declare-styleable>
+</resources>

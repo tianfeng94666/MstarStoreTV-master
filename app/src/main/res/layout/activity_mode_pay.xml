@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/id_lay1"
+    android:background="@color/theme_bg"
+    >
+
+    <include layout="@layout/title_layout" />
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="150dip"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:textSize="@dimen/margin12"
+                android:id="@+id/id_tv_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="需支付订金" />
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_marginTop="5dip"
+                android:layout_below="@+id/id_tv_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="40dip"
+                android:text="" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin15"
+            android:layout_marginLeft="15dp"
+            android:text="请选择支付方式" />
+
+    </RelativeLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/color_line"
+        />
+
+    <ListView
+        android:headerDividersEnabled="true"
+        android:footerDividersEnabled="true"
+        android:id="@+id/id_lv_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dip"
+        android:dividerHeight="1px">
+
+    </ListView>
+
+
+
+    <Button
+        android:onClick="onPay"
+        android:clickable="true"
+        android:id="@+id/id_btn_register"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="25dip"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dip"
+        android:background="@drawable/btn_nor_down"
+        android:layout_below="@+id/id_lay2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确定"
+        android:textColor="@color/white"
+        >
+
+    </Button>
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

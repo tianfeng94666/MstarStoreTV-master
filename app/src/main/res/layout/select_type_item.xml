@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="65dp"
+              android:layout_below="@+id/id_rel_title"
+              android:orientation="horizontal"
+    >
+
+        <LinearLayout
+            android:id="@+id/id_ly_all"
+            style="@style/layout_horizontal"
+            android:gravity="center"
+            android:layout_marginLeft="15dip"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/id_tv_select"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="全部"
+                android:textColor="@color/theme_red"
+                android:textSize="@dimen/text_size_big_large"
+                />
+
+            <ImageView
+                android:id="@+id/id_ig_nor"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dip"
+                android:padding="10dp"
+                android:src="@drawable/icon_list_nor"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="1dip"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dip"
+            android:layout_marginTop="3dip"
+            android:background="@color/theme_bg"
+            />
+
+
+    <FrameLayout
+        android:id="@+id/id_fr"
+        style="@style/layout_horizontal"
+        android:layout_weight="1"
+        android:background="@null"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_reset"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="当前订单"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_big_large"
+
+                />
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="1dip"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="3dip"
+        android:layout_marginTop="3dip"
+        android:background="@color/theme_bg"
+        />
+
+
+        <TextView
+            android:id="@+id/id_his_order"
+            style="@style/layout_horizontal"
+            android:layout_marginLeft="@dimen/margin15"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="历史订单"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_big_large"/>
+
+        <LinearLayout
+            android:layout_width="1dip"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dip"
+            android:layout_marginTop="3dip"
+            android:background="@color/theme_bg"
+            />
+
+
+        <TextView
+            android:id="@+id/id_classify"
+            style="@style/layout_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="分类"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_big_large"/>
+
+            <LinearLayout
+                android:layout_width="1dip"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dip"
+                android:layout_marginTop="3dip"
+                android:background="@color/theme_bg"
+               />
+
+
+            <LinearLayout
+            android:id="@+id/id_ly_filter"
+            style="@style/layout_horizontal"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="筛选"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_big_large"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="3dip"
+                android:src="@drawable/icon_filter"/>
+        </LinearLayout>
+
+</LinearLayout>

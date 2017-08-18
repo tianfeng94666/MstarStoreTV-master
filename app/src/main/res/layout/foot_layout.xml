@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <FrameLayout
+        android:id="@+id/id_fl_tab1"
+        style="@style/layout_horizontal"
+        android:layout_weight="1"
+        android:background="@null">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/foot_select_style"
+            >
+
+            <ImageView
+                android:id="@+id/id_ig_home"
+                android:layout_marginTop="10dip"
+                android:src="@drawable/icon_home_nor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:id="@+id/id_tv_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="首页"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="top|right|center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10.0dip">
+            <TextView
+                android:id="@+id/tab1_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/hint_superscript_red"
+                android:textSize="10.0dip"
+                android:textColor="@color/theme_red"
+                android:visibility="gone"
+                android:text="1"
+                />
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/id_fl_tab2"
+        style="@style/layout_horizontal"
+        android:layout_weight="1"
+        android:background="@null">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/foot_select_style"
+            >
+
+            <ImageView
+                android:id="@+id/id_ig_information"
+                android:layout_marginTop="10dip"
+                android:src="@drawable/icon_home_nor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:id="@+id/id_tv_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="消息"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="top|right|center"
+            android:layout_marginTop="5dip"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dip">
+            <TextView
+                android:id="@+id/tab2_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="10.0dip"
+                android:textColor="@color/theme_red"
+                />
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/id_fl_tab3"
+        style="@style/layout_horizontal"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/foot_select_style"
+            >
+
+            <ImageView
+                android:id="@+id/id_ig_help"
+                android:layout_marginTop="10dip"
+                android:src="@drawable/icon_home_nor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:id="@+id/id_tv_help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="帮助"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

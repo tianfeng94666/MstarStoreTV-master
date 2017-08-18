@@ -1,0 +1,158 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/radio_style</item>
+    </style>
+
+    <style name="CustomRdioButtonTheme" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:drawableRight">@drawable/radio_style</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="RadioButton_Left" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:drawableLeft">@drawable/radio_style</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="CustomDialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:drawableRight">@color/white</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="text_flag_01">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:background">@drawable/flag</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="Fiter_PopupAnimation" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/filter_pop_enter</item>
+        <item name="android:windowExitAnimation">@anim/filter_pop_exit</item>
+    </style>
+
+
+    <style name="txt_btn_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@drawable/txt_border</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="checkbox_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@drawable/txt_border</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="Transparent">
+        <item name="android:windowBackground">@color/transparent_background</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+        <item name="android:background">#00000000</item> <!-- 设置自定义布局的背景透明 -->
+    </style>
+
+
+    <!-- 自定义Dialog风格 -->
+    <style name="Theme_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/dia_sytle</item>
+    </style>
+
+    <!-- 这里千万不要写parent 否则会被父样式效果代替的 -->
+    <style name="FullScreenDialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+    <style name="ImageTranslucentTheme" parent="AppTheme">
+        <!--在Android 4.4之前的版本上运行，直接跟随系统主题-->
+    </style>
+
+    <style name="padding_parent">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
+    <style name="item_stone_search">
+        <item name="android:width">60dp</item>
+        <item name="android:height">35dp</item>
+    </style>
+
+    <style name="text_tow_oneraw">
+        <item name="android:textColor">@color/text_color2</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+
+    <style name="linearLayout_one_weitght">
+
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">80dp
+        </item>
+    </style>
+    <style name="SplashTheme" parent="AppTheme">
+        <!-- 将splash图片设置在这，这样这张图片取代白屏 -->
+        <item name="android:windowBackground">@drawable/first</item>
+        <item name="android:windowFullscreen">true</item>
+        <!-- 或者是将主题设置成透明，虽然点击图标会有点小小的卡顿，但是用户体验不影响 -->
+        <!-- <item name="android:windowIsTranslucent">true</item> --> <!-- 透明背景不要了 -->
+    </style>
+    <!--activity-->
+    <style name="activity">
+        <item name="android:alwaysRetainTaskState">true</item>
+        <item name="android:configChanges">orientation|keyboardHidden</item>
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:theme">@android:style/Theme.NoTitleBar.Fullscreen</item>
+    </style>
+
+    <!-- popupwindow 动画 -->
+    <style name="Animation">
+        <item name="android:windowEnterAnimation">@anim/enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/out_anim</item>
+    </style>
+
+    <style name="margin_parent">
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+    </style>
+
+    <style name="margin_topAndBottom">
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/setting_textsize</item>
+    </style>
+
+    <style name="MyPopupWindow_anim_style">
+        <item name="android:windowEnterAnimation">@anim/in_from_right</item>
+    <item name="android:windowExitAnimation">@anim/out_to_left</item>
+    </style>
+
+
+</resources>

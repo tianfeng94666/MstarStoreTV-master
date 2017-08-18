@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingBottom="4dp">
+
+
+
+            <FrameLayout
+                android:id="@+id/id_fr"
+                style="@style/layout_horizontal"
+                android:layout_weight="1"
+                android:background="@null">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/foot_select_style"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="待审核"
+                        android:textColor="@color/theme_red" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_waiting_check"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:visibility="visible"
+                    android:gravity="top|right|center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10.0dip">
+                    <TextView
+                        android:id="@+id/tab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/hint_superscript_red"
+                        android:textSize="10.0dip"
+                        android:textColor="@color/theme_red"
+                        android:text="1"
+                        android:visibility="gone"
+                        />
+                </LinearLayout>
+            </FrameLayout>
+
+
+
+
+
+            <FrameLayout
+                android:id="@+id/id_fr1"
+                style="@style/layout_horizontal"
+                android:layout_weight="1"
+                android:background="@null">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/foot_select_style"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="生产中"
+                        android:textColor="@color/text_color2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="top|right|center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10.0dip">
+                    <TextView
+                        android:id="@+id/tab1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/hint_superscript_red"
+                        android:textSize="10.0dip"
+                        android:textColor="@color/theme_red"
+                        android:visibility="gone"
+                        android:text="1"
+                        />
+                </LinearLayout>
+            </FrameLayout>
+
+
+
+
+            <FrameLayout
+                android:id="@+id/id_fr2"
+                style="@style/layout_horizontal"
+                android:layout_weight="1"
+                android:background="@null">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/foot_select_style"
+                    >
+                    <TextView
+                        android:id="@+id/tv2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="已发货"
+                        android:textColor="@color/text_color2" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="top|right|center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10.0dip">
+                    <TextView
+                        android:id="@+id/tab2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/hint_superscript_red"
+                        android:textSize="10.0dip"
+                        android:textColor="@color/theme_red"
+                        android:visibility="gone"
+                        android:text="1"
+                        />
+                </LinearLayout>
+            </FrameLayout>
+
+
+
+
+            <FrameLayout
+                android:id="@+id/id_fr3"
+                style="@style/layout_horizontal"
+                android:layout_weight="1"
+                android:background="@null">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/foot_select_style"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="已完成"
+                        android:textColor="@color/text_color2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="top|right|center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10.0dip">
+                    <TextView
+                        android:id="@+id/tab3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/hint_superscript_red"
+                        android:textSize="10.0dip"
+                        android:textColor="@color/theme_red"
+                        android:visibility="gone"
+                        android:text="1"
+                        />
+                </LinearLayout>
+            </FrameLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+        <com.qx.mstarstoretv.viewutils.IndicatorView
+            android:id="@+id/id_indicatorview"
+            android:layout_width="wrap_content"
+            android:layout_height="4dp"
+            app:indicatorView_amount="3"
+            android:layout_alignParentBottom="true"
+            android:background="@color/theme_red" />
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/order_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dip" />
+</LinearLayout>

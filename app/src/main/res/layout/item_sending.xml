@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="16dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/padding_parent"
+        android:id="@+id/tv_item_sending_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="订单编号 1654120001"
+        android:textColor="@color/black" />
+
+    <View
+        style="@style/padding_parent"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line" />
+
+    <TextView
+        style="@style/padding_parent"
+        android:id="@+id/tv_item_customer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="客户名称：广西南宁南宁百货hk专柜" />
+
+    <LinearLayout
+        style="@style/padding_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下单日期：2016-11-08"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_item_quality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:text="成色：STK铂金"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/padding_parent"
+        android:paddingBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_item_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单件数：10件"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_item_delivery_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:text="已出库：6件"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_item_finish_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:text="已结算：1件"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line" />
+    <TextView
+        android:id="@+id/tv_item_finish"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="center"
+        android:text="查看结算单（7）"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

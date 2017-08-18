@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_rel_title"
+    android:layout_width="match_parent"
+    android:layout_height="65dip"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:paddingBottom="7dip"
+    android:paddingLeft="5dip"
+    android:paddingRight="10dip"
+    android:paddingTop="7dip">
+
+
+    <ImageView
+        android:layout_width="65dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="2dp"
+        android:onClick="onBack"
+        android:padding="8dip"
+        android:src="@drawable/icon_return" />
+
+    <RelativeLayout
+        android:id="@+id/id_rl1"
+        style="@style/layout_horizontal"
+        android:layout_weight="1"
+        android:background="@drawable/frame_bg_while">
+
+        <EditText
+            android:id="@+id/id_et_seach"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="请输入搜索关键字"
+            android:imeOptions="actionSearch"
+            android:paddingRight="64dp"
+            android:singleLine="true"
+            android:textSize="@dimen/text_size_big_large" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/id_view_line"
+            android:padding="15dp"
+            android:src="@drawable/icon_close" />
+
+        <View
+            android:id="@+id/id_view_line"
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="55dip"
+            android:background="@color/color_line"></View>
+
+        <ImageView
+            android:id="@+id/ig_btn_seach"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:src="@drawable/icon_search" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_marginLeft="10dip"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/id_ig_sao"
+            style="@style/layout_vertical"
+            android:layout_margin="2dip"
+            android:layout_weight="2"
+            android:background="@drawable/iocn_qr"
+            android:gravity="center"
+            android:onClick="scan" />
+
+        <!--本元素的左边缘和某元素的的左边缘对齐-->
+        <TextView
+            style="@style/layout_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="扫一扫"
+            android:textSize="7sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/border_line"
+    android:padding="1dp"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:background="@color/white"
+        android:padding="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_cancle"
+            android:text="取消"
+            android:padding="10dp"
+            android:layout_marginLeft= "6dp"
+            android:textSize="@dimen/setting_textsize"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_title_popupwindow"
+            android:text="标题"
+            android:textSize="@dimen/setting_textsize"
+            android:layout_centerVertical="true"
+            android:textColor="@color/text_color3"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:text="确定"
+            android:textSize="@dimen/setting_textsize"
+            android:padding="10dp"
+            android:textColor="@color/theme_red"
+            android:layout_marginRight="6dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+<com.qx.mstarstoretv.viewutils.wheelview.widget.WheelView
+
+    android:id="@+id/wv_popupwindwo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</com.qx.mstarstoretv.viewutils.wheelview.widget.WheelView>
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="@drawable/check_style"
+    >
+
+
+        <EditText
+            android:id="@+id/id_ed_low"
+            style="@style/txt_btn_style"
+            android:layout_width="140dip"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:hint="最 低"
+            android:inputType="numberDecimal"
+            android:textColor="@color/color_filter_text"
+            android:textSize="@dimen/setting_textsize" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_toLeftOf="@+id/id_ed_low"
+            android:layout_weight="1"
+            android:background="@color/color_filter_text" />
+
+        <EditText
+            android:id="@+id/id_ed_hig"
+            style="@style/txt_btn_style"
+            android:layout_width="140dip"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:hint="最高"
+            android:inputType="numberDecimal"
+            android:textColor="@color/color_filter_text"
+            android:textSize="@dimen/setting_textsize" />
+
+
+</LinearLayout>

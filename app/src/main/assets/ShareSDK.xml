@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DevInfor>
+
+	<ShareSDK  AppKey = "1e720fe7a9518"/>
+    <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
+    <SinaWeibo
+        Id="1"
+        SortId="1"
+        AppKey="2347192364"
+        AppSecret="94f98a84078e6f0c639e2381d79b7c95"
+        RedirectUrl="http://www.sharesdk.cn"
+        ShareByAppClient="true"
+        Enable="true" />
+
+
+    
+    <QZone
+        Id="3"
+        SortId="3"
+        AppId="1105719784"
+        AppKey="KEYaRie3uZpITCKy65H"
+        Enable="true" />
+    
+    <!-- 
+    	Wechat微信和WechatMoments微信朋友圈的appid是一样的；
+    
+                       注意：开发者不能用我们这两个平台的appid,否则分享不了
+    
+       	  微信测试的时候，微信测试需要先签名打包出apk,
+		sample测试微信，要先签名打包，keystore在sample项目中，密码123456
+		
+		BypassApproval是绕过审核的标记，设置为true后AppId将被忽略，故不经过
+		审核的应用也可以执行分享，但是仅限于分享文字和图片，不能分享其他类型，
+		默认值为false。此外，微信收藏不支持此字段。wx4868b35061f87885
+	-->
+	<!--要分享微信小应用程序时用userName,path-->
+    <Wechat
+        Id="4"
+        SortId="4"
+        AppId="wx303dc6296f3aed55"
+        AppSecret="2cb13f5188eea61860b7a62067785d92"
+		userName="gh_afb25ac019c9"
+		path="/page/API/pages/share/share"
+        BypassApproval="false"
+        Enable="true" />
+    
+    <WechatMoments
+        Id="5"
+        SortId="5"
+        AppId="wx303dc6296f3aed55"
+        AppSecret="2cb13f5188eea61860b7a62067785d92"
+        BypassApproval="false"
+        Enable="true" />
+        
+	<WechatFavorite
+        Id="6"
+        SortId="6"
+        AppId="wx303dc6296f3aed55"
+        AppSecret="2cb13f5188eea61860b7a62067785d92"
+        Enable="true" />
+    
+	<!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
+	<QQ
+        Id="7"
+        SortId="7"
+        AppId="100371282"
+        AppKey="aed9b0303e3ed1e27bae87c33761161d"
+        ShareByAppClient="true"
+        Enable="true" />
+    
+
+    
+
+    
+    <Email
+        Id="12" 
+        SortId="12"
+        Enable="true" />
+    
+    <ShortMessage
+        Id="13" 
+        SortId="13"
+        Enable="true" />
+    
+
+        
+    <!-- 
+    	在中国大陆，印象笔记有两个服务器，一个是沙箱（sandbox），一个是生产服务器（china）。
+    	一般你注册应用，它会先让你使用sandbox，当你完成测试以后，可以到
+    	http://dev.yinxiang.com/support/上激活你的ConsumerKey，激活成功后，修改HostType
+    	为china就好了。至于如果您申请的是国际版的印象笔记（Evernote），则其生产服务器类型为
+    	“product”。
+    	
+    	如果目标设备上已经安装了印象笔记客户端，ShareSDK允许应用调用本地API来完成分享，但
+    	是需要将应用信息中的“ShareByAppClient”设置为true，此字段默认值为false。
+    -->
+
+    
+
+    
+    <!-- 
+    	Yixin易信和YixinMoments易信朋友圈的appid是一样的；
+    
+                       注意：开发者不能用我们这两个平台的appid,否则分享不了
+    
+       	 易信测试的时候需要先签名打包出apk,
+		sample测试易信，要先签名打包，keystore在sample项目中，密码123456
+		
+		BypassApproval是绕过审核的标记，设置为true后AppId将被忽略，故不经过
+		审核的应用也可以执行分享，但是仅限于分享文字或图片，不能分享其他类型，
+		默认值为false。
+	-->
+	<Yixin 
+    	Id="29"
+        SortId="29"
+        AppId="yx0d9a9f9088ea44d78680f3274da1765f"
+        BypassApproval="true"
+        Enable="true" />
+	
+	<YixinMoments
+    	Id="30"
+        SortId="30"
+        AppId="yx0d9a9f9088ea44d78680f3274da1765f"
+        BypassApproval="true"
+        Enable="true" />
+
+	<Mingdao
+    	Id="31"
+        SortId="31"
+        AppKey="EEEE9578D1D431D3215D8C21BF5357E3"
+        AppSecret="5EDE59F37B3EFA8F65EEFB9976A4E933"
+        RedirectUri="http://sharesdk.cn"
+        Enable="true" />
+	
+	<Line
+	    Id="32"
+        SortId="32"
+        ChannelID = "1477692153"
+        ChannelSecret ="f30c036370f2e04ade71c52eef73a9af"
+        Enable="true" />
+	
+	<KakaoTalk
+	    Id="33"
+        SortId="33"
+        AppKey="48d3f524e4a636b08d81b3ceb50f1003"
+        Enable="true" />
+	
+	<KakaoStory
+	    Id="34"
+        SortId="34"
+        AppKey="48d3f524e4a636b08d81b3ceb50f1003"
+        Enable="true" />
+
+    <WhatsApp
+        Id="35"
+        SortId="35"
+        Enable="true" />
+    
+    <Bluetooth
+        Id="36"
+        SortId="36"
+        Enable="true" />
+
+    <Pocket
+        Id="37"
+        SortId="37"
+        ConsumerKey="32741-389c565043c49947ba7edf05"
+        Enable="true" />
+
+    
+
+	
+</DevInfor>

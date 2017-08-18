@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_bg"
+    android:orientation="vertical"
+              android:id="@id/specifiction_content"
+    >
+
+    <com.qx.mstarstoretv.viewutils.PullToRefreshView
+        android:id="@+id/pull_refresh_view"
+        android:layout_marginTop="8dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/theme_bg"
+        android:layout_below="@+id/id_rel_title"
+        android:orientation="vertical"
+        >
+
+
+        <!--android:divider="@android:color/transparent"-->
+        <com.qx.mstarstoretv.viewutils.GridViewWithHeaderAndFooter
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/theme_bg"
+            android:numColumns="3"
+         android:horizontalSpacing="8dp"
+            android:verticalSpacing="8dp"
+            android:scrollbars="none"
+            android:descendantFocusability="blocksDescendants"
+            />
+
+    </com.qx.mstarstoretv.viewutils.PullToRefreshView>
+</LinearLayout>

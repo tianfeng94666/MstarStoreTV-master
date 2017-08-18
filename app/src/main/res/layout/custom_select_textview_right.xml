@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:layout_margin="2dip"
+        android:id="@+id/id_cus_tv"
+        android:gravity="right|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/gray"
+        android:background="@color/white"
+        android:drawablePadding="4dp"
+        android:drawableRight="@drawable/icon_right"
+        android:textSize="10sp"
+        />
+</LinearLayout>

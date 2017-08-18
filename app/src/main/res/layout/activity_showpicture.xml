@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="#ff171b19"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical" >
+
+    <com.qx.mstarstoretv.viewutils.CustomViewPager
+        android:id="@+id/pagerview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+    <ImageView
+        android:id="@+id/id_ig_back"
+        android:padding="15dip"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_back_white"
+        />
+</RelativeLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qx.mstarstoretv.viewutils.CheckableRelativeLayou
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/checklayout"
+    android:layout_width="match_parent"
+    android:layout_height="50dip"
+    android:background="@color/white"
+    android:padding="10dip">
+
+    <LinearLayout android:id="@+id/container"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/icon_alipay"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/container"
+        android:layout_marginLeft="5dp"
+        android:text="000001"
+        />
+
+    <CheckBox
+        android:layout_width="18dip"
+        android:layout_height="18dip"
+        android:layout_marginRight="@dimen/margin15"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/pay_checkbox"
+        android:button="@null"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
+</com.qx.mstarstoretv.viewutils.CheckableRelativeLayou>

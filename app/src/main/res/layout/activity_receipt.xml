@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_bg"
+        android:orientation="vertical">
+
+        <include layout="@layout/title_layout"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin5"
+                android:layout_marginLeft="@dimen/margin10"
+                android:layout_marginTop="@dimen/margin10">
+
+                <TextView
+                    android:id="@+id/id_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发票抬头"
+                    android:textColor="@color/black"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:layout_toRightOf="@+id/id_tag"
+                    android:text="可输入个人/单位名称"
+                    android:textColor="@color/text_color2"
+                    />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/id_tv_invTitle"
+                android:layout_width="match_parent"
+                android:layout_height="35dip"
+                android:layout_margin="@dimen/margin10"
+                android:background="@drawable/edit_border"
+                android:hint="例如张三或者 深圳千禧之星珠宝股份有限公司"
+                android:padding="@dimen/margin10"
+                android:textSize="@dimen/text_size_small"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dip"
+            android:layout_marginTop="20dip"
+            android:background="@color/white"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/id_tag1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin10"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="发票内容"
+                android:textColor="@color/black"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="@dimen/margin10"
+                android:layout_marginTop="@dimen/margin10"
+                android:background="@color/color_line"
+                ></LinearLayout>
+
+
+            <ListView
+                android:id="@+id/id_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:transcriptMode="normal"
+                >
+            </ListView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/id_tv_confir"
+            style="@style/layout_horizontal"
+            android:layout_weight="1"
+            android:background="@color/theme_red"
+            android:gravity="center"
+            android:text="确定开票"
+            android:textColor="@color/white"
+            />
+
+        <View
+            android:layout_width="2px"
+            android:layout_height="match_parent"
+            android:background="@color/color_line"/>
+
+        <TextView
+            android:id="@+id/id_tv_cancle"
+            style="@style/layout_horizontal"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="不开发票 "
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">千禧之星珠宝TV</string>
+    <string name="app_version">1.6</string>
+    <string name="app_version_detail">B 1.6</string>
+    <string name="version">4</string>
+
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+
+    <string name="recent_updates">最近更新:</string>
+
+    <string name="pull_to_refresh_release_label">松开后刷新</string>
+
+    <string name="pull_to_refresh_footer_release_label">松开后加载</string>
+
+    <string name="pull_to_refresh_footer_pull_label">上拉加载更多</string>
+
+    <string name="pull_to_refresh_refreshing_label">刷新中\u2026</string>
+
+    <string name="pull_to_refresh_footer_refreshing_label">加载中\u2026</string>
+
+    <string name="data_loaded">加载完成</string>
+    <string name="updatepwd">修改密码</string>
+    <string name="add_curent_order">添加下单</string>
+    <string name="look_current_order">查看下单</string>
+    <string name="confirm_update">确定修改</string>
+    <string name="cancle_update">取消修改</string>
+    <string name="data_error">数据错误</string>
+    <string name="please_fill_data">请填写红框</string>
+    <string name="update_phone">修改手机号码</string>
+    <string name="adress_manager">管理用户地址</string>
+    <string name="shop_address_manager">收货地址管理</string>
+    <string name="of_one_adress">您只有一条地址哦</string>
+    <string name="set_default_adress_success">设置默认地址成功</string>
+    <string name="classify_select">分类选择</string>
+    <string name="write_a_receip">开发票</string>
+    <string name="order_detail">订单详情</string>
+    <string name="cancle_order">取消订单</string>
+    <string name="confirm_order">确认订单</string>
+    <string name="please_write_address">清填写地址</string>
+    <string name="please_write_customer">清选择客户</string>
+    <string name="please_select_order">请选择订单</string>
+    <string name="please_select_shape">请选择形状</string>
+    <string name="please_select_norm">请选择规格</string>
+    <string name="please_select_cut">请选择净度</string>
+    <string name="please_select_color">请选择颜色</string>
+    <string name="please_select_type">请选择类型</string>
+    <!--xListview-->
+
+    <string name="action_settings">Settings</string>
+    <string name="btn_scroll_view">ScrollView demo</string>
+    <string name="btn_list_view">ListView demo</string>
+    <string name="header_hint_refresh_normal">Pull to refresh</string>
+    <string name="header_hint_refresh_ready">Release to refresh</string>
+    <string name="header_hint_refresh_loading">Refreshing&#8230;</string>
+    <string name="header_hint_refresh_time">Time：</string>
+    <string name="footer_hint_load_normal">Load more</string>
+    <string name="footer_hint_load_ready">Release to load more</string>
+    <string name="android_download">
+<a href="https://www.pgyer.com/IGab">网页下载点这里</a></string>
+    <string name="ios_download">
+<a href="https://www.pgyer.com/IGab">网页下载点这里</a></string>
+
+    <string name="soft_update_no">已经是最新版本</string>
+    <string name="soft_update_title">软件更新</string>
+    <string name="soft_update_info">检测到新版本，请更新</string>
+    <string name="soft_update_updatebtn">更新</string>
+    <string name="soft_update_later">稍后更新</string>
+    <string name="soft_updating">正在更新</string>
+    <string name="soft_update_cancel">取消</string>
+    <string name="confirm_making_order">确认定制</string>
+</resources>
