@@ -43,7 +43,7 @@ public class SelectCityActivity extends BaseActivity {
     TextView titleText;
     @Bind(R.id.id_rel_title)
     RelativeLayout idRelTitle;
-    @Bind(R.id.list)
+    @Bind(R.id.gridview)
     ListView list;
     SelectCityAdapter adapter;
     String url;

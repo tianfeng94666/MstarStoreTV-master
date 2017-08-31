@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -318,6 +319,11 @@ public class UIUtils {
 		return (context.getResources().getConfiguration().screenLayout
 				& Configuration.SCREENLAYOUT_SIZE_MASK)
 				>= Configuration.SCREENLAYOUT_SIZE_LARGE;
+	}
+
+	public static void  setEdittextToEnd(EditText editText,String string){
+		editText.setText(string);
+		editText.setSelection(editText.getText().toString().length());
 	}
 }
 

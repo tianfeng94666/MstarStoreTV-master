@@ -8,7 +8,7 @@
     <include layout="@layout/title_layout" />
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none" />

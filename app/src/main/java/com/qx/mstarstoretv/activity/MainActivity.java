@@ -32,6 +32,7 @@ import com.qx.mstarstoretv.json.MainPicResult;
 import com.qx.mstarstoretv.json.VersionResult;
 import com.qx.mstarstoretv.net.VolleyRequestUtils;
 import com.qx.mstarstoretv.utils.L;
+import com.qx.mstarstoretv.utils.SpUtils;
 import com.qx.mstarstoretv.utils.ToastManager;
 import com.qx.mstarstoretv.utils.UIUtils;
 import com.qx.mstarstoretv.viewutils.BadgeView;
@@ -75,6 +76,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private boolean isShowPic;
     private LeftPopupWindow leftPopupWindow;
     private CustomerEntity isDefaultCustomer;
+    private boolean isCustomized;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -252,6 +254,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
+        isCustomized = SpUtils.getInstace(this).getBoolean("isCustomized", true);
         if (Global.isShowPopup != 0) {
             if (leftPopupWindow != null) {
                 leftPopupWindow.initPopupView();
@@ -293,16 +296,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_home:
-                if (Global.isShowPopup != 0) {
-                    Global.isShowPopup = 0;
-                    if (leftPopupWindow != null) {
-                        leftPopupWindow.closePopupWindow();
-                        llShowLess.setVisibility(View.GONE);
+                if(!isCustomized){
+                    ToastManager.showToastReal("高级定制无快速定制，请在个人中心修改");
+                }else {
+                    if (Global.isShowPopup != 0) {
+                        Global.isShowPopup = 0;
+                        if (leftPopupWindow != null) {
+                            leftPopupWindow.closePopupWindow();
+                            llShowLess.setVisibility(View.GONE);
+                        }
+                    } else {
+                        Global.isShowPopup = 2;
+                        showMakingRing();
                     }
-                } else {
-                    Global.isShowPopup = 2;
-                    showMakingRing();
                 }
+
                 break;
             case R.id.iv_stone:
                 cancleMaking();

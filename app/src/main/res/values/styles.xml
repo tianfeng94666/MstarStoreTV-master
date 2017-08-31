@@ -150,7 +150,7 @@
     </style>
 
     <style name="MyPopupWindow_anim_style">
-        <item name="android:windowEnterAnimation">@anim/in_from_right</item>
+        <item name="android:windowEnterAnimation">@anim/in_from_right2</item>
     <item name="android:windowExitAnimation">@anim/out_to_left</item>
     </style>
 

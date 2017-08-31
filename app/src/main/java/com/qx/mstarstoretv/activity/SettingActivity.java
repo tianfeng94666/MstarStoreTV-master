@@ -58,6 +58,7 @@ import com.qx.mstarstoretv.utils.StringUtils;
 import com.qx.mstarstoretv.utils.ToastManager;
 import com.qx.mstarstoretv.utils.UIUtils;
 import com.qx.mstarstoretv.viewutils.BitmapUtils;
+import com.qx.mstarstoretv.viewutils.CircleImageView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -87,8 +88,6 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     TextView tvExit;
     @Bind(R.id.splitbutton)
     ImageView splitbutton;
-    @Bind(R.id.id_ig_userpic)
-    ImageView idIgUserpic;
     @Bind(R.id.id_lay_root)
     LinearLayout idLayRoot;
     @Bind(R.id.tv_username)
@@ -119,6 +118,8 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     TextView tvIsInto;
     @Bind(R.id.rl_encryption_setting)
     RelativeLayout rlEncryptionSetting;
+    @Bind(R.id.id_ig_userpic)
+    CircleImageView idIgUserpic;
 
 
     private LayoutInflater inflater;
@@ -129,7 +130,6 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     private int PRICE_TYPE = 0;
     private SettingResult settingResult;
     private AlertDialog dialog;
-
 
 
     @Override
@@ -146,6 +146,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         initViews();
 
     }
+
     public void onBack(View view) {
         finish();
     }
@@ -164,7 +165,6 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         rlEncryptionSetting.setOnClickListener(this);
 
     }
-
 
 
     String userName, phone, headPic, address;
@@ -276,7 +276,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
                         intent.putExtra("return-data", true);
                         startActivityForResult(intent, PICK_FROM_CAMERA);
-                       overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+                        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
                     }
 
                     @Override
@@ -399,24 +399,24 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void goIntoEncryptionSettings() {
         final EditText editText = new EditText(this);
-        editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.setMarginStart(64);
         layoutParams.setMarginEnd(64);
         editText.setLayoutParams(layoutParams);
         LinearLayout ll = new LinearLayout(context);
         ll.addView(editText);
-        dialog= new AlertDialog.Builder(this)
+        dialog = new AlertDialog.Builder(this)
                 .setTitle("用户密码")
                 .setView(ll)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if(passwordIsRight(editText.getText().toString())){
+                        if (passwordIsRight(editText.getText().toString())) {
                             Intent intent = new Intent(SettingActivity.this, EncryptionSettingsActivity.class);
                             intent.putExtra("settingResult", settingResult);
                             startActivity(intent);
-                        }else {
+                        } else {
                             ToastManager.showToastReal("密码错误！");
                         }
                     }
@@ -432,7 +432,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
     private boolean passwordIsRight(String string) {
         String pwd = BaseApplication.spUtils.getString(SpUtils.key_password);
-        if(pwd.equals(string)){
+        if (pwd.equals(string)) {
             return true;
         }
         return false;
@@ -590,7 +590,6 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     protected void initView() {
         titleText.setText("修改资料");
     }
-
 
 
     private static String[] PERMISSIONS_CAMERA_AND_STORAGE = {

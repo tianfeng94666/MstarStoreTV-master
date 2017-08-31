@@ -170,7 +170,7 @@ public class CustomSelectButton extends RelativeLayout {
         wheelView.setWheelClickable(true);
         UIUtils.setBackgroundAlpha(mContext, 0.3f);//设置屏幕透明度
         View view1 = onSelectData.getRootView();
-        popupWindow = new PopupWindow(view, view1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow = new PopupWindow(view, view1.getWidth()<300?300:view1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(false);
         popupWindow.setAnimationStyle(R.style.Animation);

@@ -12,7 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="65dip"
         android:background="@drawable/title_shadow_style"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:id="@+id/id_ig_back"
@@ -573,6 +576,6 @@
 
     </LinearLayout>
 
-    <include layout="@layout/btn_popupwindow" />
+    <include layout="@layout/btn_popupwindow" android:visibility="gone"/>
 
 </RelativeLayout>

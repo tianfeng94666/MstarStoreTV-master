@@ -1,10 +1,8 @@
 package com.qx.mstarstoretv.fragment;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
@@ -15,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -26,8 +23,6 @@ import com.qx.mstarstoretv.activity.ConfirmStoneOrderActivity;
 import com.qx.mstarstoretv.activity.CustomMadeActivity;
 import com.qx.mstarstoretv.activity.ModeOfPaymentActivity;
 import com.qx.mstarstoretv.activity.OrderActivity;
-import com.qx.mstarstoretv.adapter.BaseViewHolder;
-import com.qx.mstarstoretv.adapter.CommonAdapter;
 import com.qx.mstarstoretv.adapter.SendingListAdater;
 import com.qx.mstarstoretv.base.AppURL;
 import com.qx.mstarstoretv.base.BaseApplication;
@@ -44,6 +39,7 @@ import com.qx.mstarstoretv.utils.StringUtils;
 import com.qx.mstarstoretv.utils.ToastManager;
 import com.qx.mstarstoretv.utils.UIUtils;
 import com.qx.mstarstoretv.viewutils.CustomGridView;
+import com.qx.mstarstoretv.viewutils.GridViewWithHeaderAndFooter;
 import com.qx.mstarstoretv.viewutils.LoadingWaitDialog;
 import com.qx.mstarstoretv.viewutils.MyLinearLayout;
 import com.qx.mstarstoretv.viewutils.PullToRefreshView;
@@ -59,9 +55,14 @@ import butterknife.ButterKnife;
  */
 @SuppressLint("ValidFragment")
 public class StoneOrderFragemnt extends BaseFragment implements PullToRefreshView.OnHeaderRefreshListener, PullToRefreshView.OnFooterRefreshListener {
+    @Bind(R.id.gridview)
+    GridViewWithHeaderAndFooter gridview;
+    @Bind(R.id.pull_refresh_view)
+    PullToRefreshView pullRefreshView;
+    @Bind(R.id.specifiction_content)
+    LinearLayout specifictionContent;
     private List<StoneOrderStateResult.DataBean.ListBean> listData;
     private BaseAdapter adapter;
-    private PullToRefreshView oullRefreshView;
     private static final int PULL_REFRESH = 1;
     private static final int PULL_LOAD = 2;
     private int pullStatus;
@@ -70,7 +71,6 @@ public class StoneOrderFragemnt extends BaseFragment implements PullToRefreshVie
     private int fragType;
     private int listCount = 0;
     private boolean isflag;
-    LinearLayout spContent;
     private int imgContainerWidth;
     private final int WAITINGPAY_CODE = 1;
     private final int PAYED_CODE = 2;
@@ -78,7 +78,6 @@ public class StoneOrderFragemnt extends BaseFragment implements PullToRefreshVie
     private final int FINISHED_CODE = 4;
     private List<SendingResult.DataBean.OrderListBean> sendinglist = new ArrayList<>();
     private String tokenKey;
-    private ListView listView;
     private LoadingWaitDialog dialog;
     JsonObject jsonResult;
 
@@ -91,9 +90,11 @@ public class StoneOrderFragemnt extends BaseFragment implements PullToRefreshVie
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_list_layout, null);
-        initView(view);
+        ButterKnife.bind(this, view);
+        initView();
         cpage = 1;
 //        loadNetData();
+
         return view;
     }
 
@@ -110,38 +111,34 @@ public class StoneOrderFragemnt extends BaseFragment implements PullToRefreshVie
         }
     }
 
-    private void initView(View view) {
-        listView = (ListView) view.findViewById(R.id.gridview);
-        oullRefreshView = (PullToRefreshView) view.findViewById(R.id.pull_refresh_view);
-        spContent = (LinearLayout) view.findViewById(R.id.specifiction_content);
-
-        oullRefreshView.setOnHeaderRefreshListener(this);
-        oullRefreshView.setOnFooterRefreshListener(this);
+    private void initView() {
+        pullRefreshView.setOnHeaderRefreshListener(this);
+        pullRefreshView.setOnFooterRefreshListener(this);
         listData = new ArrayList<>();
         switch (fragType) {
             case WAITINGPAY_CODE:
                 adapter = new ListViewAdapter();
-                listView.setAdapter(adapter);
+                gridview.setAdapter(adapter);
                 break;
             case PAYED_CODE:
                 adapter = new ListViewAdapter();
-                listView.setAdapter(adapter);
+                gridview.setAdapter(adapter);
                 break;
             case SENDING_CODE:
                 if (sendinglist != null) {
                     adapter = new SendingListAdater(getActivity(), sendinglist);
-                    listView.setAdapter(adapter);
+                    gridview.setAdapter(adapter);
                 }
                 break;
             case FINISHED_CODE:
                 adapter = new ListViewAdapter();
-                listView.setAdapter(adapter);
+                gridview.setAdapter(adapter);
         }
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                L.e("listView.setOnItemClickListener");
+                L.e("gridview.setOnItemClickListener");
                 Intent intent = null;
                 Bundle bundle = null;
                 switch (fragType) {
@@ -323,6 +320,12 @@ public class StoneOrderFragemnt extends BaseFragment implements PullToRefreshVie
 
     FragOrderListFragment.OnOderNumberChange onOderNumberChange;
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
     public interface OnOderNumberChange {
         void onFragOrderCount(OrderWaitResult.DataBean.StatusCountBean statusCountBean);
 
@@ -340,10 +343,10 @@ public class StoneOrderFragemnt extends BaseFragment implements PullToRefreshVie
         }
         tempCurpage = cpage;
         if (pullStatus == PULL_LOAD) {
-            oullRefreshView.onFooterRefreshComplete();
+            pullRefreshView.onFooterRefreshComplete();
         }
         if (pullStatus == PULL_REFRESH) {
-            oullRefreshView.onHeaderRefreshComplete();
+            pullRefreshView.onHeaderRefreshComplete();
         }
         pullStatus = 0;
     }
@@ -384,10 +387,10 @@ public class StoneOrderFragemnt extends BaseFragment implements PullToRefreshVie
                 L.e(result);
                 int error = OKHttpRequestUtils.getmInstance().getResultCode(result);
                 if (error == 0) {
-                    CancleStoneOrderResult cancleStoneOrderResult= new Gson().fromJson(result,CancleStoneOrderResult.class);
+                    CancleStoneOrderResult cancleStoneOrderResult = new Gson().fromJson(result, CancleStoneOrderResult.class);
                     ToastManager.showToastReal(cancleStoneOrderResult.getMessage());
-                    for(int i =0 ;i<listData.size();i++){
-                        if(listData.get(i).getId().equals(orderId)){
+                    for (int i = 0; i < listData.size(); i++) {
+                        if (listData.get(i).getId().equals(orderId)) {
                             listData.remove(i);
                             break;
 
@@ -520,76 +523,6 @@ public class StoneOrderFragemnt extends BaseFragment implements PullToRefreshVie
             imageView.setClickable(false);
             imageView.setFocusable(false);
             return imageView;
-        }
-
-
-        public class CustomTypeListViewAdapter extends BaseAdapter {
-
-            private List<String> imgFiles;
-            private CustomGridView mCustomGridView;
-
-            public CustomTypeListViewAdapter(List<String> pic, CustomGridView customGridView) {
-                this.imgFiles = pic;
-                this.mCustomGridView = customGridView;
-            }
-
-
-            @Override
-            public int getCount() {
-                return imgFiles.size();
-            }
-
-            @Override
-            public String getItem(int position) {
-                return imgFiles.get(position);
-            }
-
-            @Override
-            public long getItemId(int position) {
-                return position;
-            }
-
-            int width;
-
-            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                if (convertView == null) {
-                    int horizontalSpace = mCustomGridView.getHorizontalSpacing();
-                    int colums = mCustomGridView.getNumColumns();
-                    width = (imgContainerWidth - colums * horizontalSpace) / colums;
-                    ImageView img = new ImageView(getActivity()) {
-                        @Override
-                        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-                            setMeasuredDimension(width, width);
-                        }
-                    };
-                    convertView = img;
-                }
-                if (imgFiles.size() != 0)
-                    mCustomGridView.setPadding(0, 15, 0, 36);
-                else
-                    mCustomGridView.setPadding(0, 15, 0, 0);
-                ImageLoader.getInstance().displayImage(imgFiles.get(position), (ImageView) convertView, ImageLoadOptions.getOptions());
-                //convertView.setDrawingCacheEnabled(false);
-                return convertView;
-            }
-
-        }
-
-        public class CustomTypeListViewAdapter1 extends CommonAdapter {
-
-            public CustomTypeListViewAdapter1(List<String> mDatas, int itemLayoutId) {
-                super(mDatas, itemLayoutId);
-            }
-
-            @Override
-            public void convert(int position, BaseViewHolder helper, Object item) {
-                //TextView textView = helper.getView(R.id.tv_total_amount);
-                //view.setText(item);
-                helper.setText(R.id.id_tv_title, "");
-            }
-
         }
 
 

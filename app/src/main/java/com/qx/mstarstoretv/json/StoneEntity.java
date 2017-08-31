@@ -21,7 +21,7 @@ public class StoneEntity implements Cloneable , Serializable {
      * typeTitle : 钻石
      * purityId : 1
      */
-
+    private String id;
     private boolean isChecked;
     private String stroneName;
     private String price;
@@ -40,11 +40,42 @@ public class StoneEntity implements Cloneable , Serializable {
     private int isSelfStone;
     private int isNotEmpty;
     private String stoneOut;
+    private String stoneCode;
+    private String CertAuth;
+
+    public String getCertAuth() {
+        return CertAuth;
+    }
+
+    public void setCertAuth(String certAuth) {
+        CertAuth = certAuth;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getStoneCode() {
+        return stoneCode;
+    }
+
+    public void setStoneCode(String stoneCode) {
+        this.stoneCode = stoneCode;
+    }
 
     public StoneEntity() {
     }
 
     public StoneEntity(StoneEntity stoneEntity) {
+        toStoneEntity(stoneEntity);
+    }
+
+
+    private void toStoneEntity(StoneEntity stoneEntity) {
         this.isChecked = stoneEntity.isChecked();
         this.stroneName = stoneEntity.getStroneName();
         this.price = stoneEntity.getPrice();
@@ -63,6 +94,10 @@ public class StoneEntity implements Cloneable , Serializable {
         this.isSelfStone = stoneEntity.getIsSelfStone();
         this.isNotEmpty = stoneEntity.getIsNotEmpty();
         this.stoneOut = stoneEntity.getStoneOut();
+    }
+
+    public void changetoStone(StoneEntity stoneEntity) {
+        toStoneEntity(stoneEntity);
     }
     public int getIsNotEmpty() {
         return isNotEmpty;

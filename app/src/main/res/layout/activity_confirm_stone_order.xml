@@ -119,7 +119,7 @@
                 <LinearLayout
                     android:id="@+id/ll_stone_confirm_order"
                     android:layout_width="match_parent"
-                    android:layout_height="140dip"
+                    android:layout_height="170dip"
                     android:background="@color/white"
                     android:orientation="vertical"
                     android:visibility="visible">
@@ -140,7 +140,7 @@
                             android:layout_gravity="center_vertical"
                             android:text="客       户"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_small_medium" />
+                            android:textSize="@dimen/setting_textsize" />
 
 
                         <RelativeLayout
@@ -158,14 +158,14 @@
                                 android:layout_height="match_parent"
                                 android:background="@null"
                                 android:singleLine="true"
-                                android:textSize="@dimen/text_size_small_ultra" />
+                                android:textSize="@dimen/setting_textsize" />
 
                             <View
                                 android:id="@+id/id_view_line"
                                 android:layout_width="1px"
                                 android:layout_height="match_parent"
-                                android:layout_alignParentRight="true"
                                 android:layout_marginRight="30dip"
+                                android:layout_toLeftOf="@+id/ig_btn_seach"
                                 android:background="@color/color_line"></View>
 
                             <ImageView
@@ -211,7 +211,7 @@
                             android:layout_gravity="center_vertical"
                             android:text="发       票"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_small_medium" />
+                            android:textSize="@dimen/setting_textsize" />
 
 
                         <TextView
@@ -254,7 +254,7 @@
                             android:layout_gravity="center_vertical"
                             android:text="备       注"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_small_medium" />
+                            android:textSize="@dimen/setting_textsize" />
 
                         <EditText
                             android:id="@+id/id_ed_remarks"
@@ -266,7 +266,7 @@
                             android:hint="选填：对本次交易的说明"
                             android:background="@null"
                             android:button="@null"
-                            android:textSize="@dimen/text_size_small_ultra" />
+                            android:textSize="@dimen/setting_textsize" />
                     </LinearLayout>
 
 
@@ -447,12 +447,13 @@
 
 
 
-            <ListView
-                android:id="@android:id/list"
+            <com.qx.mstarstoretv.viewutils.GridViewWithHeaderAndFooter
+                android:id="@+id/gridview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="50dp"
                 android:layout_marginTop="16dp"
+                android:numColumns="3"
                 android:background="@color/theme_bg"
                 android:descendantFocusability="beforeDescendants"
                 android:divider="@android:color/transparent"

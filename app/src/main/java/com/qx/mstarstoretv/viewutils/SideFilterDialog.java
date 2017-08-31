@@ -127,7 +127,7 @@ public  class SideFilterDialog extends BaseFilterData {
         initData();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mPopView = inflater.inflate(R.layout.dialog_filter_dialog, null);
-        expandableGridView = (ExpandableListView) mPopView.findViewById(R.id.list);
+        expandableGridView = (ExpandableListView) mPopView.findViewById(R.id.gridview);
         lv = (GridViewWithHeaderAndFooter) mPopView.findViewById(R.id.id_lv_memu);
         idTvConfirfilterr = (TextView) mPopView.findViewById(R.id.id_tv_confirfilterr);
         idTvResetfilter = (TextView) mPopView.findViewById(R.id.id_tv_resetfilter);
@@ -142,7 +142,7 @@ public  class SideFilterDialog extends BaseFilterData {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                typese.remove(i);
+                removeActivity(i);
                 listViewAdapter.notifyDataSetChanged();
             }
         });
@@ -151,6 +151,29 @@ public  class SideFilterDialog extends BaseFilterData {
         // 点击外面的控件也可以使得PopUpWindow dimiss
         popupWindow.setOutsideTouchable(true);
 
+    }
+
+    private void removeActivity(int n) {
+
+        if (OrderActivity.multiselectKey.size() != 0 && OrderActivity.multiselectKey != null) {
+            for (int i = 0; i < OrderActivity.multiselectKey.size(); i++) {
+                if (OrderActivity.multiselectKey.get(i).getTitle().equals(typese.get(n).getContent())) {
+                    OrderActivity.multiselectKey.remove(i);
+                }
+            }
+        }
+        if (OrderActivity.singleKey.size() != 0 && OrderActivity.singleKey != null) {
+            for (int i = 0; i < OrderActivity.singleKey.size(); i++) {
+                SearchValue searchKeyword = OrderActivity.singleKey.get(i);
+                if (StringUtils.isEmpty(searchKeyword.getValue())) {
+                    break;
+                }
+                if (searchKeyword.getTxt().equals(typese.get(n).getContent())) {
+                    OrderActivity.singleKey.remove(i);
+                }
+            }
+        }
+        typese.remove(n);
     }
     private void initData() {
         typese  = new ArrayList<>();

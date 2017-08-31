@@ -49,6 +49,8 @@ import com.qx.mstarstoretv.utils.L;
 import com.qx.mstarstoretv.utils.StringUtils;
 import com.qx.mstarstoretv.utils.ToastManager;
 import com.qx.mstarstoretv.utils.UIUtils;
+import com.qx.mstarstoretv.viewutils.CustomGridView;
+import com.qx.mstarstoretv.viewutils.GridViewWithHeaderAndFooter;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -88,8 +90,7 @@ public class ConfirmStoneOrderActivity extends BaseActivity implements CanScroll
     @Bind(R.id.id_receipt)
     TextView idReceipt;
 
-    @Bind(android.R.id.list)
-    ListView list;
+
     @Bind(R.id.rel_shopping_car_bottom_action)
     RelativeLayout relShoppingCarBottomAction;
     @Bind(R.id.id_lay_order_detail)
@@ -123,7 +124,7 @@ public class ConfirmStoneOrderActivity extends BaseActivity implements CanScroll
     @Bind(R.id.tv_pay)
     Button tvPay;
 
-    protected ListView lv_list;
+    protected GridViewWithHeaderAndFooter lv_list;
     @Bind(R.id.tv_right)
     ImageView tvRight;
     @Bind(R.id.id_no_adress)
@@ -576,7 +577,7 @@ public class ConfirmStoneOrderActivity extends BaseActivity implements CanScroll
     protected void initView() {
 
         listData = new ArrayList<>();
-        lv_list = (ListView) findViewById(android.R.id.list);
+        lv_list = (GridViewWithHeaderAndFooter) findViewById(R.id.gridview);
         confirOrderAdapter = new ConfirOrderAdapter();
         confirOrderAdapter.setOnAdapterCallBack(this);
         lv_list.setEmptyView(findViewById(R.id.lny_no_result));
@@ -631,7 +632,7 @@ public class ConfirmStoneOrderActivity extends BaseActivity implements CanScroll
             return;
         }
         if (isDefaultCustomer == null) {
-           showToastReal(getString(R.string.please_write_customer));
+            showToastReal(getString(R.string.please_write_customer));
             return;
         }
 
@@ -712,7 +713,7 @@ public class ConfirmStoneOrderActivity extends BaseActivity implements CanScroll
                         isDefaultCustomer.setCustomerID(-1);
                     }
                     if (state == 1) {
-                     showToastReal("有此客户");
+                        showToastReal("有此客户");
                         isDefaultCustomer = isHaveCustomerResult.getData().getCustomer();
                         if (type == 2) {
                             updateCustomorWord(isDefaultCustomer.getCustomerID() + "", keyWord);
@@ -985,7 +986,7 @@ public class ConfirmStoneOrderActivity extends BaseActivity implements CanScroll
                 vh.ivReduce.setVisibility(View.GONE);
                 vh.btnDelete.setVisibility(View.GONE);
                 vh.productNumber.setText("×" + listEntity.getNumber() + "");
-//              vh.productNumber.setEnabled(false);
+                vh.productNumber.setEnabled(false);
             } else {
                 vh.ivAdd.setVisibility(View.VISIBLE);
                 vh.ivReduce.setVisibility(View.VISIBLE);

@@ -226,7 +226,7 @@ public class AppURL {
     /*订单 详情  ModelOrderProduceDetailPage?  */
     public static String URL_PD_ORDER_DETAIL2 = baseUrl + "ModelOrderProduceDetailHistoryPageForSearch?"+QxVersion;
     /*裸石库  http://appapi1.fanerweb.com/api/Aproxy/stoneSearchInfo?tokenKey=e9884c4435d75a135ce41fb668788827*/
-    public static String URL_STONE_SEARCHINFO = baseUrl + "stoneSearchInfo?"+QxVersion;
+    public static String URL_STONE_SEARCHINFO = baseUrl + "stoneSearchInfoInhk?"+QxVersion;
     /*搜索裸石列表  http://appapi1.fanerweb.com/api/Aproxy/stoneList?tokenKey=e9884c4435d75a135ce41fb668788827&cpage=1&purity=vvs2&color=h,f*/
     public static String URL_STONE_LIST = baseUrl + "stoneList?"+QxVersion;
     /**

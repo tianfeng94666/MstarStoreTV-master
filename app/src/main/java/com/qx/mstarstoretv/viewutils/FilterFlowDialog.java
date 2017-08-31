@@ -28,7 +28,7 @@ public class FilterFlowDialog extends PopupWindow {
     private void init(Context context,int height) {
         LayoutInflater inflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mPopView= inflater.inflate(R.layout.dialog_filter_flow,null);
-        listView = (ListView) mPopView.findViewById(R.id.list);
+        listView = (ListView) mPopView.findViewById(R.id.gridview);
         this.setContentView(mPopView);
         this.setWidth(getWindowWidth()-150);
         this.setHeight(height);

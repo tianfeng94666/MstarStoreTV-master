@@ -69,7 +69,7 @@ public class ClassifyActivity extends BaseFilterData{
 
 
     private void initParameter() {
-        expandableGridView = (ExpandableListView) findViewById(R.id.list);
+        expandableGridView = (ExpandableListView) findViewById(R.id.gridview);
         idTvConfirfilterr = (TextView) findViewById(R.id.id_tv_confirfilterr);
         idTvResetfilter = (TextView) findViewById(R.id.id_tv_resetfilter);
         menuListView = (ListView) findViewById(R.id.classify_list);

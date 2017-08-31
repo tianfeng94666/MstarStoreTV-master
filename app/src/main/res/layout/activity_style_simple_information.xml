@@ -613,7 +613,7 @@
 
 
     </LinearLayout>
-    <include layout="@layout/btn_popupwindow" />
+    <include layout="@layout/btn_popupwindow"  android:visibility="gone"/>
 
     <include layout="@layout/progress_layout" />
 

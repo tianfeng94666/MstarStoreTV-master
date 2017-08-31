@@ -226,7 +226,7 @@ public class LeftPopupWindow implements View.OnClickListener {
             baseShowWatLoading();
             String lgUrl = AppURL.URL_QUICK_MAKING + "tokenKey=" + BaseApplication.getToken() + "&productId=" + ring.getItemId() + "&modelPurityId=" + ring.getRingPurityId()
                     + "&modelQualityId=1" + "&number=" + ring.getNumber() + "&jewelStoneId=" + ring.getStoneEntity().getId() + "&word=" + ring.getWord() + "&customerID="
-                    + ring.getCustomerEntity().getCustomerID();
+                    + ring.getCustomerEntity().getCustomerID()+"&handSize=" + ring.getHandSize() + "&remarks=" + ring.getRemarks()  ;
             L.e("netLogin" + lgUrl);
             VolleyRequestUtils.getInstance().getCookieRequest(context, lgUrl, new VolleyRequestUtils.HttpStringRequsetCallBack() {
                 @Override
@@ -239,6 +239,7 @@ public class LeftPopupWindow implements View.OnClickListener {
                         if (orderListResult.getData() == null) {
                             return;
                         }
+                        Global.isShowPopup= 0;
                         resetStoneAndRing();
                         Bundle bundle = new Bundle();
                         bundle.putInt("type", 2);
@@ -276,6 +277,7 @@ public class LeftPopupWindow implements View.OnClickListener {
         Global.ring.setRingPurityId(null);
         Global.ring.setStoneEntity(null);
         Global.ring.setRingWeightRange(null);
+
         initPopupView();
     }
 

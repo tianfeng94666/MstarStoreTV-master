@@ -57,7 +57,7 @@ public class FlyBanner extends RelativeLayout {
     //是否正在播放
     private boolean mIsAutoPlaying = false;
     //自动播放时间
-    private int mAutoPalyTime = 2000;
+    private int mAutoPalyTime = 6000;
     //当前页面位置
     private int mCurrentPositon;
     //指示点位置

@@ -325,7 +325,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStoreaType;
             }
             @Override
             public void getSelectId(Type type) {
@@ -354,7 +354,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStoreaColor;
             }
             @Override
             public void getSelectId(Type type) {
@@ -384,7 +384,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStoreaCut;
             }
             @Override
             public void getSelectId(Type type) {
@@ -414,7 +414,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStoreaNorm;
             }
             @Override
             public void getSelectId(Type type) {
@@ -443,7 +443,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStoreaShape;
             }
             @Override
             public void getSelectId(Type type) {
@@ -484,7 +484,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStorebType;
             }
             @Override
             public void getSelectId(Type type) {
@@ -513,7 +513,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStorebColor;
             }
             @Override
             public void getSelectId(Type type) {
@@ -542,7 +542,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStorebCut;
             }
             @Override
             public void getSelectId(Type type) {
@@ -571,7 +571,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStorebNorm;
             }
             @Override
             public void getSelectId(Type type) {
@@ -600,7 +600,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStorebShape;
             }
             @Override
             public void getSelectId(Type type) {
@@ -633,7 +633,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStorecType;
             }
             @Override
             public void getSelectId(Type type) {
@@ -661,7 +661,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStorecColor;
             }
             @Override
             public void getSelectId(Type type) {
@@ -690,7 +690,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStorecCut;
             }
             @Override
             public void getSelectId(Type type) {
@@ -719,7 +719,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStorecNorm;
             }
             @Override
             public void getSelectId(Type type) {
@@ -748,7 +748,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStorecShape;
             }
             @Override
             public void getSelectId(Type type) {
@@ -783,7 +783,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStoreaType;
             }
             @Override
             public void getSelectId(Type type) {
@@ -812,7 +812,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStoreColor;
             }
             @Override
             public void getSelectId(Type type) {
@@ -841,7 +841,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStoreCut;
             }
             @Override
             public void getSelectId(Type type) {
@@ -870,7 +870,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStoreNorm;
             }
             @Override
             public void getSelectId(Type type) {
@@ -899,7 +899,7 @@ public class CustommadeInformationActivity extends BaseActivity {
             }
             @Override
             public View getRootView() {
-                return rootView;
+                return idStoreShape;
             }
             @Override
             public void getSelectId(Type type) {

@@ -27,6 +27,8 @@ android:layout_marginLeft="@dimen/margin10"
         android:gravity="center"
         android:text="+ 添加主石"
         android:textSize="@dimen/simple_styleinfromation_textsize"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:textColor="@color/theme_red" />
 
     <ImageView

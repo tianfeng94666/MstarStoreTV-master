@@ -7,12 +7,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp">
+        android:layout_height="60dp">
 
         <ImageView
             android:id="@+id/iv_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:layout_marginLeft="11dip"
@@ -25,7 +25,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="订单搜索"
-            android:textSize="16sp" />
+            android:textSize="@dimen/setting_textsize" />
 
         <!--<ImageView-->
         <!--android:id="@+id/iv_right"-->
@@ -55,7 +55,7 @@
             android:gravity="center"
             android:text="搜索类型"
             android:textColor="@color/text_color"
-            android:textSize="@dimen/text_size_small_medium" />
+            android:textSize="@dimen/setting_textsize" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,7 +104,7 @@
                     android:imeOptions="actionSearch"
                     android:paddingRight="16dp"
                     android:singleLine="true"
-                    android:textSize="@dimen/margin12" />
+                    android:textSize="@dimen/setting_textsize" />
 
                 <ImageView
                     android:id="@+id/iv_delete"
@@ -143,7 +143,7 @@
             android:gravity="center"
             android:text="客        户"
             android:textColor="@color/text_color"
-            android:textSize="@dimen/text_size_small_medium" />
+            android:textSize="@dimen/setting_textsize" />
 
 
         <RelativeLayout
@@ -164,7 +164,7 @@
                 android:hint="输入搜索"
                 android:paddingLeft="8dp"
                 android:singleLine="true"
-                android:textSize="@dimen/text_size_small_ultra" />
+                android:textSize="@dimen/setting_textsize" />
 
 
             <ImageView
@@ -218,6 +218,7 @@
             android:layout_marginTop="4dp"
             android:gravity="center"
             android:text="范围日期"
+            android:textSize="@dimen/setting_textsize"
             android:textColor="@color/text_color" />
 
         <RelativeLayout
@@ -242,6 +243,7 @@
                 android:drawableLeft="@drawable/icon_date"
                 android:drawablePadding="4dp"
                 android:gravity="center"
+                android:textSize="@dimen/setting_textsize"
                 android:text="2017-03-22" />
         </RelativeLayout>
 
@@ -251,6 +253,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:padding="5dp"
+            android:textSize="@dimen/setting_textsize"
             android:text="至" />
 
         <RelativeLayout
@@ -275,6 +278,7 @@
                 android:drawableLeft="@drawable/icon_date"
                 android:drawablePadding="4dp"
                 android:gravity="center"
+                android:textSize="@dimen/setting_textsize"
                 android:text="2017-03-22" />
         </RelativeLayout>
     </LinearLayout>
@@ -318,5 +322,6 @@
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:text="确定"
+        android:textSize="@dimen/setting_textsize"
         android:textColor="@color/white" />
 </LinearLayout>

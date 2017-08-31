@@ -35,7 +35,7 @@
             android:gravity="center"
             android:text="    删除"
             android:textColor="@color/text_color"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_size_medium1"
 
             />
     </RelativeLayout>
@@ -82,7 +82,7 @@
                         android:layout_marginBottom="16dp"
                         android:text="千禧之星裸"
                         android:textColor="@color/text_color"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_size_medium1" />
 
 
                 </LinearLayout>
@@ -101,7 +101,7 @@
                         android:layout_alignParentLeft="true"
                         android:text="1334"
                         android:textColor="@color/theme_red"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/text_size_medium1"  />
 
 
 
@@ -124,15 +124,16 @@
                             android:gravity="center"
                             android:layout_width="40dp"
                             android:inputType="number"
+                            android:textSize="@dimen/text_size_medium1"
                             android:layout_height="wrap_content"
                           android:layout_gravity="center_vertical"
                             android:text="1" />
 
                         <ImageView
                             android:id="@+id/iv_add"
-                            android:layout_width="35dp"
+                            android:layout_width="40dp"
                             android:padding="5dp"
-                            android:layout_height="35dp"
+                            android:layout_height="40dp"
                             android:src="@drawable/icon_add" />
                     </LinearLayout>
 

@@ -217,7 +217,7 @@ public class ModeOfPaymentActivity extends BaseActivity {
         //new Screen(mctontext)).getHeight() - getStatusBarHeight()
         private void init(Context context) {
             mPopView = LayoutInflater.from(context).inflate(R.layout.dialog_pay, null);
-            listView = (ListView) mPopView.findViewById(R.id.list);
+            listView = (ListView) mPopView.findViewById(R.id.gridview);
             this.setContentView(mPopView);
             int width = getResources().getDimensionPixelOffset(R.dimen.m150);
             int height = getResources().getDimensionPixelOffset(R.dimen.m100);

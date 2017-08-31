@@ -332,6 +332,7 @@ public class SearchOrderActivity extends BaseActivity implements View.OnClickLis
         rb.setLayoutParams(params);
         rb.setButtonDrawable(R.drawable.selector_radio);
         rb.setText(st);
+        rb.setTextSize(UIUtils.sp2px(24));
         rb.setSelected(isChoose);
         rgOrders.addView(rb);
     }

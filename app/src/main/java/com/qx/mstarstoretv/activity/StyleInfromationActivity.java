@@ -409,7 +409,7 @@ public class StyleInfromationActivity extends BaseActivity implements View.OnCli
 
                         @Override
                         public View getRootView() {
-                            return rootView;
+                            return   idCusStoreRemarkid;
                         }
 
 
@@ -504,7 +504,7 @@ public class StyleInfromationActivity extends BaseActivity implements View.OnCli
 
             @Override
             public View getRootView() {
-                return rootView;
+                return idCusStoreSize;
             }
         });
     }
@@ -1089,7 +1089,7 @@ public class StyleInfromationActivity extends BaseActivity implements View.OnCli
 
             @Override
             public View getRootView() {
-                return rootView;
+                return viewHolder.idStoreNumber;
             }
         });
 
@@ -1109,7 +1109,7 @@ public class StyleInfromationActivity extends BaseActivity implements View.OnCli
 
             @Override
             public View getRootView() {
-                return rootView;
+                return  viewHolder.idStoreType;
             }
 
             @Override
@@ -1141,7 +1141,7 @@ public class StyleInfromationActivity extends BaseActivity implements View.OnCli
 
             @Override
             public View getRootView() {
-                return rootView;
+                return  viewHolder.idStoreColor;
             }
 
             @Override
@@ -1173,7 +1173,7 @@ public class StyleInfromationActivity extends BaseActivity implements View.OnCli
 
             @Override
             public View getRootView() {
-                return rootView;
+                return    viewHolder.idStoreCut;
             }
 
             @Override
@@ -1230,7 +1230,7 @@ public class StyleInfromationActivity extends BaseActivity implements View.OnCli
 
             @Override
             public View getRootView() {
-                return rootView;
+                return  viewHolder.idStoreShape;
             }
 
             @Override

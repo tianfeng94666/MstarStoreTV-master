@@ -1,10 +1,12 @@
 package com.qx.mstarstoretv.json;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2017/8/17 0017.
  */
 
-public class ModelWeightRange {
+public class ModelWeightRange implements Serializable {
     String key ;
     String value;
 

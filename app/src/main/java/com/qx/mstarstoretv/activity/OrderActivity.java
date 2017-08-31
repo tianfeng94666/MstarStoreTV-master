@@ -141,11 +141,11 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
         isCustomized = SpUtils.getInstace(this).getBoolean("isCustomized", true);
         context = this;
         getDate();
+        addStoneRang();
         initView();
         initListener();
         loadNetData(getInitUrl());
     }
-
 
 
     private void getDate() {
@@ -184,15 +184,9 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
         finish();
     }
 
+
     private String getInitUrl() {
-        if(Global.isShowPopup!=0&&Global.ring.getStoneEntity()!=null){
-            for(int i =0 ;i<singleKey.size();i++){
-                if(singleKey.get(i).getName().equals(Global.ring.getStoneEntity().getModelWeightRange().getKey())){
-                    singleKey.get(i).setValue(Global.ring.getStoneEntity().getModelWeightRange().getValue());
-                }
-            }
-        }
-        String url = AppURL.URL_MODE_LIST + "tokenKey=" + BaseApplication.getToken() + "&cpage=" + curpage + getCheckBoxUrl() + getRadioGroupUrl() + "&pageNum=24";
+        String url = AppURL.URL_MODE_LIST + "tokenKey=" + BaseApplication.getToken() + "&cpage=" + curpage + getCheckBoxUrl() + getRadioGroupUrl()+ "&pageNum=24";
 
         return url;
     }
@@ -212,11 +206,16 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        multiselectKey.clear();
                         idTvSelect.setText(StringUtils.idgui(select.getTitle()));
-                        mcategory = select.getId() + "";
+                        TypeFiler typeFiler = new TypeFiler();
+                        typeFiler.setCheck(true);
+                        typeFiler.setGroupKey("category");
+                        typeFiler.setName(select.getTitle());
+                        typeFiler.setValue(select.getId());
+                        typeFiler.setId(select.getId());
+                        multiselectKey.add(typeFiler);
                         String url = getInitUrl();
-//                        System.out.println("&category=" + mcategory);
-//                        url += "&category=" + mcategory;
                         loadNetData(url);
                     }
                 });
@@ -349,6 +348,22 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
 
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        addStoneRang();
+
+    }
+
+    private void addStoneRang() {
+        if(Global.isShowPopup!=0&&Global.ring.getStoneEntity()!=null){
+            for(int i =0 ;i<singleKey.size();i++){
+                if(singleKey.get(i).getName().equals(Global.ring.getStoneEntity().getModelWeightRange().getKey())){
+                    singleKey.get(i).setValue(Global.ring.getStoneEntity().getModelWeightRange().getValue());
+                }
+            }
+        }
+    }
 
     private void endNetRequest() {
         mGvAdapter.notifyDataSetChanged();
@@ -568,8 +583,8 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
                 myAction = action;
                 curpage = 1;
                 String url = getInitUrl();
-                url += getCheckBoxUrl();
-                url += getRadioGroupUrl();
+//                url += getCheckBoxUrl();
+//                url += getRadioGroupUrl();
                 loadNetData(url);
             }
         });

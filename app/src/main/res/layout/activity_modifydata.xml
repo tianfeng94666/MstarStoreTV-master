@@ -77,7 +77,7 @@
                     />
 
 
-                <ImageView
+                <com.qx.mstarstoretv.viewutils.CircleImageView
                     android:id="@+id/id_ig_userpic"
                     android:layout_width="65dp"
                     android:src="@drawable/icon"

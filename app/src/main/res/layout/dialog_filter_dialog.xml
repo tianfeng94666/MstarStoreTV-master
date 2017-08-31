@@ -36,7 +36,7 @@
             >
 
                 <ExpandableListView
-                    android:id="@+id/list"
+                    android:id="@+id/gridview"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:childDivider="#c8c7cc"

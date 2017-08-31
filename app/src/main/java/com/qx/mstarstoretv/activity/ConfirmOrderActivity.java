@@ -377,7 +377,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                 public void getSelectId(Type type) {
                     idCsColor.setText(type.getTypeName());
                     purityId = type.getId();
-                    queryPricefoServer(qualityId, purityId);
+//                    queryPricefoServer(qualityId, purityId);
                 }
 
                 @Override
@@ -387,7 +387,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
 
                 @Override
                 public View getRootView() {
-                    return View.inflate(context, R.layout.activity_confirmorder, null);
+                    return idCsColor;
                 }
             });
 
@@ -420,14 +420,14 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
 
                 @Override
                 public View getRootView() {
-                    return View.inflate(context, R.layout.activity_confirmorder, null);
+                    return idCsMass;
                 }
 
                 @Override
                 public void getSelectId(Type type) {
                     idCsMass.setText(type.getTypeName());
                     qualityId = type.getId();
-                    queryPricefoServer(qualityId, purityId);
+//                    queryPricefoServer(qualityId, purityId);
                 }
 
                 @Override

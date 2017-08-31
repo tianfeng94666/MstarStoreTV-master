@@ -56,9 +56,10 @@ public  abstract class BaseFilterData extends BaseActivity{
 
     private void initData(){
         list = new ArrayList<>();
-        for (int i = 0; i <  getTypeListData().size(); i++) {
+        List<ClassTypeFilerEntity> filerList = getTypeListData();
+        for (int i = 0; i <  filerList.size(); i++) {
             Map<String, Object> map = new HashMap<>();
-            map.put("txt",  getTypeListData().get(i).getTitle());
+            map.put("txt",  filerList.get(i).getTitle());
             list.add(map);
         }
     }

@@ -156,6 +156,7 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
         tvSearch.setOnClickListener(this);
         ivWeightMin.setOnClickListener(this);
         ivWeightMax.setOnClickListener(this);
+        tvRight.setOnClickListener(this);
         initCertificate();
         initRandSeekBar();
         initShape();
@@ -168,10 +169,10 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
         } else {
             llShowLess.setVisibility(View.GONE);
         }
-        if(Global.isShowPopup!=0&&Global.ring!=null&&Global.ring.getRingWeightRange()!=null){
+        if (Global.isShowPopup != 0 && Global.ring != null && Global.ring.getRingWeightRange() != null) {
             String st = Global.ring.getRingWeightRange().getValue();
-            String [] sts = st.split(",");
-            if(sts.length==2){
+            String[] sts = st.split(",");
+            if (sts.length == 2) {
                 etWeightMin.setText(sts[0]);
                 etWeightMax.setText(sts[1]);
             }
@@ -415,8 +416,15 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
         gvPrice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                etPriceMax.setText("");
-                etPriceMin.setText("");
+                String st = priceList.get(position).getKey();
+                String[] values = st.split(",");
+                etPriceMin.setText(values[0]);
+                if (values[1].equals("0")) {
+                    etPriceMax.setText("");
+                } else {
+                    etPriceMax.setText(values[1]);
+                }
+
                 if (priceChecks[position]) {
                     priceChecks[position] = !priceChecks[position];
                     pricekey = "";
@@ -637,24 +645,22 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
 
         stoneSearchInfo.setWeight(weightMin + "," + weightMax);
 
-        if (pricekey.equals("")) {
-            String priceMin, priceMax;
-            priceMin = etPriceMin.getText().toString();
-            priceMax = etPriceMax.getText().toString();
-            if ((!priceMax.isEmpty() && !priceMin.isEmpty()) && Double.parseDouble(priceMin) > Double.parseDouble(priceMax)) {
-                ToastManager.showToastReal("价格搜索输入有误！");
-                return false;
-            }
-            if (priceMax.isEmpty()) {
-                priceMax = "0";
-            }
-            if (priceMin.isEmpty()) {
-                priceMin = "0";
-            }
-            stoneSearchInfo.setPrice(priceMin + "," + priceMax);
-        } else {
-            stoneSearchInfo.setPrice(pricekey);
+
+        String priceMin, priceMax;
+        priceMin = etPriceMin.getText().toString();
+        priceMax = etPriceMax.getText().toString();
+        if ((!priceMax.isEmpty() && !priceMin.isEmpty()) && Double.parseDouble(priceMin) > Double.parseDouble(priceMax)) {
+            ToastManager.showToastReal("价格搜索输入有误！");
+            return false;
         }
+        if (priceMax.isEmpty()) {
+            priceMax = "0";
+        }
+        if (priceMin.isEmpty()) {
+            priceMin = "0";
+        }
+        stoneSearchInfo.setPrice(priceMin + "," + priceMax);
+
 
         stoneSearchInfo.setShape(getShape());
         stoneSearchInfo.setColor(getStoneColor());
