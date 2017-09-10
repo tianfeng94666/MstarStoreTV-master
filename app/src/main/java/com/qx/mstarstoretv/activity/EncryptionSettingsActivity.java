@@ -13,9 +13,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.qx.mstarstoretv.R;
 import com.qx.mstarstoretv.base.AppURL;
 import com.qx.mstarstoretv.base.BaseApplication;
@@ -25,6 +22,9 @@ import com.qx.mstarstoretv.net.VolleyRequestUtils;
 import com.qx.mstarstoretv.utils.L;
 import com.qx.mstarstoretv.utils.SpUtils;
 import com.qx.mstarstoretv.utils.ToastManager;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2017/8/4 0004.
@@ -74,9 +74,14 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
     ImageView tvRight;
     @Bind(R.id.id_rel_title)
     RelativeLayout idRelTitle;
+    @Bind(R.id.tv_is_show_stone_price)
+    TextView tvIsShowStonePrice;
+    @Bind(R.id.iv_is_show_stone_price)
+    ImageView ivIsShowStonePrice;
+    private boolean isShowStonePrice = SpUtils.getInstace(this).getBoolean("isShowStonePrice", true);
     private boolean isShowPrice = SpUtils.getInstace(this).getBoolean("isShowPrice", true);
     private boolean isCustomized = SpUtils.getInstace(this).getBoolean("isCustomized", true);
-    private int isShowCostPrice ;
+    private int isShowCostPrice;
     private int COST_PRICE_TYPE = 1;
     private SettingResult settingResult;
 
@@ -136,8 +141,28 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
                 SpUtils.getInstace(EncryptionSettingsActivity.this).saveBoolean("isShowPrice", isShowPrice);
             }
         });
-       isShowCostPrice= settingResult.getData().getIsShowOriginalPrice();
-        if (isShowCostPrice==1) {
+
+        if (!isShowStonePrice) {
+            ivIsShowStonePrice.setImageResource(R.drawable.icon_switch_off);
+        } else {
+            ivIsShowStonePrice.setImageResource(R.drawable.icon_switch_on);
+        }
+        ivIsShowPrice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isShowStonePrice = !isShowStonePrice;
+                if (!isShowStonePrice) {
+                    ivIsShowStonePrice.setImageResource(R.drawable.icon_switch_off);
+                } else {
+                    ivIsShowStonePrice.setImageResource(R.drawable.icon_switch_on);
+                }
+                Global.STONE_POINT_CHANGE = 1;
+                SpUtils.getInstace(EncryptionSettingsActivity.this).saveBoolean("isShowStonePrice", isShowStonePrice);
+            }
+        });
+
+        isShowCostPrice = settingResult.getData().getIsShowOriginalPrice();
+        if (isShowCostPrice == 1) {
             ivIsShowCostPrice.setImageResource(R.drawable.icon_switch_off);
         } else {
             ivIsShowCostPrice.setImageResource(R.drawable.icon_switch_on);
@@ -145,7 +170,7 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
         ivIsShowCostPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isShowCostPrice==1) {
+                if (isShowCostPrice == 1) {
                     isShowCostPrice = 0;
                     ivIsShowCostPrice.setImageResource(R.drawable.icon_switch_on);
                 } else {
@@ -173,9 +198,9 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
 
 
     private void commitIsShow(int i) {
-        Global.STONE_POINT_CHANGE=1;
+        Global.STONE_POINT_CHANGE = 1;
         String url;
-            url = AppURL.URL_ISHOW_COST_PRICE + "tokenKey=" + BaseApplication.getToken() + "&isShow=" + i;
+        url = AppURL.URL_ISHOW_COST_PRICE + "tokenKey=" + BaseApplication.getToken() + "&isShow=" + i;
 
         L.e("获取个人信息" + url);
         VolleyRequestUtils.getInstance().getCookieRequest(this, url, new VolleyRequestUtils.HttpStringRequsetCallBack() {
@@ -217,6 +242,7 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
             Global.STONE_POINT_CHANGE = 1;
         }
     }
+
     public void onBack(View view) {
         isCommitaddtion();
         finish();

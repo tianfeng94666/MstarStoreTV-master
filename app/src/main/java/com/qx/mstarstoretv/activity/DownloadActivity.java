@@ -55,7 +55,7 @@ public class DownloadActivity extends BaseActivity {
             tvDownloadName.setText("安卓最新版");
 //            SpannableString ss = new SpannableString("");
             tvWebsit.setText(R.string.android_download);
-            st = "https://www.pgyer.com/IGab";
+            st = "https://www.pgyer.com/agYd";
             ivDownlaoad.setImageResource(R.drawable.android_download);
         } else {
             tvDownloadName.setText("IOS最新版");

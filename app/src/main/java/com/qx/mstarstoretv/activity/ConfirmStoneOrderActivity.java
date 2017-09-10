@@ -237,9 +237,9 @@ public class ConfirmStoneOrderActivity extends BaseActivity implements CanScroll
     public void loadNetData() {
         String url;
         if (type == 2) {
-            url = AppURL.URL_STONE_ORDER_DETAIL + "tokenKey=" + BaseApplication.getToken() + "&orderId=" + orderId;
+            url = AppURL.URL_STONE_ORDER_DETAIL + "tokenKey=" + BaseApplication.getToken() + "&orderId=" + orderId+"&pageNum=24";
         } else {
-            url = AppURL.URL_STONE_PLACE_ORDER + "tokenKey=" + BaseApplication.getToken() + "&id=" + orderId + "&percent=" + percent;
+            url = AppURL.URL_STONE_PLACE_ORDER + "tokenKey=" + BaseApplication.getToken() + "&id=" + orderId + "&percent=" + percent+"&pageNum=24";
         }
         L.e("获取订单信息" + url);
         VolleyRequestUtils.getInstance().getCookieRequest(this, url, new VolleyRequestUtils.HttpStringRequsetCallBack() {
@@ -981,49 +981,50 @@ public class ConfirmStoneOrderActivity extends BaseActivity implements CanScroll
                 vh = (ViewHolder) convertView.getTag();
             }
             final StoneBean listEntity = listData.get(position);
-            if (type == 2) {
+//            if (type == 2) {
                 vh.ivAdd.setVisibility(View.GONE);
                 vh.ivReduce.setVisibility(View.GONE);
                 vh.btnDelete.setVisibility(View.GONE);
                 vh.productNumber.setText("×" + listEntity.getNumber() + "");
                 vh.productNumber.setEnabled(false);
-            } else {
-                vh.ivAdd.setVisibility(View.VISIBLE);
-                vh.ivReduce.setVisibility(View.VISIBLE);
-                vh.btnDelete.setVisibility(View.VISIBLE);
-                vh.productNumber.setText(listEntity.getNumber() + "");
-                vh.productNumber.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        if (event.getAction() == MotionEvent.ACTION_UP) {
-                            index = position;
-                        }
-                        return false;
-                    }
-                });
-
-                vh.productNumber.clearFocus();
-                if (index != -1 && index == position) {
-                    // 如果当前的行下标和点击事件中保存的index一致，手动为EditText设置焦点。
-                    vh.productNumber.requestFocus();
-                }
-                vh.productNumber.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        listEntity.setNumber(Integer.parseInt(vh.productNumber.getText().toString()));
-                    }
-                });
-            }
+//            }
+//            else {
+//                vh.ivAdd.setVisibility(View.VISIBLE);
+//                vh.ivReduce.setVisibility(View.VISIBLE);
+//                vh.btnDelete.setVisibility(View.VISIBLE);
+//                vh.productNumber.setText(listEntity.getNumber() + "");
+//                vh.productNumber.setOnTouchListener(new View.OnTouchListener() {
+//                    @Override
+//                    public boolean onTouch(View v, MotionEvent event) {
+//                        if (event.getAction() == MotionEvent.ACTION_UP) {
+//                            index = position;
+//                        }
+//                        return false;
+//                    }
+//                });
+//
+//                vh.productNumber.clearFocus();
+//                if (index != -1 && index == position) {
+//                    // 如果当前的行下标和点击事件中保存的index一致，手动为EditText设置焦点。
+//                    vh.productNumber.requestFocus();
+//                }
+//                vh.productNumber.addTextChangedListener(new TextWatcher() {
+//                    @Override
+//                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//                    }
+//
+//                    @Override
+//                    public void afterTextChanged(Editable s) {
+//                        listEntity.setNumber(Integer.parseInt(vh.productNumber.getText().toString()));
+//                    }
+//                });
+//            }
 
 
             vh.ivAdd.setOnClickListener(new View.OnClickListener() {

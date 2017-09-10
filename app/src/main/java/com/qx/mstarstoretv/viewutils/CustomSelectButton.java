@@ -132,7 +132,11 @@ public class CustomSelectButton extends RelativeLayout {
         @Override
         public void onClick(View v) {
             if (onSelectData != null) {
-                types = onSelectData.getData();
+                try {
+                    types = onSelectData.getData();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 if (types != null) {
                     showPopupWindow();
                 }
@@ -153,7 +157,10 @@ public class CustomSelectButton extends RelativeLayout {
         SimpleWheelAdapter arrayWheelAdapter = new SimpleWheelAdapter(mContext);
         wheelView.setWheelAdapter(arrayWheelAdapter);
         wheelView.setWheelSize(5);
-        wheelView.setWheelData(types);
+        if(types!=null&&types.size()>0){
+            wheelView.setWheelData(types);
+        }
+
         WheelView.WheelViewStyle style = new WheelView.WheelViewStyle();
         style.selectedTextSize = 20;
         style.textSize = 16;
@@ -176,11 +183,13 @@ public class CustomSelectButton extends RelativeLayout {
         popupWindow.setAnimationStyle(R.style.Animation);
 //        popupWindow.showAtLocation(view1, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
         popupWindow.showAsDropDown(view1);
+
         tvConfirm.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                type = types.get(wheelView.getCurrentPosition());
-                if (type != null) {
+
+                if (types != null&&types.size()>0) {
+                    type = types.get(wheelView.getCurrentPosition());
                     if (!StringUtils.isEmpty(type.getTypeName())) {
                         setTextName(type.getTypeName());
                         setText(type.getTypeName());

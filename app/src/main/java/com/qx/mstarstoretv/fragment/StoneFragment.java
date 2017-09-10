@@ -154,7 +154,7 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
         idIgBack.setVisibility(View.GONE);
         idIgBack.setOnClickListener(this);
         tvSearch.setOnClickListener(this);
-
+        tvReset.setOnClickListener(this);
         initCertificate();
         initRandSeekBar();
         initShape();
@@ -306,9 +306,9 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
             @Override
             public void convert(int position, BaseViewHolder helper, KeyTitle item) {
                 if (weightChecks[position]) {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.board_red, getResources().getColor(R.color.theme_red));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_red_bg, getResources().getColor(R.color.white));
                 } else {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.btn_bg_while2, getResources().getColor(R.color.text_color));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_white_bg, getResources().getColor(R.color.text_color));
                 }
             }
         };
@@ -316,9 +316,14 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
         gvWeight.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                etWeightMax.setText("");
-                etWeightMin.setText("");
+                String value = weightList.get(position).getKey();
+                String[] values = value.split(",");
+                etWeightMin.setText(values[0]);
+                if (values[1].equals("0")) {
+                    etWeightMax.setText("");
+                } else {
+                    etWeightMax.setText(values[1]);
+                }
 
                 if (weightChecks[position]) {
                     weightChecks[position] = !weightChecks[position];
@@ -356,14 +361,14 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
         });
 
 
-        gvPrice.setNumColumns(priceList.size());
+        gvPrice.setNumColumns(4);
         final CommonAdapter priceAdapter = new CommonAdapter<KeyTitle>(priceList, R.layout.item_gv_text2) {
             @Override
             public void convert(int position, BaseViewHolder helper, KeyTitle item) {
                 if (priceChecks[position]) {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.board_red, getResources().getColor(R.color.theme_red));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_red_bg, getResources().getColor(R.color.white));
                 } else {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.btn_bg_while2, getResources().getColor(R.color.text_color));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_white_bg, getResources().getColor(R.color.text_color));
                 }
             }
 
@@ -372,8 +377,15 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
         gvPrice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                etPriceMax.setText("");
-                etPriceMin.setText("");
+                String st = priceList.get(position).getKey();
+                String[] values = st.split(",");
+                etPriceMin.setText(values[0]);
+                if (values[1].equals("0")) {
+                    etPriceMax.setText("");
+                } else {
+                    etPriceMax.setText(values[1]);
+                }
+
                 if (priceChecks[position]) {
                     priceChecks[position] = !priceChecks[position];
                     pricekey = "";
@@ -417,8 +429,6 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
             Checks[i] = false;
         }
     }
-
-
 
 
     private void initCertificate() {
@@ -565,6 +575,12 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
         etPriceMin.setText("");
         etWeightMax.setText("");
         etWeightMin.setText("");
+        certAuthBeanIsChooselist[0] = false;
+        tvCertificate1.setTextColor(getResources().getColor(R.color.text_color));
+        tvCertificate1.setBackgroundResource(R.drawable.corners_white_bg);
+        certAuthBeanIsChooselist[1] = false;
+        tvCertificate2.setTextColor(getResources().getColor(R.color.text_color));
+        tvCertificate2.setBackgroundResource(R.drawable.corners_white_bg);
     }
 
     private String getPurity() {
@@ -635,13 +651,13 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
         Bundle bundle = new Bundle();
         bundle.putSerializable("searchStoneInfo", stoneSearchInfo);
         Intent intent = new Intent(getActivity(), StoneSearchResultActivity.class);
+        intent.putExtra("type", ((StoneChooseMainActivity) getActivity()).getType());
         intent.putExtra("openType", ((StoneChooseMainActivity) getActivity()).getOpenType());
         intent.putExtra("itemId", ((StoneChooseMainActivity) getActivity()).getItemId());
         intent.putExtra("stoneInfo", bundle);
         startActivity(intent);
         getActivity().overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
     }
-
 
 
     private void isChoose(int i) {

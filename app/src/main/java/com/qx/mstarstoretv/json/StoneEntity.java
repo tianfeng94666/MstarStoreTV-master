@@ -100,7 +100,11 @@ public class StoneEntity implements Cloneable , Serializable {
         toStoneEntity(stoneEntity);
     }
     public int getIsNotEmpty() {
-        return isNotEmpty;
+        if((this.typeId==null||typeId.isEmpty())&&(this.shapeId==null||this.shapeId.isEmpty())){
+            return 0;
+        }else {
+            return 1;
+        }
     }
 
     public void setIsNotEmpty(int isNotEmpty) {

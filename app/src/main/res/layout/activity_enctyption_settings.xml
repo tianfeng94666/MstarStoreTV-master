@@ -50,7 +50,7 @@
             android:clickable="false"
             android:gravity="center_vertical"
             android:padding="10dip"
-            android:text="是否显示价格" />
+            android:text="是否显示戒托价格" />
 
         <ImageView
             android:gravity="center_vertical"
@@ -66,7 +66,36 @@
 
 
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dip"
+        android:layout_marginTop="1dip"
+        android:background="@color/white"
+        android:padding="5dip">
 
+        <TextView
+            android:id="@+id/tv_is_show_stone_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:gravity="center_vertical"
+            android:padding="10dip"
+            android:text="是否显示裸石价格" />
+
+        <ImageView
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:button="@null"
+            android:id="@+id/iv_is_show_stone_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignRight="@id/tv_is_show_stone_price"
+            android:layout_alignTop="@id/tv_is_show_stone_price"
+            android:src="@drawable/icon_switch_off"
+            />
+
+
+    </RelativeLayout>
     <RelativeLayout
         android:id="@+id/rl_is_show_cost_price"
         android:layout_width="wrap_content"

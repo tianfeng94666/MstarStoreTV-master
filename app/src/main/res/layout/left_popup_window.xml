@@ -107,6 +107,19 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tv_ring_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/itme_height"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="4dp"
+                    android:paddingRight="6dp"
+                    android:paddingTop="4dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/setting_textsize" />
+
+                <TextView
                     android:id="@+id/tv_choose_ring"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/itme_height"
@@ -141,16 +154,29 @@
                 android:id="@+id/tv_stone_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text=""
-                android:maxLines="2"
                 android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/setting_textsize" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_stone_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/itme_height"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="4dp"
+                    android:paddingRight="6dp"
+                    android:paddingTop="4dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/setting_textsize" />
 
                 <TextView
                     android:id="@+id/tv_choose_stone"
@@ -178,20 +204,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="@dimen/itme_height"
                 android:layout_marginTop="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/itme_height"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="地址："
+
                     android:textColor="@color/white"
                     android:textSize="@dimen/setting_textsize" />
 
                 <TextView
                     android:id="@+id/tv_address"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/itme_height"
+                    android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:maxLines="2"
@@ -205,11 +233,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="@dimen/itme_height"
                 android:layout_marginTop="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/itme_height"
+                    android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:maxLines="2"
@@ -220,7 +249,7 @@
                 <TextView
                     android:id="@+id/tv_customer"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/itme_height"
+                    android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:maxLines="2"
@@ -292,19 +321,20 @@
                 <Button
                     android:id="@+id/tv_reset"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="60dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_white_line"
                     android:text="重置"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/setting_textsize" />
+
                 <Button
                     android:id="@+id/tv_commit_order"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="60dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_white_line"
                     android:text="确认定制"
                     android:textColor="@color/text_color"
@@ -338,10 +368,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textSize="@dimen/setting_textsize"
                         android:ems="1"
                         android:text="快速定制"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/setting_textsize" />
 
                     <View
                         android:layout_width="2dp"

@@ -455,6 +455,8 @@
                 android:layout_marginTop="16dp"
                 android:numColumns="3"
                 android:background="@color/theme_bg"
+                android:horizontalSpacing="10dp"
+                android:verticalSpacing="10dp"
                 android:descendantFocusability="beforeDescendants"
                 android:divider="@android:color/transparent"
                 android:dividerHeight="10dp" />

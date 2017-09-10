@@ -59,7 +59,7 @@
             android:drawableTop="@mipmap/home"
             android:gravity="center"
             android:padding="10dp"
-            android:text="定制"
+            android:text="快速定制"
             android:textSize="@dimen/text_size_medium1"
             android:textColor="@color/white" />
 

@@ -88,8 +88,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         ButterKnife.bind(this);
 //        initView();
 //        setChioceFragment(0);
-        loadNetData();
         isNeedUpdate();
+        loadNetData();
+
         getAddress();
     }
 
@@ -111,7 +112,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         Global.ring = new Ring();
                     }
                     Global.ring.setAddressEntity(getAddressResult.getData().getAddress());
-                    isDefaultCustomer = getAddressResult.getData().getCustomerEntity();
+                    isDefaultCustomer = getAddressResult.getData().getDefaultCustomer();
                     if (isDefaultCustomer != null) {
                         Global.ring.setCustomerEntity(isDefaultCustomer);
                     }

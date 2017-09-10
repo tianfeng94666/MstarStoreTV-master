@@ -1,6 +1,10 @@
 package com.qx.mstarstoretv.activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,6 +19,7 @@ import com.qx.mstarstoretv.R;
 import com.qx.mstarstoretv.base.AppURL;
 import com.qx.mstarstoretv.base.BaseActivity;
 import com.qx.mstarstoretv.base.BaseApplication;
+import com.qx.mstarstoretv.json.UpdataVersionResult;
 import com.qx.mstarstoretv.net.OKHttpRequestUtils;
 import com.qx.mstarstoretv.net.VolleyRequestUtils;
 import com.qx.mstarstoretv.utils.L;
@@ -42,6 +47,8 @@ public class LoginActivity extends BaseActivity {
     String name, pwd, phone, code;
     CountTimerButton mCountDownTimerUtils;
     private String version;
+    private UpdataVersionResult updataVersionResult;
+    private int updateValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +58,72 @@ public class LoginActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login_1);
         ButterKnife.bind(this);
-//        isNeedUpdate();
+        isNeedUpdate();
         getBackIntent();
         initView();
 
 
     }
+    private void isNeedUpdate() {
+        String lgUrl = AppURL.URL_GET_UPDATE_VERSION + "device=" + "android"+"&version="+getResources().getString(R.string.app_version);
+        L.e("netLogin" + lgUrl);
+        VolleyRequestUtils.getInstance().getCookieRequest(this, lgUrl, new VolleyRequestUtils.HttpStringRequsetCallBack() {
+            @Override
+            public void onSuccess(String result) {
+                JsonObject jsonResult = new Gson().fromJson(result, JsonObject.class);
+                String error = jsonResult.get("error").getAsString();
+                if (error.equals("0")) {
+                    updataVersionResult = new Gson().fromJson(result,UpdataVersionResult.class);
+                    if(updataVersionResult.getData()==null){
+                        return;
+                    }
+                    updateValue = updataVersionResult.getData().getValue();
+                    if(updateValue==1){
+                        showNoticeDialog(true,updataVersionResult.getData().getMessage());
+                    }else if (updateValue==2){
+                        showNoticeDialog(false,updataVersionResult.getData().getMessage());
+                    }
 
+                } else if (error.equals("2")) {
+
+                } else {
+                    String message = new Gson().fromJson(result, JsonObject.class).get("message").getAsString();
+                    ToastManager.showToastWhendebug(message);
+                    L.e(message);
+                }
+            }
+
+            @Override
+            public void onFail(String fail) {
+
+            }
+
+
+        });
+
+    }
+
+    /**
+     * 显示软件更新对话框
+     */
+    private void showNoticeDialog(boolean isNeed,String string) {
+        // 构造对话框
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.soft_update_title);
+        builder.setMessage(string);
+        // 更新
+        builder.setPositiveButton(R.string.soft_update_updatebtn, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.pgyer.com/agYd"));
+                startActivity(intent);
+            }
+        });
+
+        Dialog noticeDialog = builder.create();
+        noticeDialog.setCanceledOnTouchOutside(isNeed);
+        noticeDialog.show();
+    }
     private void initView() {
         String token = BaseApplication.spUtils.getString(SpUtils.key_tokenKey);
         if (!StringUtils.isEmpty(token)) {

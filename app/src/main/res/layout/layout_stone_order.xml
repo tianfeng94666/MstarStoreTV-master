@@ -5,8 +5,7 @@
     android:background="@color/white"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    android:paddingLeft="10dip"
-    android:paddingRight="10dip">
+    android:padding="5dp">
 
     <RelativeLayout
         android:id="@+id/item_button_layout"
@@ -17,10 +16,6 @@
         android:gravity="center_vertical">
 
 
-
-
-
-
         <TextView
             android:id="@+id/btn_delete"
             android:layout_width="wrap_content"
@@ -28,11 +23,11 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="6dip"
             android:layout_marginTop="5dp"
-          android:paddingTop="4dp"
-            android:paddingLeft="4dp"
-            android:paddingBottom="4dp"
             android:drawableLeft="@drawable/icon_del"
             android:gravity="center"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingTop="4dp"
             android:text="    删除"
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_medium1"
@@ -101,39 +96,39 @@
                         android:layout_alignParentLeft="true"
                         android:text="1334"
                         android:textColor="@color/theme_red"
-                        android:textSize="@dimen/text_size_medium1"  />
-
+                        android:textSize="@dimen/text_size_medium1" />
 
 
                     <LinearLayout
-                        android:layout_alignParentRight="true"
-
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true">
+
                         <ImageView
                             android:id="@+id/iv_reduce"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:padding="5dp"
                             android:layout_marginRight="2dp"
+                            android:padding="5dp"
                             android:src="@drawable/icon_acc" />
 
                         <EditText
-                            android:padding="5dp"
                             android:id="@+id/product_number"
-                            android:gravity="center"
                             android:layout_width="40dp"
-                            android:inputType="number"
-                            android:textSize="@dimen/text_size_medium1"
                             android:layout_height="wrap_content"
-                          android:layout_gravity="center_vertical"
-                            android:text="1" />
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:padding="5dp"
+                            android:text="1"
+                            android:textSize="@dimen/text_size_medium1" />
 
                         <ImageView
                             android:id="@+id/iv_add"
                             android:layout_width="40dp"
-                            android:padding="5dp"
                             android:layout_height="40dp"
+                            android:padding="5dp"
                             android:src="@drawable/icon_add" />
                     </LinearLayout>
 
@@ -157,7 +152,6 @@
         android:layout_height="1px"
         android:layout_below="@id/id_lay1"
         android:background="@color/color_line" />
-
 
 
     <View

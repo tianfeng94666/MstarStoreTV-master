@@ -142,7 +142,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_stone_search_result);
         ButterKnife.bind(this);
-        isShowPrice = SpUtils.getInstace(this).getBoolean("isShowPrice", true);
+        isShowPrice = SpUtils.getInstace(this).getBoolean("isShowStonePrice", true);
         isCustomized = SpUtils.getInstace(this).getBoolean("isCustomized", true);
         getDate();
         init();
@@ -538,6 +538,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             intent = new Intent(this, OrderActivity.class);
             Bundle pBundle = new Bundle();
             pBundle.putString("openType", "1");
+            pBundle.putInt("type", type);
             StoneSearchInfoResult.DataBean.StoneBean.ListBean listBean = list.get(seletPosition);
             pBundle.putSerializable("stone", listBean);
             intent.putExtras(pBundle);
@@ -586,6 +587,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             startActivity(intent);
             //设置切换动画，从右边进入，左边退出
             overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+            finish();
         } else {
             showToastReal("主石只能有一个！");
         }

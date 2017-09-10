@@ -7,23 +7,23 @@ package com.qx.mstarstoretv.json;
 public class GetAddressResult {
 
     /**
-     * data : {"address":{"addr":"广东省 深圳市罗湖区 水贝二路 19栋","id":0,"isDefault":0,"name":"自提","phone":"011236569"}}
+     * response :
      * error : 0
      * message :
-     * response :
+     * data : {"address":{"id":0,"name":"自提","addr":"广东省 深圳市罗湖区 水贝二路 19栋","phone":"011236569","isDefault":0},"DefaultCustomer":{"customerID":23720,"keycode":"71659","customerName":"朱绍斌1","customerFullName":null}}
      */
 
-    private DataBean data;
+    private String response;
     private int error;
     private String message;
-    private String response;
+    private DataBean data;
 
-    public DataBean getData() {
-        return data;
+    public String getResponse() {
+        return response;
     }
 
-    public void setData(DataBean data) {
-        this.data = data;
+    public void setResponse(String response) {
+        this.response = response;
     }
 
     public int getError() {
@@ -42,29 +42,22 @@ public class GetAddressResult {
         this.message = message;
     }
 
-    public String getResponse() {
-        return response;
+    public DataBean getData() {
+        return data;
     }
 
-    public void setResponse(String response) {
-        this.response = response;
+    public void setData(DataBean data) {
+        this.data = data;
     }
 
     public static class DataBean {
         /**
-         * address : {"addr":"广东省 深圳市罗湖区 水贝二路 19栋","id":0,"isDefault":0,"name":"自提","phone":"011236569"}
+         * address : {"id":0,"name":"自提","addr":"广东省 深圳市罗湖区 水贝二路 19栋","phone":"011236569","isDefault":0}
+         * DefaultCustomer : {"customerID":23720,"keycode":"71659","customerName":"朱绍斌1","customerFullName":null}
          */
 
         private AddressEntity address;
-        private CustomerEntity customerEntity;
-
-        public CustomerEntity getCustomerEntity() {
-            return customerEntity;
-        }
-
-        public void setCustomerEntity(CustomerEntity customerEntity) {
-            this.customerEntity = customerEntity;
-        }
+        private CustomerEntity DefaultCustomer;
 
         public AddressEntity getAddress() {
             return address;
@@ -73,6 +66,16 @@ public class GetAddressResult {
         public void setAddress(AddressEntity address) {
             this.address = address;
         }
+
+        public CustomerEntity getDefaultCustomer() {
+            return DefaultCustomer;
+        }
+
+        public void setDefaultCustomer(CustomerEntity DefaultCustomer) {
+            this.DefaultCustomer = DefaultCustomer;
+        }
+
+
 
 
     }

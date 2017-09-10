@@ -152,6 +152,7 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
 
     private void initView() {
         titleText.setText("裸石库");
+        tvReset.setOnClickListener(this);
         idIgBack.setOnClickListener(this);
         tvSearch.setOnClickListener(this);
         ivWeightMin.setOnClickListener(this);
@@ -366,6 +367,8 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
 
                 if (weightChecks[position]) {
                     weightChecks[position] = !weightChecks[position];
+                    etWeightMax.setText("");
+                    etWeightMin.setText("");
                     weightkey = "";
                 } else {
                     clearCheck(weightChecks);
@@ -428,6 +431,8 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
                 if (priceChecks[position]) {
                     priceChecks[position] = !priceChecks[position];
                     pricekey = "";
+                    etPriceMax.setText("");
+                    etPriceMin.setText("");
                 } else {
                     clearCheck(priceChecks);
                     priceChecks[position] = !priceChecks[position];
@@ -623,6 +628,12 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
         etPriceMin.setText("");
         etWeightMax.setText("");
         etWeightMin.setText("");
+        certAuthBeanIsChooselist[0] = false;
+        tvCertificate1.setTextColor(getResources().getColor(R.color.text_color));
+        tvCertificate1.setBackgroundResource(R.drawable.corners_white_bg);
+        certAuthBeanIsChooselist[1] = false;
+        tvCertificate2.setTextColor(getResources().getColor(R.color.text_color));
+        tvCertificate2.setBackgroundResource(R.drawable.corners_white_bg);
     }
 
     private boolean searchStone() {

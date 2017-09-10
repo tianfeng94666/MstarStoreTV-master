@@ -202,10 +202,10 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
     public void loadNetData() {
         String url;
         if (type == 2) {
-            url = AppURL.URL_ORDER_DETAIL + "tokenKey=" + BaseApplication.getToken() + "&cpage=" + curpage + "&orderId=" + orderId;
+            url = AppURL.URL_ORDER_DETAIL + "tokenKey=" + BaseApplication.getToken() +  "&orderId=" + orderId+"&pageNum=24";
         } else {
             url = AppURL.URL_ORDER_LIST + "tokenKey=" + BaseApplication.getToken() + "&purityId=" + purityId +
-                    "&qualityId=" + qualityId + "&cpage=" + curpage;
+                    "&qualityId=" + qualityId + "&cpage=" + curpage+"&pageNum=24";
         }
         L.e("获取订单信息" + url);
         VolleyRequestUtils.getInstance().getCookieRequest(this, url, new VolleyRequestUtils.HttpStringRequsetCallBack() {
@@ -367,7 +367,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                     for (int i = 0; i < modelColorItme.size(); i++) {
                         Type type = new Type();
                         type.setId(modelColorItme.get(i).getId());
-                        type.setTypeName(modelColorItme.get(i).getTitle() + "  " + modelColorItme.get(i).getPrice() + "/g");
+                        type.setTypeName(modelColorItme.get(i).getTitle() + "  " + modelColorItme.get(i).getPrice() );
                         list.add(type);
                     }
                     return list;
@@ -609,8 +609,8 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                         Double total = .0;
                         Double needPrice = .0;
                         for (OrderListResult.DataEntity.CurrentOrderlListEntity.ListEntity cartItem : listData) {
-                            total += Double.valueOf(cartItem.getPrice()) * Double.valueOf(cartItem.getNumber());
-                            needPrice += Double.valueOf(cartItem.getNeedPayPrice()) * Double.valueOf(cartItem.getNumber());
+                            total += Double.valueOf(cartItem.getPrice()) ;
+                            needPrice += Double.valueOf(cartItem.getNeedPayPrice());
                             L.e("needPrice" + needPrice);
                         }
                         //价格
@@ -938,7 +938,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
         }
         Double total = .0;
         for (OrderListResult.DataEntity.CurrentOrderlListEntity.ListEntity cartItem : checkedGoods) {
-            total += Double.valueOf(cartItem.getPrice()) * Double.valueOf(cartItem.getNumber());
+            total += Double.valueOf(cartItem.getPrice());
         }
         //价格
         tvTotalPrice.setText(StringUtils.formatedPrice(total));

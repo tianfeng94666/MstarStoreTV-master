@@ -95,6 +95,7 @@
         <activity
             android:name="com.qx.mstarstoretv.activity.ConfirmOrderActivity"
             android:alwaysRetainTaskState="true"
+            android:launchMode="singleInstance"
             android:configChanges="orientation|screenSize|layoutDirection|keyboardHidden"
             android:windowSoftInputMode="adjustPan" />
         <activity
@@ -259,6 +260,7 @@
         <activity
             android:name="com.qx.mstarstoretv.activity.StoneQuotedPriceActivity"
             android:alwaysRetainTaskState="true"
+            android:launchMode="singleInstance"
             android:configChanges="orientation|keyboardHidden"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <!-- 微信支付平台的activity和receiver配置 -->

@@ -351,6 +351,9 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        if (Global.isShowPopup != 0 && leftPopupWindow != null) {
+            leftPopupWindow.initPopupView();
+        }
         addStoneRang();
 
     }

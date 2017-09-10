@@ -43,7 +43,7 @@ public class LoadingWaitDialog extends Dialog {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.setContentView(R.layout.layout_loading);
         this.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        this.setCanceledOnTouchOutside(false);
+        this.setCanceledOnTouchOutside(true);
         tips_loading_msg = (TextView) findViewById(R.id.tips_loading_msg);
         tips_loading_msg.setText(this.message);
     }

@@ -20,10 +20,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.recker.flybanner.FlyBanner
+                <com.qx.mstarstoretv.viewutils.FlyBanner
                     android:id="@+id/flybanner"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"></com.recker.flybanner.FlyBanner>
+                    android:layout_height="match_parent"></com.qx.mstarstoretv.viewutils.FlyBanner>
                 <ImageView
                     android:id="@+id/iv_preview"
                     android:layout_alignParentRight="true"
@@ -393,6 +393,7 @@
                             android:layout_marginBottom="2dp"
                             android:layout_marginLeft="@dimen/margin10"
                             android:layout_marginRight="@dimen/leftmargin"
+                            android:singleLine="true"
                             android:layout_marginTop="2dp"
                             android:background="@drawable/board_gray"
 
