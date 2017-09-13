@@ -316,7 +316,7 @@ public class AppURL {
 
 
     /**订单页跳转修改页修改*/
-    public static String URL_UPDATE_ORDER_WATET1 = baseUrl + "ModelOrderWaitCheckOrderCurrentEditModelItemDo?"+QxVersion;
+    public static String URL_UPDATE_ORDER_WATET1 = baseUrl + "ModelOrderWaitCheckOrderCurrentEditModelItemForDefaultDo?"+QxVersion;
     /**
      * 获取主页图片
      */

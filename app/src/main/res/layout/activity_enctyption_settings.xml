@@ -5,7 +5,7 @@
     <include layout="@layout/title_layout" />
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="50dip"
+        android:layout_height="@dimen/header_height"
         android:layout_marginTop="1dip"
         android:padding="5dip"
         android:background="@color/white"
@@ -14,10 +14,11 @@
         <TextView
             android:id="@+id/tv_is_customized"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:clickable="false"
+            android:paddingLeft="16dp"
             android:gravity="center_vertical"
-            android:padding="10dip"
+            android:textSize="@dimen/setting_textsize"
             android:text="是否高级定制"
             />
 
@@ -26,7 +27,7 @@
             android:layout_alignParentRight="true"
             android:button="@null"
             android:id="@+id/bt_customized"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_alignRight="@id/tv_is_customized"
             android:layout_alignTop="@id/tv_is_customized"
@@ -38,7 +39,7 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="50dip"
+       android:layout_height="@dimen/header_height"
         android:layout_marginTop="1dip"
         android:background="@color/white"
         android:padding="5dip">
@@ -46,10 +47,11 @@
         <TextView
             android:id="@+id/tv_is_show_price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:clickable="false"
+            android:paddingLeft="16dp"
             android:gravity="center_vertical"
-            android:padding="10dip"
+            android:textSize="@dimen/setting_textsize"
             android:text="是否显示戒托价格" />
 
         <ImageView
@@ -57,7 +59,7 @@
             android:layout_alignParentRight="true"
             android:button="@null"
             android:id="@+id/iv_is_show_price"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_alignRight="@id/tv_is_show_price"
             android:layout_alignTop="@id/tv_is_show_price"
@@ -68,7 +70,7 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="50dip"
+       android:layout_height="@dimen/header_height"
         android:layout_marginTop="1dip"
         android:background="@color/white"
         android:padding="5dip">
@@ -76,10 +78,11 @@
         <TextView
             android:id="@+id/tv_is_show_stone_price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:clickable="false"
+            android:paddingLeft="16dp"
             android:gravity="center_vertical"
-            android:padding="10dip"
+            android:textSize="@dimen/setting_textsize"
             android:text="是否显示裸石价格" />
 
         <ImageView
@@ -87,7 +90,7 @@
             android:layout_alignParentRight="true"
             android:button="@null"
             android:id="@+id/iv_is_show_stone_price"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_alignRight="@id/tv_is_show_stone_price"
             android:layout_alignTop="@id/tv_is_show_stone_price"
@@ -99,7 +102,7 @@
     <RelativeLayout
         android:id="@+id/rl_is_show_cost_price"
         android:layout_width="wrap_content"
-        android:layout_height="50dip"
+       android:layout_height="@dimen/header_height"
         android:layout_marginTop="1dip"
         android:padding="5dip"
         android:background="@color/white"
@@ -108,10 +111,11 @@
         <TextView
             android:id="@+id/tv_is_show_cost_price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:clickable="false"
             android:gravity="center_vertical"
-            android:padding="10dip"
+            android:paddingLeft="16dp"
+            android:textSize="@dimen/setting_textsize"
             android:text="是否显示成本价"
             />
 
@@ -121,7 +125,7 @@
             android:layout_alignParentRight="true"
             android:button="@null"
             android:id="@+id/iv_is_show_cost_price"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_alignRight="@id/tv_is_show_cost_price"
             android:layout_alignTop="@id/tv_is_show_cost_price"
@@ -132,7 +136,7 @@
     <RelativeLayout
         android:id="@+id/rl_product_addtion"
         android:layout_width="wrap_content"
-        android:layout_height="50dip"
+       android:layout_height="@dimen/header_height"
         android:layout_marginTop="1dip"
         android:padding="5dip"
         android:background="@color/white"
@@ -141,10 +145,11 @@
         <TextView
             android:id="@+id/tv_is_product_point"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:clickable="false"
             android:gravity="center_vertical"
-            android:padding="10dip"
+            android:paddingLeft="16dp"
+            android:textSize="@dimen/setting_textsize"
             android:text="产品倍率（%）"
             />
 
@@ -161,7 +166,7 @@
 
         <EditText
             android:id="@+id/et_product_spot"
-            android:layout_width="50dp"
+            android:layout_width="120dp"
             android:digits="1234567890"
             android:layout_toLeftOf="@+id/iv_product_add"
             android:layout_height="match_parent"
@@ -172,7 +177,7 @@
             android:gravity="center"
             android:inputType="numberDecimal"
             android:text="0"
-            android:textSize="@dimen/text_size_small_medium" />
+            android:textSize="@dimen/setting_textsize" />
 
 
         <ImageView
@@ -187,7 +192,7 @@
     <RelativeLayout
         android:id="@+id/rl_stone_addtion"
         android:layout_width="wrap_content"
-        android:layout_height="50dip"
+       android:layout_height="@dimen/header_height"
         android:layout_marginTop="1dip"
         android:padding="5dip"
         android:background="@color/white"
@@ -196,10 +201,11 @@
         <TextView
             android:id="@+id/tv_is_stone_point"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:clickable="false"
             android:gravity="center_vertical"
-            android:padding="10dip"
+            android:paddingLeft="16dp"
+            android:textSize="@dimen/setting_textsize"
             android:text="裸石倍率（%）"
             />
 
@@ -216,7 +222,7 @@
 
         <EditText
             android:id="@+id/et_stones_spot"
-            android:layout_width="50dp"
+            android:layout_width="120dp"
             android:layout_toLeftOf="@+id/iv_stone_add"
             android:layout_height="match_parent"
             android:layout_marginRight="2dp"
@@ -227,7 +233,7 @@
             android:gravity="center"
             android:inputType="numberDecimal"
             android:text="0"
-            android:textSize="@dimen/text_size_small_medium" />
+            android:textSize="@dimen/setting_textsize" />
 
 
         <ImageView

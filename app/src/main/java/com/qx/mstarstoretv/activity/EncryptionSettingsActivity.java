@@ -147,7 +147,7 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
         } else {
             ivIsShowStonePrice.setImageResource(R.drawable.icon_switch_on);
         }
-        ivIsShowPrice.setOnClickListener(new View.OnClickListener() {
+        ivIsShowStonePrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 isShowStonePrice = !isShowStonePrice;

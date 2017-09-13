@@ -110,6 +110,8 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
     LinearLayout llShowLess;
     @Bind(R.id.rl_stone_search_result)
     RelativeLayout rlStoneSearchResult;
+    @Bind(R.id.tv_reset2)
+    TextView tvReset2;
 
 
     private boolean isLandscape;
@@ -133,6 +135,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
     private boolean isCustomized;
     private double totalAmount;
     private LeftPopupWindow leftPopupWindow;
+    private String orderId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +157,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
         Intent intent = getIntent();
         openType = intent.getIntExtra("openType", 0);
         itemId = intent.getStringExtra("itemId");
+        orderId=intent.getStringExtra("orderId");
         type = intent.getIntExtra("type", 0);
         Bundle stoneBundle = null;
         Bundle bundle = intent.getBundleExtra("stoneInfo");
@@ -212,6 +216,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
         tvConfirmReback.setOnClickListener(this);
         tvChooseProduct.setOnClickListener(this);
         tvComfirmStone.setOnClickListener(this);
+        tvReset2.setOnClickListener(this);
         if (isShowPrice) {
             tvPlaceOrder.setOnClickListener(this);
             tvQutedPriceAll.setOnClickListener(this);
@@ -234,6 +239,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             llFromSearch.setVisibility(View.VISIBLE);
         }
     }
+
     private void initPopwindow() {
         leftPopupWindow = new LeftPopupWindow(this);
         llShowLess.setOnClickListener(new View.OnClickListener() {
@@ -389,7 +395,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(leftPopupWindow!=null){
+        if (leftPopupWindow != null) {
             leftPopupWindow.closePopupWindow();
         }
     }
@@ -404,7 +410,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
                 finish();
                 break;
             case R.id.tv_quoted_price_all:
-                if(list.size()!=0) {
+                if (list.size() != 0) {
                     quotedPrice(stoneSearchResultAdapter.getQuotedPriceId());
                 }
                 break;
@@ -419,8 +425,13 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
                 list.clear();
                 loadNetData();
                 break;
+            case R.id.tv_reset2:
+                stoneSearchInfoResult = null;
+                list.clear();
+                loadNetData();
+                break;
             case R.id.tv_place_order:
-                if(list.size()!=0){
+                if (list.size() != 0) {
                     stonePlaceOrder(stoneSearchResultAdapter.getQuotedPriceId());
                 }
                 break;
@@ -439,7 +450,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
     private void chooseStone() {
         int chooseAmount = 0;
         int seletPosition = 0;
-        if(list.size()==0){
+        if (list.size() == 0) {
             return;
         }
         for (int i = 0; i < list.size(); i++) {
@@ -457,18 +468,18 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             showToastReal("您忘记了石头，请选择一个！");
         } else if (chooseAmount == 1) {
             StoneSearchInfoResult.DataBean.StoneBean.ListBean listBean = list.get(seletPosition);
-            if(Global.ring==null){
+            if (Global.ring == null) {
                 Global.ring = new Ring();
             }
             Global.ring.setStoneEntity(listBean);
-            if(leftPopupWindow!=null){
+            if (leftPopupWindow != null) {
                 leftPopupWindow.showPop(rlStoneSearchResult);
             }
-            if(Global.ring.getItemId()==null){
+            if (Global.ring.getItemId() == null) {
                 showToastReal("请选择戒托");
                 return;
             }
-            if(Global.ring.getAddressEntity()==null||Global.ring.getCustomerEntity()==null){
+            if (Global.ring.getAddressEntity() == null || Global.ring.getCustomerEntity() == null) {
                 showToastReal("请选择信息");
                 return;
             }
@@ -517,7 +528,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
     private void chooseProduct() {
         int chooseAmount = 0;
         int seletPosition = 0;
-        if(list.size()==0){
+        if (list.size() == 0) {
             return;
         }
         for (int i = 0; i < list.size(); i++) {
@@ -539,6 +550,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             Bundle pBundle = new Bundle();
             pBundle.putString("openType", "1");
             pBundle.putInt("type", type);
+            pBundle.putString("orderId",orderId);
             StoneSearchInfoResult.DataBean.StoneBean.ListBean listBean = list.get(seletPosition);
             pBundle.putSerializable("stone", listBean);
             intent.putExtras(pBundle);
@@ -554,7 +566,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
     private void rebackProductInfo() {
         int chooseAmount = 0;
         int seletPosition = 0;
-        if(list.size()==0){
+        if (list.size() == 0) {
             return;
         }
         for (int i = 0; i < list.size(); i++) {
@@ -579,6 +591,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             }
             Bundle pBundle = new Bundle();
             pBundle.putString("itemId", itemId);
+            pBundle.putString("orderId",orderId);
             pBundle.putInt("type", type);
             pBundle.putString("openType", openType + "");
             StoneSearchInfoResult.DataBean.StoneBean.ListBean listBean = list.get(seletPosition);

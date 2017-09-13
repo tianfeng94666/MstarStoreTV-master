@@ -59,8 +59,9 @@
                             android:id="@+id/tv_order_state"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_medium1"
                             android:padding="5dp"
-                            android:text="6500元"
+                            android:text=""
                             android:textColor="@color/white" />
 
                     </LinearLayout>
@@ -83,7 +84,8 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
-                            android:text="tianf"
+                            android:textSize="@dimen/text_size_medium1"
+                            android:text=""
                             android:textColor="@color/white" />
 
                     </LinearLayout>
@@ -97,15 +99,16 @@
                             android:layout_height="wrap_content"
                             android:padding="4dp"
                             android:text="订单编号："
+                            android:textSize="@dimen/text_size_medium1"
                             android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/tv_order_number"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
+                            android:textSize="@dimen/text_size_medium1"
                             android:padding="5dp"
-                            android:text="246665454566464"
+                            android:text=""
                             android:textColor="@color/white" />
 
                     </LinearLayout>
@@ -158,7 +161,7 @@
                                 android:layout_height="match_parent"
                                 android:background="@null"
                                 android:singleLine="true"
-                                android:textSize="@dimen/setting_textsize" />
+                                android:textSize="@dimen/text_size_medium1" />
 
                             <View
                                 android:id="@+id/id_view_line"
@@ -309,7 +312,8 @@
                                     android:layout_height="wrap_content"
                                     android:padding="5dp"
                                     android:text="自提"
-                                    android:textColor="@color/text_color" />
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/text_size_medium1" />
 
                                 <TextView
                                     android:id="@+id/tv_post_phone"
@@ -317,8 +321,9 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="32dp"
                                     android:padding="5dp"
-                                    android:text="13058023844"
-                                    android:textColor="@color/text_color" />
+                                    android:text=""
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/text_size_medium1" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -332,8 +337,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:padding="5dp"
-                                    android:text="江苏省 淮安市 盱眙县 34567788887"
-                                    android:textColor="@color/text_color" />
+                                    android:text=" "
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/text_size_medium1" />
                             </LinearLayout>
                         </LinearLayout>
 
@@ -355,16 +361,18 @@
                             android:layout_height="wrap_content"
                             android:padding="5dp"
                             android:text="总价："
-                            android:textColor="@color/text_color2" />
+                            android:textColor="@color/text_color2"
+                            android:textSize="@dimen/text_size_medium1" />
 
                         <TextView
                             android:id="@+id/tv_sum_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:padding="5dp"
-                            android:text="6500元"
-                            android:textColor="@color/text_color" />
+                            android:text=""
+
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/text_size_medium1" />
 
                     </LinearLayout>
 
@@ -378,13 +386,14 @@
                             android:layout_height="wrap_content"
                             android:padding="5dp"
                             android:text="件数："
+                            android:textSize="@dimen/text_size_medium1"
                             android:textColor="@color/text_color2" />
 
                         <TextView
                             android:id="@+id/tv_amount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
+                            android:textSize="@dimen/text_size_medium1"
                             android:padding="5dp"
                             android:text="1"
                             android:textColor="@color/text_color" />
@@ -400,15 +409,16 @@
                             android:layout_height="wrap_content"
                             android:padding="5dp"
                             android:text="下单时间："
+                            android:textSize="@dimen/text_size_medium1"
                             android:textColor="@color/text_color2" />
 
                         <TextView
                             android:id="@+id/tv_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:padding="5dp"
-                            android:text="6500元"
+                            android:text=""
+                            android:textSize="@dimen/text_size_medium1"
                             android:textColor="@color/text_color" />
                     </LinearLayout>
 
@@ -422,15 +432,16 @@
                             android:layout_height="wrap_content"
                             android:padding="5dp"
                             android:text="备注："
+                            android:textSize="@dimen/text_size_medium1"
                             android:textColor="@color/text_color2" />
 
                         <TextView
                             android:id="@+id/tv_remark"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
+                            android:textSize="@dimen/text_size_medium1"
                             android:padding="5dp"
-                            android:text="6500元"
+                            android:text=""
                             android:textColor="@color/text_color" />
                     </LinearLayout>
                 </LinearLayout>
@@ -467,7 +478,7 @@
     <RelativeLayout
         android:id="@+id/rel_shopping_car_bottom_action"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/itme_height"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -495,7 +506,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="合计"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/text_size_medium1" />
 
             <TextView
                 android:id="@+id/tv_totalPrice"
@@ -504,7 +515,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="¥0.0"
                 android:textColor="@color/theme_red"
-                android:textSize="16sp" />
+                android:textSize="@dimen/text_size_medium1" />
 
         </LinearLayout>
 
@@ -523,7 +534,7 @@
                 style="@style/layout_vertical"
                 android:layout_weight="1"
                 android:text="合计"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/text_size_medium1" />
 
             <TextView
                 android:id="@+id/id_tv_total_price"
@@ -531,7 +542,7 @@
                 android:layout_weight="1"
                 android:text="¥0.0"
                 android:textColor="@color/theme_red"
-                android:textSize="16sp" />
+                android:textSize="@dimen/text_size_medium1" />
 
         </LinearLayout>
 
@@ -542,22 +553,21 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_margin="@dimen/margin5"
+
             android:background="@drawable/btn_nor_down"
             android:gravity="center"
             android:onClick="submitOrder"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
             android:text="确定"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_small" />
+            android:textSize="@dimen/text_size_medium1" />
 
         <LinearLayout
             android:id="@+id/id_lay_order_detail"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_margin="@dimen/margin5"
             android:enabled="false"
             android:gravity="center"
             android:orientation="horizontal"
@@ -569,29 +579,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:layout_margin="@dimen/margin5"
                 android:background="@drawable/btn_nor_down"
                 android:gravity="center"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
                 android:text="支付定金"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/text_size_medium1" />
 
             <Button
                 android:id="@+id/id_cancle_order"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:layout_margin="@dimen/margin5"
                 android:background="@drawable/btn_nor_down"
                 android:gravity="center"
-                android:paddingLeft="20dp"
+                android:paddingLeft="40dp"
                 android:visibility="gone"
-                android:paddingRight="20dp"
+                android:paddingRight="40dp"
                 android:text="取消订单"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/text_size_medium1" />
 
         </LinearLayout>
     </RelativeLayout>

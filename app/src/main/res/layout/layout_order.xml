@@ -26,7 +26,8 @@
             android:button="@drawable/radio_style"
             android:checked="false"
             android:paddingBottom="8dp"
-            android:paddingLeft="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="50dp"
             android:paddingTop="10dp"
             android:textColor="@color/black"
             android:textSize="15sp" />
@@ -41,11 +42,11 @@
             android:layout_marginBottom="10dip"
             android:layout_marginRight="100dp"
             android:layout_marginTop="5dp"
-            android:padding="4dp"
             android:layout_toLeftOf="@+id/btn_delete"
             android:button="@null"
             android:drawableLeft="@drawable/icon_edit"
             android:gravity="center"
+            android:padding="4dp"
             android:text="   编辑"
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_medium1" />
@@ -57,9 +58,9 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="10dip"
             android:layout_marginTop="5dp"
-            android:padding="4dp"
             android:drawableLeft="@drawable/icon_del"
             android:gravity="center"
+            android:padding="4dp"
             android:text="    删除"
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_medium1"
@@ -117,19 +118,18 @@
                         android:singleLine="true"
                         android:text="千禧之星裸"
                         android:textColor="@color/text_color"
-                        android:textSize="@dimen/text_size_medium1"/>
+                        android:textSize="@dimen/text_size_medium1" />
 
                     <TextView
                         android:id="@+id/id_tv_information"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:lines="2"
-                        android:lineSpacingExtra="4dp"
                         android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:lineSpacingExtra="4dp"
+                        android:lines="2"
                         android:textColor="@color/text_color3"
-                        android:textSize="@dimen/text_size_medium1"
-                        />
+                        android:textSize="@dimen/text_size_medium1" />
 
                 </LinearLayout>
 
@@ -183,13 +183,13 @@
         android:id="@+id/product_norms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/id_lay1"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
         android:lines="1"
         android:text="规格"
-        android:layout_below="@+id/id_lay1"
-        android:layout_alignParentLeft="true"
-android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-       android:layout_marginLeft="10dp"
         android:textColor="@color/text_color"
         android:textSize="@dimen/text_size_medium1" />
 

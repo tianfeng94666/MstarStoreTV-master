@@ -558,8 +558,8 @@
                             android:layout_gravity="center"
                             android:background="@drawable/btn_bg_while"
                             android:gravity="center"
-                            android:paddingLeft="32dp"
-                            android:paddingRight="32dp"
+                            android:paddingLeft="40dp"
+                            android:paddingRight="40dp"
                             android:text="当前订单"
                             android:textColor="@color/text_color"
                             android:textSize="@dimen/simple_styleinfromation_textsize" />
@@ -603,8 +603,8 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/btn_bg_red"
                     android:gravity="center"
-                    android:paddingLeft="32dp"
-                    android:paddingRight="32dp"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
                     android:text="添加订单"
                     android:textColor="@color/white"
                     android:textSize="@dimen/simple_styleinfromation_textsize" />

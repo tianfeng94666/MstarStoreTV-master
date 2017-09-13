@@ -79,7 +79,12 @@ public class BadgeView extends TextView {
 	public BadgeView(Context context, View target) {
 		 this(context, null, android.R.attr.textViewStyle, target, 0);
 	}
-	
+
+	@Override
+	public void setText(CharSequence text, BufferType type) {
+		super.setText(text, type);
+	}
+
 	/**
      * Constructor -
      * 

@@ -11,15 +11,18 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
 import com.qx.mstarstoretv.R;
 import com.qx.mstarstoretv.base.BaseActivity;
 import com.qx.mstarstoretv.fragment.StoneChooseFromSettingFragment;
 import com.qx.mstarstoretv.fragment.StoneFragment;
+import com.qx.mstarstoretv.json.ModelWeightRange;
 import com.qx.mstarstoretv.json.StoneDetail;
 import com.qx.mstarstoretv.json.StoneEntity;
 
@@ -39,13 +42,31 @@ public class StoneChooseMainActivity extends BaseActivity {
     ViewPager viewPager;
     private List<String> mTitleList = new ArrayList<>();//页卡标题集合
     private PagerAdapter pagerAdapter;
-    private Fragment stoneChooseFromSettingFragment,stoneChooseFromStoneHouseFragment;
+    private Fragment stoneChooseFromSettingFragment, stoneChooseFromStoneHouseFragment;
     private StoneDetail stoneDetail;
     private int openType;
     private String itemId;
     private int type;
     private StoneEntity stoneEntity;
     private int isCanSelectStone;
+    private ModelWeightRange modelWeightRange;
+    private String orderId;//订单id
+
+    public ModelWeightRange getModelWeightRange() {
+        return modelWeightRange;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public void setModelWeightRange(ModelWeightRange modelWeightRange) {
+        this.modelWeightRange = modelWeightRange;
+    }
 
     public StoneEntity getStoneEntity() {
         return stoneEntity;
@@ -92,12 +113,14 @@ public class StoneChooseMainActivity extends BaseActivity {
     }
 
     private void getDate() {
-        stoneDetail = (StoneDetail)getIntent().getSerializableExtra("stoneDetail");
+        stoneDetail = (StoneDetail) getIntent().getSerializableExtra("stoneDetail");
         openType = getIntent().getIntExtra("openType", 0);
         itemId = getIntent().getStringExtra("itemId");
+        orderId = getIntent().getStringExtra("orderId");
         type = getIntent().getIntExtra("type", 0);
-        isCanSelectStone = getIntent().getIntExtra("isCanSelectStone",0);
-         stoneEntity = (StoneEntity) getIntent().getSerializableExtra("stone");
+        isCanSelectStone = getIntent().getIntExtra("isCanSelectStone", 0);
+        stoneEntity = (StoneEntity) getIntent().getSerializableExtra("stone");
+        modelWeightRange = (ModelWeightRange) getIntent().getSerializableExtra("stoneRange");
     }
 
     @Override
@@ -114,8 +137,7 @@ public class StoneChooseMainActivity extends BaseActivity {
     private void initView() {
 
 
-
-        switch (isCanSelectStone){
+        switch (isCanSelectStone) {
             case 0:
                 stoneChooseFromStoneHouseFragment = new StoneChooseFromSettingFragment();
                 fragmentList.add(stoneChooseFromStoneHouseFragment);

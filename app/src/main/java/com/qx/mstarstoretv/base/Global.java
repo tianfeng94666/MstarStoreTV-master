@@ -20,4 +20,5 @@ public class Global {
      * 戒托数据
      */
     public static Ring ring;
+    public static boolean GO_HOEM=false;
 }

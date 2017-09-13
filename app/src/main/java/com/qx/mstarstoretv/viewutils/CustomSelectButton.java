@@ -47,7 +47,7 @@ public class CustomSelectButton extends RelativeLayout {
     private WheelView wheelView;
     private TextView tvTitle;
     private TextView tvConfirm;
-    private int defaultPosition = 5;
+    private int defaultPosition = 0;
     private TextView tvCancle;
     private int style;
     private float tvSize;

@@ -74,6 +74,9 @@ public class RegisterActivity extends BaseActivity {
 
     }
 
+    public void onBack(View view){
+        finish();
+    }
     public void getNetCode(){
         phone=idEdPhone.getText().toString();
         if (StringUtils.isEmpty(phone)) {

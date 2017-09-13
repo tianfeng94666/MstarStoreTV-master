@@ -387,7 +387,15 @@ public class ModelDetailResult implements Serializable{
             private String remark;
             private String handSize;
             private String weight;
+            ModelWeightRange stoneWeightRange;
 
+            public ModelWeightRange getRingWeightRange() {
+                return stoneWeightRange;
+            }
+
+            public void setRingWeightRange(ModelWeightRange ringWeightRange) {
+                this.stoneWeightRange = ringWeightRange;
+            }
             public String getWeight() {
                 return weight;
             }

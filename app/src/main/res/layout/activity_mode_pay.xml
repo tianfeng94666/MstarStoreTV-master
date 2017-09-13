@@ -25,7 +25,7 @@
             >
 
             <TextView
-                android:textSize="@dimen/margin12"
+                android:textSize="@dimen/text_size_medium1"
                 android:id="@+id/id_tv_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

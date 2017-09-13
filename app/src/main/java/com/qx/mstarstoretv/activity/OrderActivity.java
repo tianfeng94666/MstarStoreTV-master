@@ -210,11 +210,12 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
                         idTvSelect.setText(StringUtils.idgui(select.getTitle()));
                         TypeFiler typeFiler = new TypeFiler();
                         typeFiler.setCheck(true);
-                        typeFiler.setGroupKey("category");
+                        typeFiler.setGroupKey("custom");
                         typeFiler.setName(select.getTitle());
                         typeFiler.setValue(select.getId());
                         typeFiler.setId(select.getId());
                         multiselectKey.add(typeFiler);
+                        curpage =1;
                         String url = getInitUrl();
                         loadNetData(url);
                     }
@@ -320,12 +321,9 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
                         data.clear();
                     }
                     list_count = Integer.valueOf(modeEntity.getList_count());
-                    if (list_count == 0) {
-                        data.clear();
-                    } else {
+
                         List<ModeListResult.DataEntity.ModelEntity.ModelListEntity> modelList = modeEntity.getModelList();
                         data.addAll(modelList);
-                    }
                     endNetRequest();
                 } else if (error.equals("2")) {
                     L.e("重新登录");

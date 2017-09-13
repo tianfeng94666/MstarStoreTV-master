@@ -170,6 +170,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
     private boolean ischooseEmpty;//是否选择了产品
     private boolean isCustomized;//是否是用户定制
     private DefaultValue defaultValue;
+    Map<String, OrderListResult.DataEntity.CurrentOrderlListEntity.ListEntity> mchecked = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,7 +180,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_confirmorder);
         ButterKnife.bind(this);
-        getActivityType();
+        getActivityType(getIntent());
         initView();
         initScroll();
         loadNetData();
@@ -187,8 +188,8 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
 
     }
 
-    public int getActivityType() {
-        Bundle bundle = getIntent().getExtras();
+    public int getActivityType(Intent intent) {
+        Bundle bundle = intent.getExtras();
         if (bundle == null) {
             return 0;
         }
@@ -199,13 +200,22 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        getActivityType(intent);
+        initView();
+        initScroll();
+        loadNetData();
+    }
+
+    @Override
     public void loadNetData() {
         String url;
         if (type == 2) {
-            url = AppURL.URL_ORDER_DETAIL + "tokenKey=" + BaseApplication.getToken() +  "&orderId=" + orderId+"&pageNum=24";
+            url = AppURL.URL_ORDER_DETAIL + "tokenKey=" + BaseApplication.getToken() + "&orderId=" + orderId + "&pageNum=24";
         } else {
             url = AppURL.URL_ORDER_LIST + "tokenKey=" + BaseApplication.getToken() + "&purityId=" + purityId +
-                    "&qualityId=" + qualityId + "&cpage=" + curpage+"&pageNum=24";
+                    "&qualityId=" + qualityId + "&cpage=" + curpage + "&pageNum=24";
         }
         L.e("获取订单信息" + url);
         VolleyRequestUtils.getInstance().getCookieRequest(this, url, new VolleyRequestUtils.HttpStringRequsetCallBack() {
@@ -220,8 +230,12 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                     if (dataEntity != null) {
                         OrderListResult.DataEntity.CurrentOrderlListEntity currentOrderlList = dataEntity.getCurrentOrderlList();
                         List<OrderListResult.DataEntity.CurrentOrderlListEntity.ListEntity> list = currentOrderlList.getList();
-                        isDefaultAddress = dataEntity.getAddress();
-
+                        if (isDefaultAddress == null) {
+                            isDefaultAddress = dataEntity.getAddress();
+                        }
+                        if (isDefaultCustomer == null) {
+                            isDefaultCustomer = dataEntity.getCustomer();
+                        }
                         if (pullState != PULL_LOAD) {
                             confirOrderAdapter.cancelAll();
                             listData.clear();
@@ -241,20 +255,23 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                             idTvAddress.setText(isDefaultAddress.getAddr());
                             phoneTv.setText(isDefaultAddress.getPhone());
                         }
+                        OrderListResult.DataEntity.OrderInfoEntity orderInfo = dataEntity.getOrderInfo();
+                        if (type == 2) {
+                            Double totalPrice = dataEntity.getTotalPrice();
+                            Double totalNeedPayPrice = dataEntity.getTotalNeedPayPrice();
+                            L.e("orderInfo" + orderInfo.toString() + "totalPrice:" + totalPrice + "totalNeedPayPrice:" + totalNeedPayPrice);
+                            idCsColor.setTextName(orderInfo.getPurityName());
+                            idCsMass.setTextName(orderInfo.getQualityName());
+                            idEdWord.setText(orderInfo.getWord());
+                            idEdRemarks.setText(orderInfo.getOrderNote());
+                            idEtSeach.setText(orderInfo.getCustomerName());
+                            tvTotalPrice.setText(UIUtils.stringChangeToInt(totalNeedPayPrice+"") + "--定金   " + StringUtils.formatedPrice(totalPrice) + "(合计)");
+                            idTvNeedPrice.setText("定金 :" + StringUtils.formatedPrice(totalNeedPayPrice));
+                            idTvTotalPrice.setText("合计 :" + StringUtils.formatedPrice(totalPrice));
+                        }
+
                         if (isFirst) {
                             if (type == 2) {
-                                OrderListResult.DataEntity.OrderInfoEntity orderInfo = dataEntity.getOrderInfo();
-                                Double totalPrice = dataEntity.getTotalPrice();
-                                Double totalNeedPayPrice = dataEntity.getTotalNeedPayPrice();
-                                L.e("orderInfo" + orderInfo.toString() + "totalPrice:" + totalPrice + "totalNeedPayPrice:" + totalNeedPayPrice);
-                                idCsColor.setTextName(orderInfo.getPurityName());
-                                idCsMass.setTextName(orderInfo.getQualityName());
-                                idEdWord.setText(orderInfo.getWord());
-                                idEdRemarks.setText(orderInfo.getOrderNote());
-                                idEtSeach.setText(orderInfo.getCustomerName());
-                                tvTotalPrice.setText(totalNeedPayPrice + "--定金   " + totalPrice + "(合计)");
-                                idTvNeedPrice.setText("定金 :" + totalNeedPayPrice);
-                                idTvTotalPrice.setText("合计 :" + totalPrice);
                                 setListHeadView(orderInfo);
                                 invTitle = orderInfo.getInvoiceTitle();
                                 invType = orderInfo.getInvoiceType();
@@ -262,7 +279,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                                     idReceipt.setText("类型：" + invType + "     抬头：" + invTitle);
                                     L.e("类型：" + invTitle + "     抬头：" + invTitle);
                                 }
-                                isDefaultCustomer = dataEntity.getCustomer();
+
                             } else {
                                 defaultValue = dataEntity.getDefaultValue();
                                 if (defaultValue.getModelColor() != null) {
@@ -317,15 +334,15 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                             tvTotalPrice.setVisibility(View.GONE);
                         }
                         L.e("解析成功");
+                        //清空是否选中
+                        if(type!=2){
+                            confirOrderAdapter.clearCheckedState();
+                            mchecked.clear();
+                        }
                         setAdapter();
                         endNetRequest();
                         initListener();
                         L.e("mchecked" + mchecked.size());
-                        Set<Map.Entry<String, OrderListResult.DataEntity.CurrentOrderlListEntity.ListEntity>> entries = mchecked.entrySet();
-//                    for (Map.Entry<String, OrderListResult.DataEntity.CurrentOrderlListEntity.ListEntity> entry : entries) {
-//                        OrderListResult.DataEntity.CurrentOrderlListEntity.ListEntity entity = entry.getValue();
-//                        L.e(entity.toString());
-//                    }
                         changeState(mchecked);
                     }
 
@@ -336,13 +353,15 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                     } else {
                         loginToServer(StyleInfromationActivity.class);
                     }
+                } else {
+                    endNetRequest();
                 }
 
             }
 
             @Override
             public void onFail(String fail) {
-
+                endNetRequest();
             }
 
         });
@@ -367,7 +386,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                     for (int i = 0; i < modelColorItme.size(); i++) {
                         Type type = new Type();
                         type.setId(modelColorItme.get(i).getId());
-                        type.setTypeName(modelColorItme.get(i).getTitle() + "  " + modelColorItme.get(i).getPrice() );
+                        type.setTypeName(modelColorItme.get(i).getTitle() + "  " + modelColorItme.get(i).getPrice());
                         list.add(type);
                     }
                     return list;
@@ -534,7 +553,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
             public void onClick(View v) {
                 Intent intent;
                 intent = new Intent(ConfirmOrderActivity.this, ModeOfPaymentActivity.class);
-                if (!orderId.equals("")) {
+                if (orderId != null && !orderId.equals("")) {
                     intent.putExtra("id", orderId);
                 }
                 startActivity(intent);
@@ -609,7 +628,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                         Double total = .0;
                         Double needPrice = .0;
                         for (OrderListResult.DataEntity.CurrentOrderlListEntity.ListEntity cartItem : listData) {
-                            total += Double.valueOf(cartItem.getPrice()) ;
+                            total += Double.valueOf(cartItem.getPrice());
                             needPrice += Double.valueOf(cartItem.getNeedPayPrice());
                             L.e("needPrice" + needPrice);
                         }
@@ -617,8 +636,8 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                         tvTotalPrice.setText(StringUtils.formatedPrice(total));
                         idLayPrice1.setVisibility(View.INVISIBLE);
                         idLayPrice2.setVisibility(View.VISIBLE);
-                        idTvNeedPrice.setText("定金 :" + needPrice);
-                        idTvTotalPrice.setText("合计 :" + total);
+                        idTvNeedPrice.setText("定金 :" + StringUtils.formatedPrice(needPrice));
+                        idTvTotalPrice.setText("合计 :" + StringUtils.formatedPrice(total));
                     } else {
                         confirOrderAdapter.updatePrice();
                     }
@@ -668,7 +687,10 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
     protected void initView() {
         isCustomized = SpUtils.getInstace(this).getBoolean("isCustomized", true);
         lnyLoadingLayout.setVisibility(View.VISIBLE);
-        listData = new ArrayList<>();
+        if (listData == null) {
+            listData = new ArrayList<>();
+        }
+
 
         confirOrderAdapter = new ConfirOrderAdapter();
         confirOrderAdapter.setOnAdapterCallBack(this);
@@ -785,24 +807,10 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
                     // startActivity(intent);
 
                     Intent intent;
-//                    if (isNeedPay == 0) {
-//                        //支付
-//                        btGoPay.setVisibility(View.GONE);
-//                        idLayOrderDetail.setVisibility(View.VISIBLE);
-//                    }else {
-//                        idLayOrderDetail.setVisibility(View.GONE);
-//                        btGoPay.setVisibility(View.VISIBLE);
-//                    }
+
 
                     if (isErpOrder == 1) {
-                        //生产中详情说
-//                        intent = new Intent(ConfirmOrderActivity.this, CustomMadeActivity.class);
-//                        Bundle bundle = new Bundle();
-//                        bundle.putInt("type", 2);
-//                        bundle.putString("orderNum", id);
-//                        intent.putExtras(bundle);
-//                        startActivity(intent);
-                        // "orderNum":"AP2017021316476
+
                         String orderNum = jsonObject.get("orderNum").getAsString();
                         ProgressDialog progressDialog = new ProgressDialog(ConfirmOrderActivity.this, orderNum, 1);
                         progressDialog.showAsDropDown(rootView);
@@ -919,8 +927,6 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
         });
     }
 
-
-    Map<String, OrderListResult.DataEntity.CurrentOrderlListEntity.ListEntity> mchecked = new HashMap<>();
 
     @Override
     public void changeState(Map<String, OrderListResult.DataEntity.CurrentOrderlListEntity.ListEntity> checked) {
@@ -1146,6 +1152,9 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
             // L.e("ConfirOrderAdapter");
         }
 
+        public void clearCheckedState(){
+            checkedState.clear();
+        }
 
         public void selectAll() {
             for (OrderListResult.DataEntity.CurrentOrderlListEntity.ListEntity t : listData) {

@@ -133,17 +133,12 @@ public class ModeOfPaymentActivity extends BaseActivity {
                 choosePayWay = position;
             }
         });
-        idIgBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBack();
-            }
-        });
+
         tvMoney.setText(comitOrderResult.getData().getNeedPayPrice());
         idTv1.setText(comitOrderResult.getData().getTitle());
     }
 
-    public void onBack() {
+    public void onBack(View view) {
         finish();
     }
 
@@ -278,7 +273,8 @@ public class ModeOfPaymentActivity extends BaseActivity {
 
                 break;
             case 1:
-                topay(WEIXINPAY);
+                ToastManager.showToastReal("微信支付暂未开通");
+//                topay(WEIXINPAY);
                 break;
 
         }
@@ -341,7 +337,7 @@ public class ModeOfPaymentActivity extends BaseActivity {
             if (i == ALIYPAY) {
                 url = AppURL.URL_GET_STONE_AILPAY + "tokenKey=" + BaseApplication.getToken() + "&orderId=" + id;
             } else {
-                url = AppURL.URL_GET_STONE_WEIXIN+ "tokenKey=" + BaseApplication.getToken() + "&orderId=" + id;
+                url = AppURL.URL_GET_STONE_WEIXIN + "tokenKey=" + BaseApplication.getToken() + "&orderId=" + id;
             }
         } else {
             if (i == ALIYPAY) {
@@ -374,7 +370,7 @@ public class ModeOfPaymentActivity extends BaseActivity {
                         aLipayResult = new Gson().fromJson(result, ALipayResult.class);
                         aliPay();
                     } else {
-                       tvMessage.setText(result);
+                        tvMessage.setText(result);
                         weixinPayResult = new Gson().fromJson(result, WeixinPayResult.class);
                         weixinPay();
                     }
@@ -412,9 +408,10 @@ public class ModeOfPaymentActivity extends BaseActivity {
         WXPayUtil pay = new WXPayUtil(this, WXPayInfo.APP_ID);
         pay.pay(info);
         Global.id = id;
-        Global.type = type+"";
+        Global.type = type + "";
         finish();
     }
+
     private long genTimeStamp() {
         return System.currentTimeMillis() / 1000;
     }

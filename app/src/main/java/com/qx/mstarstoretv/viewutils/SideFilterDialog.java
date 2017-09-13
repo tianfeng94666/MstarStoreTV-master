@@ -155,25 +155,29 @@ public  class SideFilterDialog extends BaseFilterData {
 
     private void removeActivity(int n) {
 
-        if (OrderActivity.multiselectKey.size() != 0 && OrderActivity.multiselectKey != null) {
-            for (int i = 0; i < OrderActivity.multiselectKey.size(); i++) {
-                if (OrderActivity.multiselectKey.get(i).getTitle().equals(typese.get(n).getContent())) {
-                    OrderActivity.multiselectKey.remove(i);
+        try {
+            if (OrderActivity.multiselectKey.size() != 0 && OrderActivity.multiselectKey != null) {
+                for (int i = 0; i < OrderActivity.multiselectKey.size(); i++) {
+                    if (OrderActivity.multiselectKey.get(i).getTitle().equals(typese.get(n).getContent())) {
+                        OrderActivity.multiselectKey.remove(i);
+                    }
                 }
             }
-        }
-        if (OrderActivity.singleKey.size() != 0 && OrderActivity.singleKey != null) {
-            for (int i = 0; i < OrderActivity.singleKey.size(); i++) {
-                SearchValue searchKeyword = OrderActivity.singleKey.get(i);
-                if (StringUtils.isEmpty(searchKeyword.getValue())) {
-                    break;
-                }
-                if (searchKeyword.getTxt().equals(typese.get(n).getContent())) {
-                    OrderActivity.singleKey.remove(i);
+            if (OrderActivity.singleKey.size() != 0 && OrderActivity.singleKey != null) {
+                for (int i = 0; i < OrderActivity.singleKey.size(); i++) {
+                    SearchValue searchKeyword = OrderActivity.singleKey.get(i);
+                    if (StringUtils.isEmpty(searchKeyword.getValue())) {
+                        break;
+                    }
+                    if (searchKeyword.getTxt().equals(typese.get(n).getContent())) {
+                        OrderActivity.singleKey.remove(i);
+                    }
                 }
             }
+            typese.remove(n);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        typese.remove(n);
     }
     private void initData() {
         typese  = new ArrayList<>();

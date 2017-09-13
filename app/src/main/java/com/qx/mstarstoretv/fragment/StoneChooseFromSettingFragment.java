@@ -149,6 +149,7 @@ public class StoneChooseFromSettingFragment extends BaseFragment implements View
         Bundle pBundle = new Bundle();
         pBundle.putString("itemId", ((StoneChooseMainActivity) getActivity()).getItemId());
         pBundle.putInt("type", ((StoneChooseMainActivity) getActivity()).getType());
+        pBundle.putString("orderId", ((StoneChooseMainActivity) getActivity()).getOrderId());
         pBundle.putString("openType", "2");
         pBundle.putSerializable("stoneResult", stoneEntity);
         intent.putExtras(pBundle);

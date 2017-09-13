@@ -230,22 +230,27 @@ public class LeftPopupWindow implements View.OnClickListener {
     private void commitOrder() {
         if (canCommit()) {
             baseShowWatLoading();
-            String lgUrl = AppURL.URL_QUICK_MAKING + "tokenKey=" + BaseApplication.getToken() + "&productId=" + ring.getItemId() + "&modelPurityId=" + ring.getRingPurityId()
+            String remark =ring.getRemarks()==null?"":ring.getRemarks();
+            String url = AppURL.URL_QUICK_MAKING + "tokenKey=" + BaseApplication.getToken() + "&productId=" + ring.getItemId() + "&modelPurityId=" + ring.getRingPurityId()
                     + "&modelQualityId=1" + "&number=" + 1 + "&jewelStoneId=" + ring.getStoneEntity().getId() + "&word=" + ring.getWord() + "&customerID="
-                    + ring.getCustomerEntity().getCustomerID() + "&handSize=" + ring.getHandSize() + "&remarks=" + ring.getRemarks();
-            L.e("netLogin" + lgUrl);
-            VolleyRequestUtils.getInstance().getCookieRequest(context, lgUrl, new VolleyRequestUtils.HttpStringRequsetCallBack() {
+                    + ring.getCustomerEntity().getCustomerID() + "&handSize=" + ring.getHandSize() + "&remarks=" + remark;
+            L.e("netLogin" + url);
+            VolleyRequestUtils.getInstance().getCookieRequest(context, url, new VolleyRequestUtils.HttpStringRequsetCallBack() {
                 @Override
                 public void onSuccess(String result) {
+                    baseHideWatLoading();
                     JsonObject jsonResult = new Gson().fromJson(result, JsonObject.class);
                     String error = jsonResult.get("error").getAsString();
                     if (error.equals("0")) {
+
                         ConfirmOrderResult orderListResult = new Gson().fromJson(result, ConfirmOrderResult.class);
                         ToastManager.showToastReal("定制完成！");
                         if (orderListResult.getData() == null) {
                             return;
                         }
                         Global.isShowPopup = 0;
+                        //直接从历史回到Mainctvity
+                        Global.GO_HOEM =true;
                         resetStoneAndRing();
                         Bundle bundle = new Bundle();
                         bundle.putInt("type", 2);
@@ -253,9 +258,7 @@ public class LeftPopupWindow implements View.OnClickListener {
                         openActivity(ConfirmOrderActivity.class, bundle);
 
                     } else if (error.equals("2")) {
-                        baseHideWatLoading();
                     } else {
-                        baseHideWatLoading();
                         String message = new Gson().fromJson(result, JsonObject.class).get("message").getAsString();
                         ToastManager.showToastWhendebug(message);
                         L.e(message);

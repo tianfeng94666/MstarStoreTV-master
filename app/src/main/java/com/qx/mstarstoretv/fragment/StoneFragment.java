@@ -29,7 +29,9 @@ import com.qx.mstarstoretv.adapter.StoneOthersAdapter;
 import com.qx.mstarstoretv.base.AppURL;
 import com.qx.mstarstoretv.base.BaseApplication;
 import com.qx.mstarstoretv.base.BaseFragment;
+import com.qx.mstarstoretv.base.Global;
 import com.qx.mstarstoretv.json.KeyTitle;
+import com.qx.mstarstoretv.json.ModelWeightRange;
 import com.qx.mstarstoretv.json.StoneSearchInfo;
 import com.qx.mstarstoretv.json.StoneSearchResult;
 import com.qx.mstarstoretv.net.VolleyRequestUtils;
@@ -115,6 +117,7 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
     private StoneSearchInfo stoneSearchInfo;
     private int openType;//0 是正常进入，1是主石进入,2表示从StoneChooseMain进来
     private String itemId;//产品的id
+    private ModelWeightRange modelWeightRange;
 
     public StoneFragment() {
     }
@@ -155,6 +158,16 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
         idIgBack.setOnClickListener(this);
         tvSearch.setOnClickListener(this);
         tvReset.setOnClickListener(this);
+         modelWeightRange =((StoneChooseMainActivity)getActivity()).getModelWeightRange();
+        if(modelWeightRange!=null){
+            String st = modelWeightRange.getValue();
+            String[] sts = st.split(",");
+            if (sts.length == 2) {
+                etWeightMin.setText(sts[0]);
+                etWeightMax.setText(sts[1]);
+            }
+        }
+
         initCertificate();
         initRandSeekBar();
         initShape();
@@ -654,6 +667,7 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
         intent.putExtra("type", ((StoneChooseMainActivity) getActivity()).getType());
         intent.putExtra("openType", ((StoneChooseMainActivity) getActivity()).getOpenType());
         intent.putExtra("itemId", ((StoneChooseMainActivity) getActivity()).getItemId());
+        intent.putExtra("orderId", ((StoneChooseMainActivity) getActivity()).getOrderId());
         intent.putExtra("stoneInfo", bundle);
         startActivity(intent);
         getActivity().overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);

@@ -130,7 +130,7 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
     @Bind(R.id.id_cus_store_size)
     CustomselectStringButton idCusStoreSize;
     @Bind(R.id.id_list)
-    CustomLV idList;
+    CustomLV listView;
     @Bind(R.id.tv_reset)
     TextView tvReset;
     @Bind(R.id.tv_del)
@@ -234,15 +234,14 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         getIntentData(intent);
-        if (adapter != null) {
-            adapter.notifyDataSetChanged();
-        }
         if (Global.isShowPopup != 0 && leftPopupWindow != null) {
             leftPopupWindow.initPopupView();
         }
-        if (type == 2) {
+        if ((type == 2 || type == 1)&&!openType.equals("2")) {
             loadNetData();
         }
+
+        initView();
     }
 
     private void getIntentData(Intent intent) {
@@ -256,6 +255,7 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
         if (selectedStoneEnity != null && stoneEntities.size() > 0) {
             stoneEntities.get(0).changetoStone(selectedStoneEnity);
             stoneprice = selectedStoneEnity.getPrice();
+
         }
         selectedStone = (StoneSearchInfoResult.DataBean.StoneBean.ListBean) extras.getSerializable("stone");
         if (selectedStone != null) {
@@ -274,17 +274,39 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
 
             tvPrice.setText("¥" + UIUtils.stringChangeToInt(Double.parseDouble(toEmpty(modelEntity.getPrice())) * Double.parseDouble(toEmpty(modelEntity.getNumber())) + Double.parseDouble(toEmpty(stoneprice)) + ""));
 
-            idList.setAdapter(adapter);
+            listView.setAdapter(adapter);
         }
-        if (!certCode.isEmpty()) {
-            isnumberCanChange = false;
-            idCusStoreNumber.setText("1");
-            idCusStoreNumber.setEnabled(false);
-        }
+        numberIsChange();
     }
 
     public String toEmpty(String st) {
         return Double.parseDouble(StringUtils.isEmpty(st) ? "0" : st) + "";
+    }
+
+    public void numberIsChange() {
+
+        if (openType.equals("1")) {
+            isnumberCanChange = false;
+            idCusStoreNumber.setText("1");
+            idCusStoreNumber.setEnabled(false);
+        } else if (openType.equals("2")) {
+            isnumberCanChange = true;
+            idCusStoreNumber.setEnabled(true);
+        } else {
+            if (!certCode.isEmpty()) {
+                isnumberCanChange = false;
+                idCusStoreNumber.setText("1");
+                idCusStoreNumber.setEnabled(false);
+            } else {
+                isnumberCanChange = true;
+                idCusStoreNumber.setEnabled(true);
+            }
+        }
+        if(Global.isShowPopup!=0){
+            isnumberCanChange = false;
+            idCusStoreNumber.setText("1");
+            idCusStoreNumber.setEnabled(false);
+        }
     }
 
     private void initView() {
@@ -303,28 +325,17 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
         if (type == 1 || type == 2) {
             tvSearch.setText(R.string.confirm_update);
             idTvCurorder.setText(R.string.cancle_update);
-        }
-        if (openType != null) {
-            if (openType.equals("1")) {
-                isnumberCanChange = false;
-                idCusStoreNumber.setText("1");
-                idCusStoreNumber.setEnabled(false);
+            if (badge != null) {
+                badge.setVisibility(View.GONE);
             }
-        } else {
-            tvAmountTitle.setText("件    数");
-            llAmount.setVisibility(View.VISIBLE);
-            llCertcode.setVisibility(View.GONE);
         }
-        if (!certCode.isEmpty()) {
-            isnumberCanChange = false;
-            idCusStoreNumber.setText("1");
-            idCusStoreNumber.setEnabled(false);
-        }
+        numberIsChange();
+
         tvSearch.setOnClickListener(this);
         badge = new BadgeView(this, idTvCurorder);// 创建一个BadgeView对象，view为你需要显示提醒的控件
         remind(waitOrderCount);
         adapter = new ListAdapter(stoneEntities);
-        idList.setAdapter(adapter);
+        listView.setAdapter(adapter);
         idIgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -375,9 +386,6 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
         //快速定制
         if (type == 0) {        //避免修改时进来
             if (Global.isShowPopup != 0) {
-                isnumberCanChange = false;
-                idCusStoreNumber.setText("1");
-                idCusStoreNumber.setEnabled(false);
                 llShowLess.setVisibility(View.VISIBLE);
                 llColor.setVisibility(View.VISIBLE);
                 llMaking.setVisibility(View.VISIBLE);
@@ -571,9 +579,11 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
         intent.putExtra("openType", 1);
         intent.putExtra("type", type);
         intent.putExtra("itemId", itemId);
+        intent.putExtra("orderId", orderId);
         intent.putExtra("isCanSelectStone", modelDetail.getData().getIsCanSelectStone());
         intent.putExtra("stoneDetail", stoneDetail);
         intent.putExtra("stone", stone);
+        intent.putExtra("stoneRange", modelEntity.getRingWeightRange());
         startActivity(intent);
         //设置切换动画，从右边进入，左边退出
         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
@@ -645,7 +655,7 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
             isVisible = true;
         }
         //BadgeView的具体使用
-        badge.setText(count + ""); // 需要显示的提醒类容
+        badge.setText(count + "", TextView.BufferType.NORMAL); // 需要显示的提醒类容
         badge.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);// 显示的位置.右上角,BadgeView.POSITION_BOTTOM_LEFT,下左，还有其他几个属性
         badge.setTextColor(Color.WHITE); // 文本颜色
         int hint = Color.rgb(200, 39, 73);
@@ -697,7 +707,7 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
 
                     //L.e("服务器返回是否自带主石头"+isSelfStone);
                     /*得到数量*/
-                    if(modelEntity.getNumber()==null){
+                    if (modelEntity.getNumber() == null) {
                         modelEntity.setNumber("1");
                     }
                     String number = modelEntity.getNumber();
@@ -720,17 +730,15 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
                     stoneDetail = new StoneDetail(stoneTypeItme, stoneColorItme, stonePurityItme, stoneSpecItme, stoneShapeItem);
 
                     if (type == 2 && selectedStone.getCertCode() != null) {
-                        jewelStone.setJewelStoneId(selectedStone.getId());
+                        if(jewelStone!=null){
+                            jewelStone.setJewelStoneId(selectedStone.getId());
+                        }
                         stoneprice = selectedStone.getPrice();
-                    }else if(selectedStone.getCertCode()==null&&jewelStone != null){
+                    } else if (selectedStone.getCertCode() == null && jewelStone != null) {
                         stoneprice = jewelStone.getJewelStonePrice();
                         selectedStone.setId(jewelStone.getJewelStoneId());
                     }
                     if (jewelStone != null) {
-//                        openType ="1";//修改订单的主石是选的
-//                        tvAmountTitle.setText("证书编号");
-//                        llAmount.setVisibility(View.GONE);
-//                        llCertcode.setVisibility(View.VISIBLE);
                         tvCertcode.setText(jewelStone.getJewelStoneCode());
                         certCode = jewelStone.getJewelStoneCode();
                         idCusStoreNumber.setText("1");
@@ -774,7 +782,6 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
                         stone.setIsNotEmpty(1);
                     }
                     addEntities(stone, stoneA, stoneB, stoneC);
-
 
 
                     setStorePrice(stone);
@@ -978,6 +985,14 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
         showToastReal("请确认定制");
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (leftPopupWindow != null) {
+            leftPopupWindow.closePopupWindow();
+        }
+    }
+
     public StoneEntity copyStone(StoneEntity stoneEntity) {
         StoneEntity stoneCopy = new StoneEntity();
         stoneCopy.setChecked(stoneEntity.isChecked());
@@ -1143,7 +1158,7 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
                             confirmOrderOnUpdate.onUpdate();
                             Bundle bundle = new Bundle();
                             bundle.putInt("type", type);
-                            bundle.putString("itemId", itemId);
+                            bundle.putString("itemId", orderId);
                             openActivity(ConfirmOrderActivity.class, bundle);
                         }
                     } else {
@@ -1482,18 +1497,20 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
         }
         return isEmpty;
     }
-
+    public String toEmpty2(String st) {
+        return StringUtils.isEmpty(st) ? "" : st ;
+    }
 
     private String changeSelectedStoneToString() {
 
-        return "规格：" + selectedStone.getWeight() + ";形状：" + selectedStone.getShape() + ";颜色："
-                + selectedStone.getColor() + ";净度：" + selectedStone.getPurity() + ";证书号：" + selectedStone.getCertCode();
+        return "规格：" + toEmpty2(selectedStone.getWeight()) + ";形状：" + toEmpty2(selectedStone.getShape()) + ";颜色："
+                + toEmpty2(selectedStone.getColor()) + ";净度：" + toEmpty2(selectedStone.getPurity()) + ";证书号：" + toEmpty2(selectedStone.getCertCode());
     }
 
     private String changeStoneEntityToString(StoneEntity stoneEntity) {
 
-        return "类别：" + stoneEntity.getTypeTitle() + "; 规格：" + stoneEntity.getSpecTitle() + ";形状：" + stoneEntity.getShapeTitle() +
-                ";颜色：" + stoneEntity.getColorTitle() + ";净度：" + stoneEntity.getPurityTitle() + ";数量：" + stoneEntity.getNumber() + (stoneEntity.getStoneCode() != null && (!openType.equals("2")) ? ";证书号：" + stoneEntity.getStoneCode() : "");
+        return "类别：" + toEmpty2(stoneEntity.getTypeTitle()) + "; 规格：" + toEmpty2(stoneEntity.getSpecTitle()) + ";形状：" + toEmpty2(stoneEntity.getShapeTitle()) +
+                ";颜色：" + toEmpty2(stoneEntity.getColorTitle()) + ";净度：" + toEmpty2(stoneEntity.getPurityTitle()) + ";数量：" + toEmpty2(stoneEntity.getNumber()) + (stoneEntity.getStoneCode() != null && (!openType.equals("2")) ? ";证书号：" + stoneEntity.getStoneCode() : "");
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {

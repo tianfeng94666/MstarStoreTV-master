@@ -168,6 +168,7 @@ public abstract class BaseActivity extends FragmentActivity implements HttpCycle
             intent.putExtras(pBundle);
         }
         startActivity(intent);
+        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
     }
 
     public DisplayMetrics getScreen() {
