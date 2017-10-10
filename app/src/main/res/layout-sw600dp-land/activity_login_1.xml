@@ -38,8 +38,8 @@
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-
-            android:src="@mipmap/logo_land" />
+            android:src="@mipmap/logo_land"
+            android:visibility="invisible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,10 +93,10 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:hint="请输入用户名"
-                        android:textSize="@dimen/setting_textsize"
                         android:singleLine="true"
                         android:textColor="@color/white"
-                        android:textColorHint="@color/white" />
+                        android:textColorHint="@color/white"
+                        android:textSize="@dimen/setting_textsize" />
 
                 </LinearLayout>
 
@@ -140,11 +140,11 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:hint="请输入5位以上密码"
-                        android:textSize="@dimen/setting_textsize"
                         android:inputType="textPassword"
                         android:singleLine="true"
                         android:textColor="@color/white"
-                        android:textColorHint="@color/white" />
+                        android:textColorHint="@color/white"
+                        android:textSize="@dimen/setting_textsize" />
 
                 </LinearLayout>
 
@@ -191,9 +191,9 @@
                         android:inputType="number"
                         android:singleLine="true"
                         android:text=""
-                        android:textSize="@dimen/setting_textsize"
                         android:textColor="@color/white"
-                        android:textColorHint="@color/white" />
+                        android:textColorHint="@color/white"
+                        android:textSize="@dimen/setting_textsize" />
 
                     <Button
                         android:id="@+id/tv_get_auth_code"
@@ -232,6 +232,7 @@
                 android:textColor="@color/white">
 
             </Button>
+
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -274,10 +275,6 @@
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
-
-
-
-
 
 
     </LinearLayout>

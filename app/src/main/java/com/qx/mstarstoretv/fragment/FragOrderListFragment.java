@@ -396,7 +396,6 @@ public class FragOrderListFragment extends BaseFragment implements PullToRefresh
             viewHolder.idTvNeed.setText("定金 " + listEntity.getNeedPayPrice());
 
 
-            L.e(listEntity.getPics().size() + "size()");
 
             viewHolder.layImages.removeAllViews();
             if (listEntity.getPics() != null && listEntity.getPics().size() != 0) {

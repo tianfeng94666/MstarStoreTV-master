@@ -59,6 +59,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import q.rorbin.badgeview.QBadgeView;
 
 
 /**
@@ -332,7 +333,8 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
         numberIsChange();
 
         tvSearch.setOnClickListener(this);
-        badge = new BadgeView(this, idTvCurorder);// 创建一个BadgeView对象，view为你需要显示提醒的控件
+        badge = new QBadgeView(this);// 创建一个BadgeView对象，view为你需要显示提醒的控件
+        badge.bindTarget(idTvCurorder);
         remind(waitOrderCount);
         adapter = new ListAdapter(stoneEntities);
         listView.setAdapter(adapter);
@@ -646,26 +648,27 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
                 + Double.parseDouble(toEmpty(stoneprice)) + ""));
     }
 
+    QBadgeView badge;
 
-    BadgeView badge;
 
     private void remind(int count) {
         boolean isVisible = false;
         if (count != 0) {
             isVisible = true;
         }
+
         //BadgeView的具体使用
-        badge.setText(count + "", TextView.BufferType.NORMAL); // 需要显示的提醒类容
-        badge.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);// 显示的位置.右上角,BadgeView.POSITION_BOTTOM_LEFT,下左，还有其他几个属性
-        badge.setTextColor(Color.WHITE); // 文本颜色
+        badge.setBadgeText(" "+count + " "); // 需要显示的提醒类容
+        badge.setBadgeGravity(Gravity.END|Gravity.TOP);// 显示的位置.右上角,BadgeView.POSITION_BOTTOM_LEFT,下左，还有其他几个属性
+        badge.setBadgeTextColor(Color.WHITE); // 文本颜色
         int hint = Color.rgb(200, 39, 73);
         badge.setBadgeBackgroundColor(hint); // 提醒信息的背景颜色，自己设置
-        badge.setTextSize(15); // 文本大小
-        badge.setBadgeMargin(0, 5); // 水平和竖直方向的间距+-
+        badge.setBadgeTextSize(12,true); // 文本大小
+        badge.setBadgePadding(3,true); // 水平和竖直方向的间距+-
         if (isVisible) {
-            badge.show();// 只有显示
+            badge.setVisibility(View.VISIBLE);  // 只有显示
         } else {
-            badge.hide();//影藏显示
+            badge.setVisibility(View.GONE);//影藏显示
         }
     }
 

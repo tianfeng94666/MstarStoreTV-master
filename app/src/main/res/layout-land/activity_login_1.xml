@@ -38,7 +38,8 @@
             android:layout_height="75dp"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-android:scaleType="fitXY"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
             android:src="@mipmap/logo_land" />
 
         <LinearLayout
@@ -229,6 +230,7 @@ android:scaleType="fitXY"
                 android:textColor="@color/white">
 
             </Button>
+
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -271,10 +273,6 @@ android:scaleType="fitXY"
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
-
-
-
-
 
 
     </LinearLayout>

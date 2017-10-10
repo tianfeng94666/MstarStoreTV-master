@@ -31,6 +31,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'q.rorbin:badgeview:1.1.2'
     testCompile 'junit:junit:4.12'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.jakewharton:butterknife:7.0.1'

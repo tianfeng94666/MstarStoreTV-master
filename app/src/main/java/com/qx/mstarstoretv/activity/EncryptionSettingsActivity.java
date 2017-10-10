@@ -200,7 +200,7 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
     private void commitIsShow(int i) {
         Global.STONE_POINT_CHANGE = 1;
         String url;
-        url = AppURL.URL_ISHOW_COST_PRICE + "tokenKey=" + BaseApplication.getToken() + "&isShow=" + i;
+        url = AppURL.URL_ISHOW_COST_PRICE + "tokenKey=" + BaseApplication.getToken() + "&isNoShow=" + i;
 
         L.e("获取个人信息" + url);
         VolleyRequestUtils.getInstance().getCookieRequest(this, url, new VolleyRequestUtils.HttpStringRequsetCallBack() {

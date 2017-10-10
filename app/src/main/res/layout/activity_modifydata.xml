@@ -200,6 +200,7 @@
                 android:id="@+id/rl_shared"
                 android:layout_width="wrap_content"
                 android:layout_height="65dp"
+                android:visibility="gone"
                 android:layout_marginTop="1dip"
                 android:padding="5dip"
                 android:background="@color/white"
