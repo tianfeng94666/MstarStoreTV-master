@@ -120,6 +120,10 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     RelativeLayout rlEncryptionSetting;
     @Bind(R.id.id_ig_userpic)
     CircleImageView idIgUserpic;
+    @Bind(R.id.tv_gold_into)
+    TextView tvGoldInto;
+    @Bind(R.id.rl_gold_setting)
+    RelativeLayout rlGoldSetting;
 
 
     private LayoutInflater inflater;
@@ -291,6 +295,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 });
             }
         });
+        rlGoldSetting.setOnClickListener(this);
     }
 
     private void showShare() {
@@ -393,13 +398,15 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             case R.id.rl_encryption_setting:
                 goIntoEncryptionSettings();
                 break;
+            case R.id.rl_gold_setting:
+                openActivity(GoldSettingActivity.class,null);
         }
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void goIntoEncryptionSettings() {
         final EditText editText = new EditText(this);
-        editText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.setMarginStart(64);
         layoutParams.setMarginEnd(64);

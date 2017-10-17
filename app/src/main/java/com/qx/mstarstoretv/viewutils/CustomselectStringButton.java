@@ -8,6 +8,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,7 +17,10 @@ import android.widget.TextView;
 import com.qx.mstarstoretv.R;
 import java.util.List;
 
+import com.qx.mstarstoretv.adapter.BaseViewHolder;
+import com.qx.mstarstoretv.adapter.CommonAdapter;
 import com.qx.mstarstoretv.base.BaseActivity;
+import com.qx.mstarstoretv.bean.Type;
 import com.qx.mstarstoretv.utils.StringUtils;
 import com.qx.mstarstoretv.utils.ToastManager;
 import com.qx.mstarstoretv.utils.UIUtils;
@@ -44,6 +49,8 @@ public class CustomselectStringButton extends RelativeLayout {
     private TextView tvCancle;
     private boolean isAbleOnclick = true;
     private int backgroundId;
+    private ListView listview;
+    private CommonAdapter<String> adapter;
 
     public int getBackgroundId() {
         return backgroundId;
@@ -124,7 +131,7 @@ public class CustomselectStringButton extends RelativeLayout {
                 if (onSelectData != null) {
                     types = onSelectData.getData();
 //                showDialog();
-                    showPopupWindow();
+                    showPopupWindow2();
                 }
             } else {
                 ToastManager.showToastReal("裸石库中的裸石无法修改！");
@@ -204,7 +211,64 @@ public class CustomselectStringButton extends RelativeLayout {
             }
         });
     }
+    public void showPopupWindow2() {
+        String text = getTextName().toString();
+        View view = View.inflate(mContext, R.layout.popupwindow_bottom2, null);
+        listview = (ListView) view.findViewById(R.id.lv_item);
+        tvTitle = (TextView) view.findViewById(R.id.tv_title_popupwindow);
+        tvCancle = (TextView) view.findViewById(R.id.tv_cancle);
+        tvTitle.setText(onSelectData.getTitle() + "");
+        adapter = new CommonAdapter<String>(types, R.layout.tv_item_type2) {
+            @Override
+            public void convert(int position, BaseViewHolder helper, String item) {
+                helper.setText(R.id.tv_item_type,item);
+            }
 
+        };
+        listview.setAdapter(adapter);
+        int select = getSelect(text);
+        if (select == -1) {
+            listview.setSelection(onSelectData.defaultPosition());
+        } else {
+            listview.setSelection(select);
+        }
+        UIUtils.setBackgroundAlpha(mContext, 0.3f);//设置屏幕透明度
+        View view1 = onSelectData.getRootView();
+        popupWindow = new PopupWindow(view, view1.getWidth() < 300 ? 300 : view1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(false);
+        popupWindow.setAnimationStyle(R.style.Animation);
+        popupWindow.showAsDropDown(view1);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                type = types.get(position);
+                if (type != null) {
+                    if (!StringUtils.isEmpty(type)) {
+                        setTextName(type);
+                        setText(type);
+                    }
+                    if (onSelectData != null) {
+                        onSelectData.getSelectId(type);
+                    }
+                }
+                closePupupWindow();
+            }
+        });
+
+        tvCancle.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closePupupWindow();
+            }
+        });
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                UIUtils.setBackgroundAlpha(mContext, 1.0f);//设置屏幕透明度
+            }
+        });
+    }
     public void closePupupWindow() {
         UIUtils.setBackgroundAlpha(mContext, 1.0f);//设置屏幕透明度
         popupWindow.dismiss();

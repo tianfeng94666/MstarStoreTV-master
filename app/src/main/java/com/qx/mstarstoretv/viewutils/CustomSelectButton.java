@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -19,6 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.qx.mstarstoretv.R;
+import com.qx.mstarstoretv.adapter.BaseViewHolder;
+import com.qx.mstarstoretv.adapter.CommonAdapter;
 import com.qx.mstarstoretv.base.BaseActivity;
 import com.qx.mstarstoretv.bean.Type;
 import com.qx.mstarstoretv.utils.StringUtils;
@@ -51,6 +54,8 @@ public class CustomSelectButton extends RelativeLayout {
     private TextView tvCancle;
     private int style;
     private float tvSize;
+    private ListView listview;
+    private CommonAdapter adapter;
 
 
     public TextView getTv() {
@@ -65,9 +70,9 @@ public class CustomSelectButton extends RelativeLayout {
         if (!StringUtils.isEmpty(textName)) {
             this.tv.setText(textName);
             tv.setTextColor(getResources().getColor(R.color.text_color));
-            if(style==0){
+            if (style == 0) {
                 tv.setBackgroundResource(R.drawable.btn_bg_while);
-            }else {
+            } else {
                 tv.setBackgroundResource(R.color.white);
             }
 
@@ -106,16 +111,16 @@ public class CustomSelectButton extends RelativeLayout {
         try {
             textName = typedArray.getString(R.styleable.CustomSelectButton_tv_name);
             style = typedArray.getInteger(R.styleable.CustomSelectButton_tv_style, 0);
-            tvSize = typedArray.getDimension(R.styleable.CustomSelectButton_tv_size,UIUtils.sp2px(25));
+            tvSize = typedArray.getDimension(R.styleable.CustomSelectButton_tv_size, UIUtils.sp2px(25));
 
         } finally {
             typedArray.recycle();
         }
         View rootView;
         if (style == 0) {
-             rootView = View.inflate(context, R.layout.custom_select_button, this);
-        }else {
-             rootView = View.inflate(context, R.layout.custom_select_textview_right, this);
+            rootView = View.inflate(context, R.layout.custom_select_button, this);
+        } else {
+            rootView = View.inflate(context, R.layout.custom_select_textview_right, this);
         }
         tv = (TextView) rootView.findViewById(R.id.id_cus_tv);
         if (!StringUtils.isEmpty(textName)) {
@@ -138,7 +143,7 @@ public class CustomSelectButton extends RelativeLayout {
                     e.printStackTrace();
                 }
                 if (types != null) {
-                    showPopupWindow();
+                    showPopupWindow2();
                 }
 //                showDialog();
             }
@@ -157,7 +162,7 @@ public class CustomSelectButton extends RelativeLayout {
         SimpleWheelAdapter arrayWheelAdapter = new SimpleWheelAdapter(mContext);
         wheelView.setWheelAdapter(arrayWheelAdapter);
         wheelView.setWheelSize(5);
-        if(types!=null&&types.size()>0){
+        if (types != null && types.size() > 0) {
             wheelView.setWheelData(types);
         }
 
@@ -177,7 +182,7 @@ public class CustomSelectButton extends RelativeLayout {
         wheelView.setWheelClickable(true);
         UIUtils.setBackgroundAlpha(mContext, 0.3f);//设置屏幕透明度
         View view1 = onSelectData.getRootView();
-        popupWindow = new PopupWindow(view, view1.getWidth()<300?300:view1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow = new PopupWindow(view, view1.getWidth() < 300 ? 300 : view1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(false);
         popupWindow.setAnimationStyle(R.style.Animation);
@@ -188,7 +193,7 @@ public class CustomSelectButton extends RelativeLayout {
             @Override
             public void onClick(View v) {
 
-                if (types != null&&types.size()>0) {
+                if (types != null && types.size() > 0) {
                     type = types.get(wheelView.getCurrentPosition());
                     if (!StringUtils.isEmpty(type.getTypeName())) {
                         setTextName(type.getTypeName());
@@ -207,6 +212,64 @@ public class CustomSelectButton extends RelativeLayout {
                 closePupupWindow();
             }
         });
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                UIUtils.setBackgroundAlpha(mContext, 1.0f);//设置屏幕透明度
+            }
+        });
+    }
+
+    public void showPopupWindow2() {
+        String text = getTextName().toString();
+        View view = View.inflate(mContext, R.layout.popupwindow_bottom2, null);
+        listview = (ListView) view.findViewById(R.id.lv_item);
+        tvTitle = (TextView) view.findViewById(R.id.tv_title_popupwindow);
+        tvCancle = (TextView) view.findViewById(R.id.tv_cancle);
+        tvTitle.setText(onSelectData.getTitle() + "");
+        adapter = new CommonAdapter<Type>(types, R.layout.tv_item_type2) {
+            @Override
+            public void convert(int position, BaseViewHolder helper, Type item) {
+                helper.setText(R.id.tv_item_type,item.getTypeName());
+            }
+        };
+        listview.setAdapter(adapter);
+        int select = getSelect(text);
+        if (select == -1) {
+            listview.setSelection(defaultPosition);
+        } else {
+            listview.setSelection(select);
+        }
+        UIUtils.setBackgroundAlpha(mContext, 0.3f);//设置屏幕透明度
+        View view1 = onSelectData.getRootView();
+        popupWindow = new PopupWindow(view, view1.getWidth() < 300 ? 300 : view1.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(false);
+        popupWindow.setAnimationStyle(R.style.Animation);
+        popupWindow.showAsDropDown(view1);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (types != null && types.size() > 0) {
+                    type = types.get(position);
+                    if (!StringUtils.isEmpty(type.getTypeName())) {
+                        setTextName(type.getTypeName());
+                        setText(type.getTypeName());
+                    }
+                    if (onSelectData != null) {
+                        onSelectData.getSelectId(type);
+                    }
+                }
+                closePupupWindow();
+            }
+        });
+        tvCancle.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closePupupWindow();
+            }
+        });
+
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {

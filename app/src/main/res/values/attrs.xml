@@ -110,4 +110,10 @@
     <declare-styleable name="RoundCornerImageView">
         <attr name="rciv_radius" format="dimension"/>
     </declare-styleable>
+    <declare-styleable name="XGallery">
+        <!-- Item的宽度 -->
+        <attr name="xGallery_itemWidth" format="dimension" />
+        <!-- Item的高度 -->
+        <attr name="xGallery_itemHeight" format="dimension" />
+    </declare-styleable>
 </resources>

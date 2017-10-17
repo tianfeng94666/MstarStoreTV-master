@@ -353,6 +353,10 @@ public class AppURL {
      * getUpdateVersionForMstar
      */
     public static String URL_GET_UPDATE_VERSION="http://appapi1.fanerweb.com/api/Public/" + "getUpdateVersionForMstar?";
+    /**
+     * 获取金价界面产品
+     */
+    public static String URL_GOLD_PRODUCT=baseUrl + "modelListForScreenAd?"+QxVersion;
 }
 
 

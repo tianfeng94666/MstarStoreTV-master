@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/title_layout"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/margin33">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="足金： "
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/setting_textsize" />
+
+        <EditText
+            android:id="@+id/et_full_gold"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/setting_textsize" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/margin33">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="金条： "
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/setting_textsize" />
+
+        <EditText
+            android:id="@+id/et_gold"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/setting_textsize" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/margin33">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="PT950： "
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/setting_textsize" />
+
+        <EditText
+            android:id="@+id/et_gold_pt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/setting_textsize" />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="@dimen/margin33"
+        android:layout_marginRight="@dimen/margin33"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btn_bg_red"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/white"
+        android:textSize="@dimen/setting_textsize" />
+</LinearLayout>

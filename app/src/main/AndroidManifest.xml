@@ -108,6 +108,8 @@
             android:configChanges="orientation|screenSize|layoutDirection|keyboardHidden"
             android:launchMode="singleTask"
             />
+        <activity android:name=".activity.ShowGoldActivity"/>
+        <activity android:name=".activity.GoldSettingActivity"/>
         <activity
             android:name="com.qx.mstarstoretv.activity.EndProducActivity"
             android:alwaysRetainTaskState="true"

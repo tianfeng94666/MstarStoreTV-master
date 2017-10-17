@@ -27,7 +27,11 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+
 }
+
+
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')

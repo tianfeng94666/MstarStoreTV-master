@@ -69,4 +69,6 @@
     <dimen name="setting_textsize">25sp</dimen>
     <!--stonesearchinfoactivity-->
     <dimen name="stone_search_activity_height">65dp</dimen>
+    <dimen name="margin33">33dp</dimen>
+    <dimen name="gold_textsize">35sp</dimen>
 </resources>

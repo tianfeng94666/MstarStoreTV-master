@@ -67,6 +67,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     LinearLayout llBanner;
     @Bind(R.id.ll_show_less)
     LinearLayout llShowLess;
+    @Bind(R.id.tv_show_gold)
+    TextView tvShowGold;
 
     private int nowId;
     private String version;
@@ -105,7 +107,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 String error = jsonResult.get("error").getAsString();
                 if (error.equals("0")) {
                     GetAddressResult getAddressResult = new Gson().fromJson(result, GetAddressResult.class);
-                    if(getAddressResult.getData()==null){
+                    if (getAddressResult.getData() == null) {
                         return;
                     }
                     if (Global.ring == null) {
@@ -181,7 +183,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void isNeedUpdate() {
-        String lgUrl = AppURL.URL_CODE_VERSION + "device=" + "android";
+        String lgUrl = AppURL.URL_GOLD_PRODUCT + "device=" + "android";
         L.e("netLogin" + lgUrl);
         VolleyRequestUtils.getInstance().getCookieRequest(this, lgUrl, new VolleyRequestUtils.HttpStringRequsetCallBack() {
             @Override
@@ -280,6 +282,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         ivRingStone.setOnClickListener(this);
         ivStoneRing.setOnClickListener(this);
         llShowLess.setOnClickListener(this);
+        tvShowGold.setOnClickListener(this);
     }
 
     public static BadgeView badge1;
@@ -297,9 +300,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_home:
-                if(!isCustomized){
+                if (!isCustomized) {
                     ToastManager.showToastReal("高级定制无快速定制，请在个人中心修改");
-                }else {
+                } else {
                     if (Global.isShowPopup != 0) {
                         Global.isShowPopup = 0;
                         if (leftPopupWindow != null) {
@@ -334,6 +337,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.ll_show_less:
                 initPopwindow();
+                break;
+            case R.id.tv_show_gold:
+                openActivity(ShowGoldActivity.class,null);
                 break;
         }
     }

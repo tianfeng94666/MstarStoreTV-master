@@ -102,4 +102,14 @@
     </LinearLayout>
     <include layout="@layout/btn_popupwindow"
         android:visibility="gone"/>
+    <TextView
+        android:background="@drawable/frame_bg_gray"
+        android:text="显示金价"
+        android:padding="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/tv_show_gold"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

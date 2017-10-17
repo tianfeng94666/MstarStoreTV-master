@@ -132,6 +132,7 @@
     <orderEntry type="library" exported="" scope="TEST" name="junit-4.12" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Core-2.8.3" level="project" />
     <orderEntry type="library" exported="" name="MobCommons-2017.0412.1554" level="project" />
+    <orderEntry type="library" exported="" name="android-android-24" level="project" />
     <orderEntry type="library" exported="" name="org.apache.http.legacy-android-24" level="project" />
   </component>
 </module>
