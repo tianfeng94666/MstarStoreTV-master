@@ -4,6 +4,8 @@ import android.os.Build;
 import android.util.Log;
 import android.view.View;
 
+import com.qx.mstarstoretv.utils.ToastManager;
+
 /**
  * @author wuzhen
  * @since 2017/07/24
@@ -12,8 +14,20 @@ public class BottomScalePageTransformer extends BasePageTransformer {
 
     private static final float MIN_SCALE = 0.70f;
     private static final float MIN_ALPHA = 0.8f;
+    private int currentPosition;
+
+    public XGallery.OnGalleryPageSelectListener getmOnGalleryPageSelectListener() {
+        return mOnGalleryPageSelectListener;
+    }
+
+    public void setmOnGalleryPageSelectListener(XGallery.OnGalleryPageSelectListener mOnGalleryPageSelectListener) {
+        this.mOnGalleryPageSelectListener = mOnGalleryPageSelectListener;
+    }
+
+    private XGallery.OnGalleryPageSelectListener mOnGalleryPageSelectListener;
+
     @Override
-    public void transformPage(View page, float position) {
+    public void transformPage(final View page, final float position) {
         if (position < -1 || position > 1) {
             page.setAlpha(MIN_ALPHA);
             page.setScaleX(MIN_SCALE);
@@ -35,6 +49,18 @@ public class BottomScalePageTransformer extends BasePageTransformer {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             page.getParent().requestLayout();
         }
+//        page.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ToastManager.showToastReal((Integer) page.getTag()+"");
+//                    if (mOnGalleryPageSelectListener != null) {
+//                        mOnGalleryPageSelectListener.onGalleryPageSelected((Integer) page.getTag());
+//                    }
+//
+//
+//            }
+//        });
     }
+
 
 }

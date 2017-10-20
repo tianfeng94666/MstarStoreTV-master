@@ -69,6 +69,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     LinearLayout llShowLess;
     @Bind(R.id.tv_show_gold)
     TextView tvShowGold;
+    @Bind(R.id.tv_show_video)
+    TextView tvShowVideo;
+    @Bind(R.id.tv_show_pics)
+    TextView tvShowPics;
 
     private int nowId;
     private String version;
@@ -283,6 +287,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         ivStoneRing.setOnClickListener(this);
         llShowLess.setOnClickListener(this);
         tvShowGold.setOnClickListener(this);
+        tvShowVideo.setOnClickListener(this);
+        tvShowPics.setOnClickListener(this);
     }
 
     public static BadgeView badge1;
@@ -339,7 +345,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 initPopwindow();
                 break;
             case R.id.tv_show_gold:
-                openActivity(ShowGoldActivity.class,null);
+                openActivity(ShowGoldActivity.class, null);
+                break;
+            case R.id.tv_show_video:
+                openActivity(VideoActivity.class, null);
+                break;
+            case R.id.tv_show_pics:
+                openActivity(PictureActivity.class, null);
                 break;
         }
     }

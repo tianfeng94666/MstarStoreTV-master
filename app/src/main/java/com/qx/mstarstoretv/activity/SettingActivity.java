@@ -124,6 +124,14 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     TextView tvGoldInto;
     @Bind(R.id.rl_gold_setting)
     RelativeLayout rlGoldSetting;
+    @Bind(R.id.tv_video_into)
+    TextView tvVideoInto;
+    @Bind(R.id.rl_video_setting)
+    RelativeLayout rlVideoSetting;
+    @Bind(R.id.tv_pic_into)
+    TextView tvPicInto;
+    @Bind(R.id.rl_pic_setting)
+    RelativeLayout rlPicSetting;
 
 
     private LayoutInflater inflater;
@@ -134,7 +142,11 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     private int PRICE_TYPE = 0;
     private SettingResult settingResult;
     private AlertDialog dialog;
-
+    private static final int PICK_FROM_CAMERA = 1;
+    private static final int PICK_FROM_PHOTO = 2;
+    private static final int CROP_PHOTO = 3;
+    private static final int VIDEO_PATH = 4;
+    private static final int PIC_PATH = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -296,6 +308,8 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             }
         });
         rlGoldSetting.setOnClickListener(this);
+        rlVideoSetting.setOnClickListener(this);
+        rlPicSetting.setOnClickListener(this);
     }
 
     private void showShare() {
@@ -325,9 +339,6 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         oks.show(this);
     }
 
-    private static final int PICK_FROM_CAMERA = 1;
-    private static final int PICK_FROM_PHOTO = 2;
-    private static final int CROP_PHOTO = 3;
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -356,6 +367,17 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 } else {
                     Toast.makeText(this, "the file doesnt exist", Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case VIDEO_PATH:
+                Uri uri = data.getData();
+                String path = uri.getPath().toString();
+                showToastReal("你选中的视频路径："+path);
+                SpUtils.getInstace(this).saveString("videoPath", path);
+                break;
+            case PIC_PATH:
+                Uri picUri = data.getData();
+                String picPath = picUri.getPath().toString();
+                SpUtils.getInstace(this).saveString("picPath", picPath);
                 break;
         }
     }
@@ -399,9 +421,31 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 goIntoEncryptionSettings();
                 break;
             case R.id.rl_gold_setting:
-                openActivity(GoldSettingActivity.class,null);
+                openActivity(GoldSettingActivity.class, null);
+                break;
+            case R.id.rl_video_setting:
+                setVideoPath();
+                break;
+            case R.id.rl_pic_setting:
+                setPicPath();
+                break;
         }
     }
+
+    private void setPicPath() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");//设置类型，我这里是任意类型，任意后缀的可以这样写。
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        startActivityForResult(intent, PIC_PATH);
+    }
+
+    private void setVideoPath() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");//设置类型，我这里是任意类型，任意后缀的可以这样写。
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        startActivityForResult(intent, VIDEO_PATH);
+    }
+
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void goIntoEncryptionSettings() {

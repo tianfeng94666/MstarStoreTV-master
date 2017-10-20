@@ -197,6 +197,68 @@
 
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/rl_video_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_marginTop="1dip"
+                android:padding="5dip"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_video_into"
+                    android:layout_width="wrap_content"
+                    android:layout_height="65dp"
+                    android:textSize="@dimen/setting_textsize"
+                    android:gravity="center_vertical"
+                    android:clickable="false"
+                    android:padding="10dip"
+                    android:text="广告视频设置"
+                    />
+
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/icon_right"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl_pic_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_marginTop="1dip"
+                android:padding="5dip"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_pic_into"
+                    android:layout_width="wrap_content"
+                    android:layout_height="65dp"
+                    android:textSize="@dimen/setting_textsize"
+                    android:gravity="center_vertical"
+                    android:clickable="false"
+                    android:padding="10dip"
+                    android:text="广告图片设置"
+                    />
+
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/icon_right"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+            <RelativeLayout
                 android:id="@+id/rl_clear_memery"
                 android:layout_width="wrap_content"
                 android:layout_height="65dp"
