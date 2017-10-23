@@ -1,7 +1,12 @@
 package com.qx.mstarstoretv.activity;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.ContactsContract;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -58,11 +63,15 @@ public class PictureActivity extends BaseActivity {
             showToastReal("请在个人中心选择正确的图片路径");
             return;
         }
+       String st = Environment.getExternalStorageDirectory().getPath();
+        File[] files2 = new File(st).listFiles();
         File parentFile = new File(parentPath);
         File[] files = parentFile.listFiles();
         ArrayList<String> list = new ArrayList<>();
         if(files==null){
             showToastReal("请在个人中心选择正确的图片路径");
+            list.add("file://"+picPath);
+            flybanner.setImagesUrl(list);
             return;
         }
         for(int i =0;i<files.length;i++){
@@ -72,6 +81,7 @@ public class PictureActivity extends BaseActivity {
         flybanner.setImagesUrl(list);
 
     }
+
 
     @Override
     public void loadNetData() {
