@@ -163,19 +163,19 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
 
         isShowCostPrice = settingResult.getData().getIsShowOriginalPrice();
         if (isShowCostPrice == 1) {
-            ivIsShowCostPrice.setImageResource(R.drawable.icon_switch_off);
-        } else {
             ivIsShowCostPrice.setImageResource(R.drawable.icon_switch_on);
+        } else {
+            ivIsShowCostPrice.setImageResource(R.drawable.icon_switch_off);
         }
         ivIsShowCostPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isShowCostPrice == 1) {
                     isShowCostPrice = 0;
-                    ivIsShowCostPrice.setImageResource(R.drawable.icon_switch_on);
+                    ivIsShowCostPrice.setImageResource(R.drawable.icon_switch_off);
                 } else {
                     isShowCostPrice = 1;
-                    ivIsShowCostPrice.setImageResource(R.drawable.icon_switch_off);
+                    ivIsShowCostPrice.setImageResource(R.drawable.icon_switch_on);
                 }
                 commitIsShow(isShowCostPrice);
             }

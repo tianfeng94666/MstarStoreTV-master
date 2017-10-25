@@ -96,8 +96,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        setChioceFragment(0);
         isNeedUpdate();
         loadNetData();
-
         getAddress();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if(leftPopupWindow!=null){
+            leftPopupWindow.initPopupView();
+        }
     }
 
     private void getAddress() {

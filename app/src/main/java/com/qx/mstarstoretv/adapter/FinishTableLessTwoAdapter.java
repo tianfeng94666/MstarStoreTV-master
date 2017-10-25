@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 import com.qx.mstarstoretv.R;
 import com.qx.mstarstoretv.activity.DeliveryTableActivity;
+import com.qx.mstarstoretv.base.Global;
 import com.qx.mstarstoretv.json.RecListBean;
+import com.qx.mstarstoretv.utils.ToastManager;
 
 import java.util.List;
 
@@ -67,12 +69,21 @@ public class FinishTableLessTwoAdapter extends BaseAdapter {
         viewHolder.rlGotoDeliveryTable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DeliveryTableActivity.class);
-                intent.putExtra("momNumber",bean.getMoNum()+"");
-                intent.putExtra("type",type);
-                ( (Activity)context).startActivity(intent);
+                if(1== Global.isShowCost){
+                    Intent intent = new Intent(context, DeliveryTableActivity.class);
+                    intent.putExtra("momNumber",bean.getMoNum()+"");
+                    intent.putExtra("type",type);
+                    ( (Activity)context).startActivity(intent);
+                }else {
+                    ToastManager.showToastReal("未显示价钱，无权限查看");
+                }
             }
         });
+        if ("1".equals(Global.isMainAccount)&&1==Global.isShowCost){
+            viewHolder.tvItemFinishDeliveryPrice.setVisibility(View.VISIBLE);
+        }else {
+            viewHolder.tvItemFinishDeliveryPrice.setVisibility(View.GONE);
+        }
         return view;
     }
 

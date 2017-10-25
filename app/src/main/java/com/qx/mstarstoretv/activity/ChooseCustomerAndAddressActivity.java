@@ -122,12 +122,17 @@ public class ChooseCustomerAndAddressActivity extends BaseActivity {
                         idTvName.setText(isDefaultAddress.getName());
                         idTvAddress.setText(isDefaultAddress.getAddr());
                         phoneTv.setText(isDefaultAddress.getPhone());
-                        Global.ring.setAddressEntity(isDefaultAddress);
+                        if(Global.ring!=null){
+                            Global.ring.setAddressEntity(isDefaultAddress);
+                        }
+
                     }
                     isDefaultCustomer = dataEntity.getCustomer();
                     if (isDefaultCustomer != null) {
                         idEtSeach.setText(isDefaultCustomer.getCustomerName());
-                        Global.ring.setCustomerEntity(isDefaultCustomer);
+                        if(Global.ring!=null){
+                            Global.ring.setCustomerEntity(isDefaultCustomer);
+                        }
                     }
                     initview();
                 }

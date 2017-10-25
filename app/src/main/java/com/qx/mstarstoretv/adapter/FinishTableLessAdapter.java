@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.qx.mstarstoretv.R;
 import com.qx.mstarstoretv.activity.FinishTableMoreActivity;
+import com.qx.mstarstoretv.base.Global;
 import com.qx.mstarstoretv.json.RecListBean;
+import com.qx.mstarstoretv.utils.ToastManager;
 
 import java.util.List;
 
@@ -67,16 +69,26 @@ public class FinishTableLessAdapter extends BaseAdapter {
         viewHolder.tvFinishQuality.setText("成色：" + recListBean.getPurityName());
         viewHolder.tvFinishAmount.setText("数量：" + recListBean.getNumber());
         viewHolder.tvFinisShSumMoney.setText("¥" + recListBean.getTotalPrice());
-
+        if ("1".equals(Global.isMainAccount)&&1==Global.isShowCost) {
+            viewHolder.tvFinisShSumMoney.setVisibility(View.VISIBLE);
+            viewHolder.tvFinishSumMoneyTv.setVisibility(View.VISIBLE);
+        } else {
+            viewHolder.tvFinisShSumMoney.setVisibility(View.GONE);
+            viewHolder.tvFinishSumMoneyTv.setVisibility(View.GONE);
+        }
         FinishTableLessTwoAdapter finishTableLessTwoAdapter = new FinishTableLessTwoAdapter(context, recListBean.getMoList(),type);
         viewHolder.lvSendingTables.setAdapter(finishTableLessTwoAdapter);
         viewHolder.rlGotoFinishMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, FinishTableMoreActivity.class);
-                intent.putExtra("recNumber", recListBean.getRecNum() + "");
-                intent.putExtra("type",type);
-                ((Activity) context).startActivity(intent);
+                if(1==Global.isShowCost){
+                    Intent intent = new Intent(context, FinishTableMoreActivity.class);
+                    intent.putExtra("recNumber", recListBean.getRecNum() + "");
+                    intent.putExtra("type", type);
+                    ((Activity) context).startActivity(intent);
+                }else {
+                    ToastManager.showToastReal("未显示价钱，无权限查看");
+                }
             }
         });
         return view;

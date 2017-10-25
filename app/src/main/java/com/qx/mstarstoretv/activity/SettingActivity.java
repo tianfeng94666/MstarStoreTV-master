@@ -50,6 +50,7 @@ import com.qx.mstarstoretv.R;
 import com.qx.mstarstoretv.base.AppURL;
 import com.qx.mstarstoretv.base.BaseActivity;
 import com.qx.mstarstoretv.base.BaseApplication;
+import com.qx.mstarstoretv.base.Global;
 import com.qx.mstarstoretv.dialog.ImageInitiDialog;
 import com.qx.mstarstoretv.json.SettingResult;
 import com.qx.mstarstoretv.net.ImageLoadOptions;
@@ -274,6 +275,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void onClick(View view) {
                 BaseApplication.spUtils.saveString(SpUtils.key_tokenKey, "");
+                Global.ring =null;
                 openActivity(LoginActivity.class, null);
             }
         });

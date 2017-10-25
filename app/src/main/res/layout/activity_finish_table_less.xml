@@ -6,9 +6,43 @@
     android:orientation="vertical">
 
     <include layout="@layout/title_layout"></include>
+    <RelativeLayout
+        android:id="@+id/rl_is_show_cost_price"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/header_height"
+        android:layout_marginTop="1dip"
+        android:padding="5dip"
+        android:background="@color/white"
+        >
 
+        <TextView
+            android:id="@+id/tv_is_show_cost_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:textSize="@dimen/setting_textsize"
+            android:text="是否显示成本价"
+            />
+
+
+        <ImageView
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:button="@null"
+            android:id="@+id/iv_is_show_cost_price"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignRight="@id/tv_is_show_cost_price"
+            android:layout_alignTop="@id/tv_is_show_cost_price"
+            android:src="@drawable/icon_switch_off"
+            />
+
+    </RelativeLayout>
 
     <ListView
+        android:layout_marginTop="8dp"
         android:id="@+id/lv_sending_tables"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></ListView>
