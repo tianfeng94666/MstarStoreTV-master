@@ -51,6 +51,7 @@ public class CustomselectStringButton extends RelativeLayout {
     private int backgroundId;
     private ListView listview;
     private CommonAdapter<String> adapter;
+    private int showType;
 
     public int getBackgroundId() {
         return backgroundId;
@@ -73,7 +74,12 @@ public class CustomselectStringButton extends RelativeLayout {
         if (!StringUtils.isEmpty(textName)) {
             this.tv.setText(textName);
             tv.setTextColor(getResources().getColor(R.color.black));
-            tv.setBackgroundResource(R.drawable.btn_bg_while );
+            if(showType==0){
+                tv.setBackgroundResource(R.drawable.btn_bg_while );
+            }else {
+                tv.setBackgroundResource(R.color.white );
+            }
+
         }
     }
 
@@ -107,6 +113,7 @@ public class CustomselectStringButton extends RelativeLayout {
     private void initView(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomselectStringButton);
         try {
+            showType = typedArray.getInt(R.styleable.CustomselectStringButton_show_type,0);
             textName = typedArray.getString(R.styleable.CustomselectStringButton_tv_string_name);
             backgroundId = typedArray.getResourceId(R.styleable.CustomselectStringButton_tv_string_background,R.drawable.btn_bg_while );
             textSize = typedArray.getDimension(R.styleable.CustomSelectButton_tv_size,UIUtils.sp2px(25));
@@ -118,6 +125,12 @@ public class CustomselectStringButton extends RelativeLayout {
         tv = (TextView) rootView.findViewById(R.id.id_cus_tv);
         if (!StringUtils.isEmpty(textName)) {
             tv.setText(textName);
+            if(showType==0){
+                tv.setBackgroundResource(R.drawable.btn_bg_while );
+            }else {
+                tv.setBackgroundResource(R.color.white );
+            }
+
         }
         tv.setTextSize(textSize);
         tv.setOnClickListener(new CustomselectStringButton.RadioClickListener());
@@ -181,6 +194,7 @@ public class CustomselectStringButton extends RelativeLayout {
         popupWindow.setFocusable(true);
         popupWindow.setAnimationStyle(R.style.Animation);
       popupWindow.showAsDropDown(view1);
+
 //        popupWindow.showAtLocation(view1, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
         tvConfirm.setOnClickListener(new OnClickListener() {
             @Override
@@ -238,7 +252,12 @@ public class CustomselectStringButton extends RelativeLayout {
         popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(false);
         popupWindow.setAnimationStyle(R.style.Animation);
-        popupWindow.showAsDropDown(view1);
+        if(showType==0){
+            popupWindow.showAsDropDown(view1);
+        }else {
+            popupWindow.showAsDropDown(view1,0,-500);
+        }
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

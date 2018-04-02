@@ -10,6 +10,10 @@
     </declare-styleable>
 
     <declare-styleable name="CustomselectStringButton">
+        <attr name="show_type"  format="enum">
+            <enum name="down" value="0"></enum>
+            <enum name="up" value="1"></enum>
+        </attr>
     <attr name="tv_string_name" format="string"></attr>
     <attr name="tv_string_size" format="dimension"></attr>
     <attr name="tv_string_color" format="color"></attr>

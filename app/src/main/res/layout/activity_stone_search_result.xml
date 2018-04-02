@@ -286,13 +286,14 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1" />
+                android:layout_weight="0.5" />
 
             <TextView
                 android:id="@+id/tv_quoted_price_all"
                 style="@style/margin_parent"
                 android:layout_width="0dp"
                 android:layout_marginBottom="5dp"
+                android:maxWidth="220dp"
                 android:layout_marginTop="5dp"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/setting_textsize"
@@ -316,6 +317,7 @@
                 android:layout_gravity="center_vertical|right"
                 android:layout_marginRight="-8dp"
                 android:layout_weight="0.3"
+                android:maxWidth="220dp"
                 android:background="@drawable/corners_red_bg"
                 android:gravity="center"
                 android:paddingBottom="10dp"
@@ -333,6 +335,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="16dp"
                 android:layout_weight="0.3"
+                android:maxWidth="220dp"
                 android:background="@drawable/corners_red_bg"
                 android:gravity="center"
                 android:paddingBottom="10dp"
@@ -355,6 +358,7 @@
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
                 android:text="确定"
+                android:maxWidth="220dp"
                 android:textSize="@dimen/setting_textsize"
                 android:textColor="@color/white"
                 android:visibility="gone" />

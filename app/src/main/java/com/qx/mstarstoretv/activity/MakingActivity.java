@@ -162,8 +162,11 @@ public class MakingActivity extends BaseActivity {
         setFlaybanner(modelPicBeans);
         //其他part
         rvPart.setLayoutManager(mLayoutManager);
-        partsList = getRingPartResult.getData().getModelParts();
-        countList = getRingPartResult.getData().getModelpartCount();
+        if(getRingPartResult!=null){
+            partsList = getRingPartResult.getData().getModelParts();
+            countList = getRingPartResult.getData().getModelpartCount();
+        }
+
         selectPids = new String[countList.size()];
         /**
          * 判断是否添加一个裸石选择
@@ -255,7 +258,7 @@ public class MakingActivity extends BaseActivity {
 
                 @Override
                 public View getRootView() {
-                    return rootView;
+                    return tvChooseHandsize;
                 }
             });
         }
@@ -285,7 +288,7 @@ public class MakingActivity extends BaseActivity {
         if (modelPicBeans != null) {
             List list = new ArrayList();
             for (int i = 0; i < modelPicBeans.size(); i++) {
-                list.add(modelPicBeans.get(i).getPicm());
+                list.add(modelPicBeans.get(i).getPicb());
             }
             flybanner.setImagesUrl(list);
         }

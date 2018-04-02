@@ -29,6 +29,7 @@
         <LinearLayout
             android:id="@+id/ll_recyle"
             android:layout_width="0dp"
+            android:background="@color/white"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
@@ -39,10 +40,9 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_part"
                     android:layout_width="match_parent"
-
                     android:layout_height="match_parent"
                     android:background="@color/white"
-                    android:paddingBottom="40dp"></android.support.v7.widget.RecyclerView>
+                    android:layout_marginBottom="60dp"></android.support.v7.widget.RecyclerView>
 
                 <View
                     android:layout_width="match_parent"
@@ -53,46 +53,51 @@
                 <LinearLayout
                     android:id="@+id/ll_finish"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:paddingTop="1px"
+                    android:layout_height="60dp"
                     android:layout_alignParentBottom="true">
 
                     <TextView
                         android:id="@+id/tv_reset"
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
+                        android:layout_height="60dp"
                         android:layout_alignParentBottom="true"
                         android:layout_weight="1"
                         android:background="@color/theme_bg"
                         android:gravity="center"
                         android:text="重置"
-                        android:textColor="@color/text_color" />
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_size_medium1" />
 
                     <TextView
                         android:id="@+id/tv_finish"
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
+                        android:layout_height="60dp"
                         android:layout_alignParentBottom="true"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="完成"
-                        android:textColor="@color/text_color" />
+                        android:background="@color/white"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_size_medium1" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_after_finish"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="60dp"
                     android:layout_alignParentBottom="true"
                     android:orientation="horizontal"
                     android:visibility="gone">
 
-                    <com.qx.mstarstoretv.viewutils.CustomselectStringButton
+                    <com.qx.mstarstoretv.viewutils.CustomselectStringButton xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/tv_choose_handsize"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/theme_bg"
-                        android:textSize="@dimen/text_size_small_medium" />
+                        android:textSize="@dimen/text_size_medium1"
+                        app:show_type="up" />
 
                     <View
                         android:layout_width="1px"
@@ -108,7 +113,7 @@
                         android:gravity="center"
                         android:text="购买"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/text_size_small_medium" />
+                        android:textSize="@dimen/text_size_medium1" />
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

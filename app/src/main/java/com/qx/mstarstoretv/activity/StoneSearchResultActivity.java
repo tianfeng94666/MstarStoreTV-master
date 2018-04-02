@@ -157,22 +157,17 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
         Intent intent = getIntent();
         openType = intent.getIntExtra("openType", 0);
         itemId = intent.getStringExtra("itemId");
-        orderId=intent.getStringExtra("orderId");
+        orderId = intent.getStringExtra("orderId");
         type = intent.getIntExtra("type", 0);
         Bundle stoneBundle = null;
         Bundle bundle = intent.getBundleExtra("stoneInfo");
         stoneSearchInfo = (StoneSearchInfo) bundle.getSerializable("searchStoneInfo");
         stoneSearchInfoResult = (StoneSearchInfoResult) getLastNonConfigurationInstance();
-//        if(Global.isShowPopup!=0&&(stoneSearchInfo.getWeight()==null||stoneSearchInfo.getWeight().isEmpty())){
-//            stoneSearchInfo.setWeight(Global.ring.getRingWeightRange().getValue()!=null?Global.ring.getRingWeightRange().getValue():"");
-//
-//        }
         if (stoneSearchInfoResult != null) {
             setXListview(stoneSearchInfoResult);
         } else {
             loadNetData();
         }
-
     }
 
     private void changeOrientation() {
@@ -192,7 +187,8 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
     }
 
     private void init() {
-        if (openType == 1) {
+        //来自个人定制type=11
+        if (openType == 1||type>2) {
             tvQutedPriceAll.setVisibility(View.GONE);
             tvPlaceOrder.setVisibility(View.GONE);
             tvConfirmReback.setVisibility(View.VISIBLE);
@@ -204,10 +200,11 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             tvChooseProduct.setVisibility(View.VISIBLE);
         }
 
+        tvReset2.setOnClickListener(this);
         idIgBack.setOnClickListener(this);
         lvStone.setXListViewListener(this);
         lvStone.setAutoLoadEnable(false);
-        lvStone.setPullRefreshEnable(true);
+        lvStone.setPullRefreshEnable(false);
         lvStone.setPullLoadEnable(true);
         titleText.setText("搜索结果");
         tvItemWeight.setOnClickListener(this);
@@ -216,7 +213,6 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
         tvConfirmReback.setOnClickListener(this);
         tvChooseProduct.setOnClickListener(this);
         tvComfirmStone.setOnClickListener(this);
-        tvReset2.setOnClickListener(this);
         if (isShowPrice) {
             tvPlaceOrder.setOnClickListener(this);
             tvQutedPriceAll.setOnClickListener(this);
@@ -352,6 +348,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             tvSearchTarget.setVisibility(View.GONE);
         }
 
+
         if (pullStatus == PULL_LOAD) {
             stoneSearchResultAdapter.notifyDataSetChanged();
         } else {
@@ -393,14 +390,6 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (leftPopupWindow != null) {
-            leftPopupWindow.closePopupWindow();
-        }
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_right:
@@ -431,9 +420,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
                 loadNetData();
                 break;
             case R.id.tv_place_order:
-                if (list.size() != 0) {
-                    stonePlaceOrder(stoneSearchResultAdapter.getQuotedPriceId());
-                }
+                stonePlaceOrder(stoneSearchResultAdapter.getQuotedPriceId());
                 break;
             case R.id.tv_confirm_reback:
                 rebackProductInfo();
@@ -505,11 +492,11 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
                 break;
             case 1:
                 orderby = "price_asc";
-                drawable = this.getResources().getDrawable(R.drawable.icon_sort_u);
+                drawable = this.getResources().getDrawable(R.drawable.icon_sort_d);
                 break;
             case 2:
                 orderby = "price_desc";
-                drawable = this.getResources().getDrawable(R.drawable.icon_sort_d);
+                drawable = this.getResources().getDrawable(R.drawable.icon_sort_u);
                 break;
         }
         loadNetData();
@@ -549,8 +536,6 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             intent = new Intent(this, OrderActivity.class);
             Bundle pBundle = new Bundle();
             pBundle.putString("openType", "1");
-            pBundle.putInt("type", type);
-            pBundle.putString("orderId",orderId);
             StoneSearchInfoResult.DataBean.StoneBean.ListBean listBean = list.get(seletPosition);
             pBundle.putSerializable("stone", listBean);
             intent.putExtras(pBundle);
@@ -560,6 +545,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
         } else {
             showToastReal("主石只能有一个！");
         }
+
 
     }
 
@@ -584,14 +570,20 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             showToastReal("您忘记了石头，请选择一个！");
         } else if (chooseAmount == 1) {
             Intent intent;
-            if (!isCustomized) {
-                intent = new Intent(this, StyleInfromationActivity.class);
-            } else {
-                intent = new Intent(this, SimpleStyleInfromationActivity.class);
+            //判断是否要去个人定制
+            if(type >2){
+                intent = new Intent(this, MakingActivity.class);
+            }else {
+                if (!isCustomized) {
+                    intent = new Intent(this, StyleInfromationActivity.class);
+                } else {
+                    intent = new Intent(this, SimpleStyleInfromationActivity.class);
+                }
             }
+
             Bundle pBundle = new Bundle();
             pBundle.putString("itemId", itemId);
-            pBundle.putString("orderId",orderId);
+            pBundle.putString("orderId", orderId);
             pBundle.putInt("type", type);
             pBundle.putString("openType", openType + "");
             StoneSearchInfoResult.DataBean.StoneBean.ListBean listBean = list.get(seletPosition);
@@ -600,7 +592,6 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             startActivity(intent);
             //设置切换动画，从右边进入，左边退出
             overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
-            finish();
         } else {
             showToastReal("主石只能有一个！");
         }
@@ -647,11 +638,11 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
                 break;
             case 1:
                 orderby = "weight_asc";
-                drawable = this.getResources().getDrawable(R.drawable.icon_sort_u);
+                drawable = this.getResources().getDrawable(R.drawable.icon_sort_d);
                 break;
             case 2:
                 orderby = "weight_desc";
-                drawable = this.getResources().getDrawable(R.drawable.icon_sort_d);
+                drawable = this.getResources().getDrawable(R.drawable.icon_sort_u);
                 break;
         }
         loadNetData();
