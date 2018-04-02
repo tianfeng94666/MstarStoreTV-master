@@ -166,6 +166,76 @@
 
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/rl_order"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_marginTop="1dip"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:textSize="@dimen/setting_textsize"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="订单审核"
+                    />
+
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/icon_right"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl_aear"
+                android:layout_width="wrap_content"
+                android:layout_height="65dip"
+                android:layout_marginTop="1dip"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textSize="@dimen/setting_textsize"
+                    android:text="所属区域编辑"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_aear"
+                    android:layout_toLeftOf="@+id/iv_aear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:textSize="@dimen/setting_textsize"
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:text=""
+                    />
+                <ImageView
+                    android:id="@+id/iv_aear"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/icon_right"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+            <RelativeLayout
                 android:id="@+id/rl_gold_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="65dp"

@@ -78,6 +78,26 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
     TextView tvIsShowStonePrice;
     @Bind(R.id.iv_is_show_stone_price)
     ImageView ivIsShowStonePrice;
+    @Bind(R.id.tv_is_stone_point1)
+    TextView tvIsStonePoint1;
+    @Bind(R.id.iv_stone_reduce1)
+    ImageView ivStoneReduce1;
+    @Bind(R.id.et_stones_spot1)
+    EditText etStonesSpot1;
+    @Bind(R.id.iv_stone_add1)
+    ImageView ivStoneAdd1;
+    @Bind(R.id.rl_stone_addtion1)
+    RelativeLayout rlStoneAddtion1;
+    @Bind(R.id.tv_is_stone_point2)
+    TextView tvIsStonePoint2;
+    @Bind(R.id.iv_stone_reduce2)
+    ImageView ivStoneReduce2;
+    @Bind(R.id.et_stones_spot2)
+    EditText etStonesSpot2;
+    @Bind(R.id.iv_stone_add2)
+    ImageView ivStoneAdd2;
+    @Bind(R.id.rl_stone_addtion2)
+    RelativeLayout rlStoneAddtion2;
     private boolean isShowStonePrice = SpUtils.getInstace(this).getBoolean("isShowStonePrice", true);
     private boolean isShowPrice = SpUtils.getInstace(this).getBoolean("isShowPrice", true);
     private boolean isCustomized = SpUtils.getInstace(this).getBoolean("isCustomized", true);
@@ -184,15 +204,20 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
             rlIsShowCostPrice.setVisibility(View.VISIBLE);
             rlProductAddtion.setVisibility(View.VISIBLE);
             rlStoneAddtion.setVisibility(View.VISIBLE);
+            rlStoneAddtion1.setVisibility(View.VISIBLE);
+            rlStoneAddtion2.setVisibility(View.VISIBLE);
         } else {
             rlIsShowCostPrice.setVisibility(View.GONE);
             rlProductAddtion.setVisibility(View.GONE);
             rlStoneAddtion.setVisibility(View.GONE);
+            rlStoneAddtion1.setVisibility(View.GONE);
+            rlStoneAddtion2.setVisibility(View.GONE);
         }
 
         etProductSpot.setText(settingResult.getData().getModelAddtion());
         etStonesSpot.setText(settingResult.getData().getStoneAddtion());
-
+        etStonesSpot1.setText(settingResult.getData().getStoneAddtion1());
+        etStonesSpot2.setText(settingResult.getData().getStoneAddtion2());
         initListener();
     }
 
@@ -236,7 +261,9 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
             commitAddtion(value, 0);
             Global.STONE_POINT_CHANGE = 1;
         }
-        if (!etStonesSpot.getText().toString().equals(settingResult.getData().getStoneAddtion())) {
+        boolean spot2IsChange = !etStonesSpot1.getText().toString().equals(settingResult.getData().getStoneAddtion1());
+        boolean spot3IsChange = !etStonesSpot2.getText().toString().equals(settingResult.getData().getStoneAddtion2());
+        if (!etStonesSpot.getText().toString().equals(settingResult.getData().getStoneAddtion()) || spot2IsChange || spot3IsChange) {
             String value = etStonesSpot.getText().toString();
             commitAddtion(value, 1);
             Global.STONE_POINT_CHANGE = 1;
@@ -253,6 +280,10 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
         ivProductReduce.setOnClickListener(this);
         ivStoneAdd.setOnClickListener(this);
         ivStoneReduce.setOnClickListener(this);
+        ivStoneAdd1.setOnClickListener(this);
+        ivStoneReduce1.setOnClickListener(this);
+        ivStoneAdd2.setOnClickListener(this);
+        ivStoneReduce2.setOnClickListener(this);
     }
 
     private void commitAddtion(String value, int i) {
@@ -260,7 +291,8 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
         if (i == 0) {
             url = AppURL.URL_MODIFY_ADDTION + "tokenKey=" + BaseApplication.getToken() + "&value=" + value;
         } else {
-            url = AppURL.URL_MODIFY_STONE_ADDTION + "tokenKey=" + BaseApplication.getToken() + "&value=" + value;
+            url = AppURL.URL_MODIFY_STONE_ADDTION + "tokenKey=" + BaseApplication.getToken() + "&value=" + value+
+                    "&value1="+etStonesSpot1.getText().toString()+"&value2="+etStonesSpot2.getText().toString();
         }
 
         L.e("获取个人信息" + url);
@@ -293,6 +325,8 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
     public void onClick(View v) {
         int point = Integer.parseInt(etProductSpot.getText().toString());
         int stonePoint = Integer.parseInt(etStonesSpot.getText().toString());
+        int stonePoint1 = Integer.parseInt(etStonesSpot1.getText().toString());
+        int stonePoint2 = Integer.parseInt(etStonesSpot2.getText().toString());
         switch (v.getId()) {
             case R.id.iv_product_add:
                 ++point;
@@ -313,6 +347,26 @@ public class EncryptionSettingsActivity extends Activity implements View.OnClick
                     --stonePoint;
                 }
                 etStonesSpot.setText(stonePoint + "");
+                break;
+            case R.id.iv_stone_add1:
+                ++stonePoint1;
+                etStonesSpot1.setText(stonePoint1 + "");
+                break;
+            case R.id.iv_stone_reduce1:
+                if (stonePoint1 > 1) {
+                    --stonePoint1;
+                }
+                etStonesSpot1.setText(stonePoint1 + "");
+                break;
+            case R.id.iv_stone_add2:
+                ++stonePoint2;
+                etStonesSpot2.setText(stonePoint2 + "");
+                break;
+            case R.id.iv_stone_reduce2:
+                if (stonePoint2 > 1) {
+                    --stonePoint2;
+                }
+                etStonesSpot2.setText(stonePoint2 + "");
                 break;
         }
     }

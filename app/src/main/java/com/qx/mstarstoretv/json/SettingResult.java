@@ -1,6 +1,9 @@
 package com.qx.mstarstoretv.json;
 
+import com.qx.mstarstoretv.bean.Type;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/14 0014.
@@ -68,11 +71,56 @@ public class SettingResult implements Serializable{
         private int isMasterAccount;
         private int isShowOriginalPrice;
         private int isShowPrice;
+        private int memberAreaId;
         private String modelAddtion;
         private String phone;
         private String stoneAddtion;
+        private String stoneAddtion1;
+        private String stoneAddtion2;
         private String userName;
         private String address;
+        private String userArea;
+        private List<Type> memberArealist;
+
+        public int getMemberAreaId() {
+            return memberAreaId;
+        }
+
+        public void setMemberAreaId(int memberAreaId) {
+            this.memberAreaId = memberAreaId;
+        }
+
+        public String getUserArea() {
+            return userArea;
+        }
+
+        public void setUserArea(String userArea) {
+            this.userArea = userArea;
+        }
+
+        public List<Type> getMemberArealist() {
+            return memberArealist;
+        }
+
+        public void setMemberArealist(List<Type> memberArealist) {
+            this.memberArealist = memberArealist;
+        }
+
+        public String getStoneAddtion1() {
+            return stoneAddtion1;
+        }
+
+        public void setStoneAddtion1(String stoneAddtion1) {
+            this.stoneAddtion1 = stoneAddtion1;
+        }
+
+        public String getStoneAddtion2() {
+            return stoneAddtion2;
+        }
+
+        public void setStoneAddtion2(String stoneAddtion2) {
+            this.stoneAddtion2 = stoneAddtion2;
+        }
 
         public String getAddress() {
             return address;

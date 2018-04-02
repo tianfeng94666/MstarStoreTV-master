@@ -7,16 +7,13 @@ import com.qx.mstarstoretv.utils.UIUtils;
  * Created by Administrator on 2016/9/21.
  */
 public class AppURL {
-//     static String QxVersion = "&QxVersion="+ "beta"+"&";
-    static String QxVersion = "QxVersion="+ UIUtils.getContext().getResources().getString(R.string.app_version)+"&";
-//    static String QxVersion = "QxVersion="+ "beta1.2"+"&"+"";
+    //     static String QxVersion = "&QxVersion="+ "beta"+"&";
+    static String QxVersion = "QxVersion="+ UIUtils.getResources().getString(R.string.app_version)+"&";
+    //    static String QxVersion = "QxVersion="+ "beta1.2"+"&"+"";
     /*"http://192.168.1.240:9112/api/Aproxy/*/
     private static String baseUrl = "http://appapi1.fanerweb.com/api/aproxy/";
-    //测试 http://appapi1.fanerweb.com/api/Aproxy/
-    private static String baseUrl1 = "http://appapi.fanerweb.com/api/aproxy/";
     // private static String baseUrl="http://192.168.1.240:9112/api/Aproxy/";
     public static String URL_LOGIN = baseUrl + "userLoginDo?"+QxVersion;
-
 
     public static String URL_REGISTER = baseUrl + "userRegisterDo?"+QxVersion;
 
@@ -126,7 +123,7 @@ public class AppURL {
     public static String URL_ORDER_DELETE = baseUrl + "OrderCurrentDeleteModelItemDo?"+QxVersion;
 
     //审核页跳转订单页
-   // ?itemId=3&tokenKey=10b588002228fa805231a59bb7976bf4
+    // ?itemId=3&tokenKey=10b588002228fa805231a59bb7976bf4
     public static String URL_ORDER_WAIT_DELETE = baseUrl + "ModelOrderWaitCheckDetailDeleteModelItemDo?"+QxVersion;
     // ?itemId=1&tokenKey=10b588002228fa805231a59bb7976bf4
 
@@ -136,11 +133,11 @@ public class AppURL {
     public static String URL_ORDER_SUBMIT = baseUrl + "OrderCurrentSubmitDo?"+QxVersion;
 
     /*获取单个石头价格*/
-   // GetOrderPricePageList?tokenKey=944df2f27ffce557042887589986c193&cpage=1&purityId=1&qualityId=1
+    // GetOrderPricePageList?tokenKey=944df2f27ffce557042887589986c193&cpage=1&purityId=1&qualityId=1
     public static String URL_ORDER_PRICE = baseUrl + "GetOrderPricePageList?"+QxVersion;
 
-    /*定金页价格修改*/
-   // ?purityId=1&qualityId=1&orderId=13&tokenKey=10b588002228fa805231a59bb7976bf4
+    /*定金页价格,成色，质量等级修改*/
+    // ?purityId=1&qualityId=1&orderId=13&tokenKey=10b588002228fa805231a59bb7976bf4
     public static String URL_WATI_ORDER_PRICE = baseUrl + "ModelOrderWaitCheckModifyGetOrderPricePageListDo?";
     /*订单详情修改地址*/
     // ?purityId=1&qualityId=1&orderId=13&tokenKey=10b588002228fa805231a59bb7976bf4
@@ -156,7 +153,7 @@ public class AppURL {
     public static String URL_WATI_ORDER_MODIINFO = baseUrl + "ModelOrderWaitCheckDetailModifyInfoDo?"+QxVersion;
 
     /*审核页面挑战取消订单*/
-   // ?orderId=10&tokenKey=10b588002228fa805231a59bb7976bf4
+    // ?orderId=10&tokenKey=10b588002228fa805231a59bb7976bf4
     public static String URL_ORDER_WAIT_CANCEL = baseUrl + "ModelOrderWaitCheckCancelDo?"+QxVersion;
 
 
@@ -183,7 +180,7 @@ public class AppURL {
 
     /*1.1.2.4生产进度*/
     public static String URL_MODELPRODUCE_PROGRESS=baseUrl+"ModelOrderProduceDetailShowRateProgressPage?"+QxVersion;
-   // ?tokenKey=509e15ec5b23808d098ecaf1f533c7de&orderNum=AP2016121617116
+    // ?tokenKey=509e15ec5b23808d098ecaf1f533c7de&orderNum=AP2016121617116
 
 
     /*1.1.2验证输入的规格*/
@@ -337,6 +334,7 @@ public class AppURL {
      */
     public static String URL_MODIFY_STONE_ADDTION =baseUrl + "modifyUserStoneAddtionDo?"+QxVersion;
 
+
     /**
      * 获取默认地址
      *http://appapi1.fanerweb.com/api/Aproxy/InitDataForQxzx?tokenKey=be5fc01f10a42d5d8d5d4537ed808bad&QxVersion=1.7
@@ -353,10 +351,114 @@ public class AppURL {
      * getUpdateVersionForMstar
      */
     public static String URL_GET_UPDATE_VERSION="http://appapi1.fanerweb.com/api/Public/" + "getUpdateVersionForMstar?";
+
     /**
      * 获取金价界面产品
      */
     public static String URL_GOLD_PRODUCT=baseUrl + "modelListForScreenAd?"+QxVersion;
+    /**
+     * 通过款号获取产品详情
+     *http://appapi1.fanerweb.com/api/Aproxy/InitDataForQxzx?tokenKey=be5fc01f10a42d5d8d5d4537ed808bad&QxVersion=1.7
+     */
+    public static String URL_GET_PRODUCTINFO_BY_MODENUM =baseUrl + "ModelDetailPageGetInfoByModelNum?"+QxVersion;
+    /**
+     * 	新建定制详情页
+     */
+    public static String URL_GET_PART =baseUrl + "CreateCustomItem?"+QxVersion;
+    /**
+     * 3.2	获取配件列表页(带选择后的产品信息)
+     */
+    public static String URL_GET_PART_SOURCE =baseUrl + "CustomPartsList?"+QxVersion;
+    /**
+     * http://appapi1.fanerweb.com/api/aproxy/OrderCurrentDoModelItemForCustomDo?tokenKey=7ed5b95366a465ab65a2a66c283d6e9d&productId=104930&number=1&handSize=10&QxVersion=1.8
+     添加到当前订单
+     */
+    public static String URL_PERSON_ADD_ORDER= baseUrl+ "OrderCurrentDoModelItemForCustomDo?"+QxVersion;
+    /**
+     * http://appapi1.fanerweb.com/api/aproxy/OrderListCustomPage?tokenKey=7ed5b95366a465ab65a2a66c283d6e9d&QxVersion=1.8
+     获取订单列表
+     */
+    public static String URL_PERSON_GET_ORDER_LIST= baseUrl+ "OrderListCustomPage?"+QxVersion;
+    /**
+     * http://appapi1.fanerweb.com/api/aproxy/CustomDetailPageForCurrentOrderEditPage?tokenKey=7ed5b95366a465ab65a2a66c283d6e9d&itemId=13390&QxVersion=1.8
+     当前订单页面修改款号转到详情页
+     */
+    public static String URL_PERSON_ORDER_INFOMATION= baseUrl+ "CustomDetailPageForCurrentOrderEditPage?"+QxVersion;
+    /**
+     * http://appapi1.fanerweb.com/api/aproxy/OrderCurrentEditModelItemForCustomDo?tokenKey=7ed5b95366a465ab65a2a66c283d6e9d&itemId=13390&number=2&number=1&handSize=2.5&QxVersion=1.8
+     当前订单页面确定修改款号确定修改
+     */
+    public static String URL_PERSON_EDIT_ORDER= baseUrl+ "OrderCurrentEditModelItemForCustomDo?"+QxVersion;
+    /**
+     * http://appapi1.fanerweb.com/api/aproxy/OrderCurrentSubmitCustomDo?tokenKey=7ed5b95366a465ab65a2a66c283d6e9d&purityId=49&customerID=23651&QxVersion=1.8
+     生成订单
+     */
+    public static String URL_PERSON_ORDER= baseUrl+ "OrderCurrentSubmitCustomDo?"+QxVersion;
+    /**
+     * http://appapi1.fanerweb.com/api/aproxy/CustomDetailPageForWaitCheckEditPage?tokenKey=7ed5b95366a465ab65a2a66c283d6e9d&itemId=13390&QxVersion=1.8
+     待审核页面修改款号转到详细页
+     */
+    public static String URL_PERSON_ORDER_FROM_WAIT_TO_INFOMATION= baseUrl+ "CustomDetailPageForWaitCheckEditPage?"+QxVersion;
+    /**
+     * http://appapi1.fanerweb.com/api/aproxy/CustomDetailPageForWaitCheckEditDo?tokenKey=7ed5b95366a465ab65a2a66c283d6e9d&itemId=13390&productId=104929&handSize=2.5&number=4&QxVersion=1.8
+     待审核页面修改款号确定修改
+     */
+    public static String URL_PERSON_ORDER_FROM_WAIT_TO_INFOMATION_EDIT= baseUrl+ "CustomDetailPageForWaitCheckEditDo?"+QxVersion;
+    /**
+     * http://appapi1.fanerweb.com/api/aproxy/CustomDetailPageForGetSelectReturnPage?QxVersion=1.8&partSort=1&selectPids=104928,,104923&tokenKey=1258d68f188af7d84ccb6a2c5fb91bd4
+     个人定制单个删除
+     */
+    public static String URL_PERSON_ORDER_SINGLE_DELETE= baseUrl+ "CustomDetailPageForGetSelectReturnPage?"+QxVersion;
+    /**
+     * 退出登入
+     */
+    public static String URL_EXIT= baseUrl+ "userLoginOutDo?"+QxVersion;
+    /**
+     * //注册页面数据区域
+     http://appapi1.fanerweb.com/api/aproxy/userRegisterPage?QxVersion=1.8
+     */
+    public static String URL_GET_PLACE= baseUrl+ "userRegisterPage?"+QxVersion;
+    /**
+     * //我的管理页面修改区域
+     http://appapi1.fanerweb.com/api/aproxy/userModifyuserAreaDo?memberAreaId=7&QxVersion=1.8&tokenKey=992b7545812ae694ffb4e735b22f4e81
+     */
+    public static String URL_GET_PLACE_CHANGE= baseUrl+ "userModifyuserAreaDo?"+QxVersion;
+    /**
+     * //二维码获取产品
+     http://appapi1.fanerweb.com/api/aproxy/modelListPageForScanCode?QxVersion=1.9&tokenKey=992b7545812ae694ffb4e735b22f4e81&keyword=Z-D52286A
+
+     */
+    public static String URL_GET_PRODUCT_BYCODE= baseUrl+ "modelListPageForScanCode?"+QxVersion;
+    /**
+     * //二维码获取订单详情
+     http://appapi1.fanerweb.com/api/aproxy/ModelDetailPageForSCanCode?QxVersion=1.9&tokenKey=992b7545812ae694ffb4e735b22f4e81&keyword=Z-D52286A
+     */
+    public static String URL_GET_PRODUCTINFO_BYCODE= baseUrl+ "ModelDetailPageForSCanCode?"+QxVersion;
+    /**
+     * 扫码界面信息
+     * http://appapi1.fanerweb.com/api/aproxy/ModelDetailSimplify?QxVersion=2.0&tokenKey=992b7545812ae694ffb4e735b22f4e81
+     */
+    public static String URL_GET_MODELDETAIL_FORSCAN= baseUrl+ "ModelDetailSimplify?"+QxVersion;
+    /**
+     * 扫码后获得的信息
+     * http://appapi1.fanerweb.com/api/aproxy/ModelDetailPageGetInfoByModelNumSimplify?QxVersion=2.0&tokenKey=992b7545812ae694ffb4e735b22f4e81&modelNum=A13426A
+     */
+    public static String URL_GET_MODELDETAIL_FORSCAN_INFO= baseUrl+ "ModelDetailPageGetInfoByModelNumSimplify?"+QxVersion;
+    /**
+     * 扫码提交到当前订单
+     * http://appapi1.fanerweb.com/api/aproxy/OrderCurrentDoModelItemForAutoStoneDo?QxVersion=2.0&tokenKey=992b7545812ae694ffb4e735b22f4e81&productId=101164&number=1&modelPurityId=6
+     */
+    public static String URL_GET_MODELDETAIL_FORSCAN_COMMIT_CURRENT_ORDER= baseUrl+ "OrderCurrentDoModelItemForAutoStoneDo?"+QxVersion;
+    /**
+     * 提交生成订单
+     * http://appapi1.fanerweb.com/api/aproxy/OrderCurrentSubmitsDo?QxVersion=2.0&addressId=0&customerID=23651&itemId=15809|15781|15780&purityId=8&qualityId=1&tokenKey=992b7545812ae694ffb4e735b22f4e81
+     */
+    public static String URL_GET_MODELDETAIL_FORSCAN_COMMIT_ORDER= baseUrl+ "OrderCurrentSubmitsDo?"+QxVersion;
+    /**
+     * 当前订单批量修改成色
+     * http://appapi1.fanerweb.com/api/aproxy/BathModifyPurityDo?QxVersion=2.0&itemIds=15809|15780&purityId=4&tokenKey=992b7545812ae694ffb4e735b22f4e81
+     */
+    public static String URL_GET_MODELDETAIL_FORSCAN_MODIFY_PURITY= baseUrl+ "BathModifyPurityDo?"+QxVersion;
 }
 
 

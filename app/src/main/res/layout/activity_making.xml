@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_headview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.qx.mstarstoretv.viewutils.FlyBanner
+                android:id="@+id/flybanner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_recyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_part"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:paddingBottom="40dp"></android.support.v7.widget.RecyclerView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_alignTop="@+id/ll_finish"
+                    android:background="@color/color_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true">
+
+                    <TextView
+                        android:id="@+id/tv_reset"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_weight="1"
+                        android:background="@color/theme_bg"
+                        android:gravity="center"
+                        android:text="重置"
+                        android:textColor="@color/text_color" />
+
+                    <TextView
+                        android:id="@+id/tv_finish"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="完成"
+                        android:textColor="@color/text_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_after_finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <com.qx.mstarstoretv.viewutils.CustomselectStringButton
+                        android:id="@+id/tv_choose_handsize"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/theme_bg"
+                        android:textSize="@dimen/text_size_small_medium" />
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"
+                        android:background="@color/color_line" />
+
+                    <TextView
+                        android:id="@+id/tv_buy"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/theme_red"
+                        android:gravity="center"
+                        android:text="购买"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_small_medium" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/id_ig_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="5dp"
+        android:padding="10dip"
+        android:src="@drawable/icon_back_white" />
+</RelativeLayout>

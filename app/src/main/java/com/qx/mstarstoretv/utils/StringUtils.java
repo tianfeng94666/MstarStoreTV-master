@@ -29,7 +29,7 @@ public class StringUtils {
 	}
 
 
-     /*去除空格*/
+	/*去除空格*/
 	public static String replaceBlank(String str) {
 		String dest = "";
 		if (str!=null) {
@@ -56,7 +56,7 @@ public class StringUtils {
 	public static String[] getStringArray(int arrayId){
 		return UIUtils.getContext().getResources().getStringArray(arrayId);
 	}
-	
+
 	/** 判断字符串是否有值，如果为null或者是空字符串或者只有空格或者为"null"字符串，则返回true，否则则返回false */
 	public static boolean isEmpty(String value) {
 		if (value != null && !"".equalsIgnoreCase(value.trim()) && !"null".equalsIgnoreCase(value.trim())) {
@@ -113,9 +113,9 @@ public class StringUtils {
 //	}
 //
 	/**
-	 * 
+	 *
 	 *  Function: 判断多个字符串
-	 * 
+	 *
 	 *  @author YangShao 2015年7月16日 下午3:42:32
 	 *  @param agrs
 	 *  @return
@@ -235,47 +235,47 @@ public class StringUtils {
 		}
 		return size;
 	}
-	
-	  public static short[] convertToShort(int i)   
-	    {   
-	        short[] a=new short[2];   
-	        a[0] = (short) (i & 0x0000ffff);          //将整型的低位取出,   
-	        a[1] = (short) (i >> 16);                     //将整型的高位取出.   
-	        return a;   
-	    }   
-	
-	  public static byte[] short2Byte(short a){  
-	        byte[] b = new byte[2];  
-	        b[0] = (byte) (a >> 8);  
-	        b[1] = (byte) (a);  
-	        return b;  
-	    }  
-	  
-	  public static byte[] shortToByteArray(short s) {
-		  byte[] shortBuf = new byte[2];
-		  for(int i=0;i<2;i++) {
-		     int offset = (shortBuf.length - 1 -i)*8;
-		     shortBuf[i] = (byte)((s>>>offset)&0xff);
-		  }
-		  return shortBuf;
-		 }
-	  
-	  /** 
-	     * 注释：int到字节数组的转换！ 
-	     * 
-	     * @param number 
-	     * @return 
-	     */ 
-	    @SuppressLint("UseValueOf")
-		public static byte[] intToByte(int number) { 
-	        int temp = number; 
-	        byte[] b = new byte[4]; 
-	        for (int i = 0; i < b.length; i++) { 
-	            b[i] = new Integer(temp & 0xff).byteValue();// 
-	            temp = temp >> 8; // 向右移8位 
-	        } 
-	        return b; 
-	    }
+
+	public static short[] convertToShort(int i)
+	{
+		short[] a=new short[2];
+		a[0] = (short) (i & 0x0000ffff);          //将整型的低位取出,   
+		a[1] = (short) (i >> 16);                     //将整型的高位取出.   
+		return a;
+	}
+
+	public static byte[] short2Byte(short a){
+		byte[] b = new byte[2];
+		b[0] = (byte) (a >> 8);
+		b[1] = (byte) (a);
+		return b;
+	}
+
+	public static byte[] shortToByteArray(short s) {
+		byte[] shortBuf = new byte[2];
+		for(int i=0;i<2;i++) {
+			int offset = (shortBuf.length - 1 -i)*8;
+			shortBuf[i] = (byte)((s>>>offset)&0xff);
+		}
+		return shortBuf;
+	}
+
+	/**
+	 * 注释：int到字节数组的转换！ 
+	 *
+	 * @param number
+	 * @return
+	 */
+	@SuppressLint("UseValueOf")
+	public static byte[] intToByte(int number) {
+		int temp = number;
+		byte[] b = new byte[4];
+		for (int i = 0; i < b.length; i++) {
+			b[i] = new Integer(temp & 0xff).byteValue();// 
+			temp = temp >> 8; // 向右移8位 
+		}
+		return b;
+	}
 	public static boolean isNumeric(String str){
 		for (int i = str.length();--i>=0;){
 			if (!Character.isDigit(str.charAt(i))){
@@ -283,5 +283,13 @@ public class StringUtils {
 			}
 		}
 		return true;
+	}
+
+	public static String isEmptyReturnString(String value) {
+		if (value != null && !"".equalsIgnoreCase(value.trim()) && !"null".equalsIgnoreCase(value.trim())) {
+			return value;
+		} else {
+			return "0";
+		}
 	}
 }

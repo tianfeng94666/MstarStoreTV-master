@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.Context;
@@ -29,10 +30,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,10 +50,13 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.qx.mstarstoretv.R;
+import com.qx.mstarstoretv.adapter.BaseViewHolder;
+import com.qx.mstarstoretv.adapter.CommonAdapter;
 import com.qx.mstarstoretv.base.AppURL;
 import com.qx.mstarstoretv.base.BaseActivity;
 import com.qx.mstarstoretv.base.BaseApplication;
 import com.qx.mstarstoretv.base.Global;
+import com.qx.mstarstoretv.bean.Type;
 import com.qx.mstarstoretv.dialog.ImageInitiDialog;
 import com.qx.mstarstoretv.json.SettingResult;
 import com.qx.mstarstoretv.net.ImageLoadOptions;
@@ -65,7 +71,6 @@ import com.qx.mstarstoretv.viewutils.BitmapUtils;
 import com.qx.mstarstoretv.viewutils.CircleImageView;
 
 import java.io.File;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,6 +142,16 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     TextView tvPicInto;
     @Bind(R.id.rl_pic_setting)
     RelativeLayout rlPicSetting;
+    @Bind(R.id.tv_order)
+    TextView tvOrder;
+    @Bind(R.id.rl_order)
+    RelativeLayout rlOrder;
+    @Bind(R.id.tv_aear)
+    TextView tvAear;
+    @Bind(R.id.iv_aear)
+    ImageView ivAear;
+    @Bind(R.id.rl_aear)
+    RelativeLayout rlAear;
 
 
     private LayoutInflater inflater;
@@ -147,11 +162,15 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     private int PRICE_TYPE = 0;
     private SettingResult settingResult;
     private AlertDialog dialog;
+    String userName, phone, headPic, address;
     private static final int PICK_FROM_CAMERA = 1;
     private static final int PICK_FROM_PHOTO = 2;
     private static final int CROP_PHOTO = 3;
     private static final int VIDEO_PATH = 4;
     private static final int PIC_PATH = 5;
+    private List<Type> aearList;
+    private String aearName;
+    private String memberAreaId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,9 +182,15 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         titles = new String[]{getString(R.string.updatepwd), getString(R.string.update_phone), getString(R.string.adress_manager)};
         context = this;
         ButterKnife.bind(this);
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         loadNetData();
         initViews();
-
     }
 
     public void onBack(View view) {
@@ -184,11 +209,113 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             }
         });
         rlEncryptionSetting.setOnClickListener(this);
+        rlOrder.setOnClickListener(this);
+        rlAear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (aearList != null) {
+                    showChooseAearDialog(aearList);
+                }
+            }
+        });
+        tvAear.setText(aearName);
+    }
 
+    /**
+     * 显示选择区域对话框
+     */
+    private void showChooseAearDialog(final List<Type> list) {
+        memberAreaId = null;
+        View view = View.inflate(this, R.layout.list_itme, null);
+        ListView listView = (ListView) view.findViewById(R.id.lv_aear);
+        TextView tvComfirm = (TextView) view.findViewById(R.id.tv_comfirm);
+        TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
+        TextView tvCancle = (TextView) view.findViewById(R.id.tv_cancle);
+        tvCancle.setVisibility(View.VISIBLE);
+        CommonAdapter commonAdapter = new CommonAdapter<Type>(list, R.layout.item_gv_text) {
+            @Override
+            public void convert(int position, BaseViewHolder helper, Type item) {
+                helper.setText(R.id.tv_item_text, list.get(position).getTitle());
+            }
+        };
+        listView.setAdapter(commonAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                memberAreaId = list.get(position).getId();
+                aearName = list.get(position).getTitle();
+            }
+        });
+
+        // 构造对话框
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        tvTitle.setText("请选择该用户所属区域");
+        builder.setView(view);
+        final Dialog noticeDialog = builder.create();
+        tvComfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (commitAear()) {
+                    tvAear.setText(aearName);
+                    noticeDialog.dismiss();
+                }
+            }
+        });
+        tvCancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                noticeDialog.dismiss();
+            }
+        });
+        noticeDialog.setCanceledOnTouchOutside(false);
+        noticeDialog.show();
+    }
+
+    private boolean commitAear() {
+        boolean isOk = true;
+        if (StringUtils.isEmpty(memberAreaId)) {
+            showToastReal("所属区域未选择");
+            return false;
+        }
+        String url = AppURL.URL_GET_PLACE_CHANGE + "tokenKey=" + BaseApplication.getToken() + "&memberAreaId=" + memberAreaId;
+        L.e(url);
+        VolleyRequestUtils.getInstance().getCookieRequest(this, url, new VolleyRequestUtils.HttpStringRequsetCallBack() {
+            @Override
+            public void onSuccess(String result) {
+                L.e(result);
+                Gson gson = new Gson();
+                int error = gson.fromJson(result, JsonObject.class).get("error").getAsInt();
+                L.e("error" + error);
+                if (error == 0) {
+                    L.e("成功");
+                    showToastReal("所属区域选择成功");
+                }
+                if (error == 1) {
+                    String message = gson.fromJson(result, JsonObject.class).get("message").getAsString();
+                    ToastManager.showToastReal(message);
+                    L.e(message);
+                }
+                if (error == 2) {
+                    L.e("重新登录");
+                }
+                if (error == 3) {
+                    L.e("未审核");
+                } else {
+                    L.e("操作失败");
+                }
+            }
+
+            @Override
+            public void onFail(String fail) {
+
+            }
+
+        });
+        return true;
     }
 
 
-    String userName, phone, headPic, address;
+
 
     public void loadNetData() {
         String url = AppURL.URL_USER_MODIFY + "tokenKey=" + BaseApplication.getToken();
@@ -210,8 +337,8 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                             phone = settingResult.getData().getPhone();
                             headPic = settingResult.getData().getHeadPic();
                             address = settingResult.getData().getAddress();
-
-
+                            aearList = settingResult.getData().getMemberArealist();
+                            aearName = settingResult.getData().getUserArea();
                             L.e("userName:" + userName + "phone" + phone + "address:" + address);
                             initContent(userName, headPic, phone, address);
                         }
@@ -275,7 +402,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void onClick(View view) {
                 BaseApplication.spUtils.saveString(SpUtils.key_tokenKey, "");
-                Global.ring =null;
+                Global.ring = null;
                 openActivity(LoginActivity.class, null);
             }
         });
@@ -376,7 +503,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 break;
             case VIDEO_PATH:
                 Uri uri = data.getData();
-                String path = getPath( uri);
+                String path = getPath(uri);
                 showToastReal("你选中的视频路径：" + path);
                 SpUtils.getInstace(this).saveString("videoPath", path);
                 break;
@@ -460,60 +587,61 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         }
         return null;
     }
+
     /**
-           * Get the value of the data column for this Uri. This is useful for
-           * MediaStore Uris, and other file-based ContentProviders.
-           *
-           * @param context       The context.
-           * @param uri           The Uri to query.
-           * @param selection     (Optional) Filter used in the query.
-           * @param selectionArgs (Optional) Selection arguments used in the query.
-           * @return The value of the _data column, which is typically a file path.
-           */
-     public String getDataColumn(Context context, Uri uri, String selection,
-                                 String[] selectionArgs) {
+     * Get the value of the data column for this Uri. This is useful for
+     * MediaStore Uris, and other file-based ContentProviders.
+     *
+     * @param context       The context.
+     * @param uri           The Uri to query.
+     * @param selection     (Optional) Filter used in the query.
+     * @param selectionArgs (Optional) Selection arguments used in the query.
+     * @return The value of the _data column, which is typically a file path.
+     */
+    public String getDataColumn(Context context, Uri uri, String selection,
+                                String[] selectionArgs) {
 
-                 Cursor cursor = null;
-                 final String column = "_data";
-                 final String[] projection = {column};
+        Cursor cursor = null;
+        final String column = "_data";
+        final String[] projection = {column};
 
-                 try {
-                         cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
-                                         null);
-                         if (cursor != null && cursor.moveToFirst()) {
-                                 final int column_index = cursor.getColumnIndexOrThrow(column);
-                                 return cursor.getString(column_index);
-                             }
-                     } finally {
-                         if (cursor != null)
-                                 cursor.close();
-                     }
-                 return null;
-             }
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
+                    null);
+            if (cursor != null && cursor.moveToFirst()) {
+                final int column_index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getString(column_index);
+            }
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return null;
+    }
 
-             /**
-       * @param uri The Uri to check.
-       * @return Whether the Uri authority is ExternalStorageProvider.
-       */
-             public boolean isExternalStorageDocument(Uri uri) {
-                 return "com.android.externalstorage.documents".equals(uri.getAuthority());
-             }
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is ExternalStorageProvider.
+     */
+    public boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
 
-             /**
-       * @param uri The Uri to check.
-       * @return Whether the Uri authority is DownloadsProvider.
-       */
-             public boolean isDownloadsDocument(Uri uri) {
-                 return "com.android.providers.downloads.documents".equals(uri.getAuthority());
-             }
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is DownloadsProvider.
+     */
+    public boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
 
-             /**
-       * @param uri The Uri to check.
-       * @return Whether the Uri authority is MediaProvider.
-       */
-             public boolean isMediaDocument(Uri uri) {
-                 return "com.android.providers.media.documents".equals(uri.getAuthority());
-             }
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is MediaProvider.
+     */
+    public boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
 
     private void doCrop() {
         Intent intent = new Intent("com.android.camera.action.CROP");
@@ -560,6 +688,9 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.rl_pic_setting:
                 setPicPath();
+                break;
+            case R.id.rl_order:
+                openActivity(OrderExamineActivity.class, null);
                 break;
         }
     }
@@ -611,6 +742,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     }
                 })
                 .show();
+        dialog.getWindow().setLayout(UIUtils.sp2px(600), LinearLayout.LayoutParams.WRAP_CONTENT);
     }
 
     private boolean passwordIsRight(String string) {

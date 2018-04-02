@@ -1,5 +1,9 @@
 package com.qx.mstarstoretv.json;
 
+import com.qx.mstarstoretv.bean.Type;
+
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/8/15 0015.
  */
@@ -58,6 +62,33 @@ public class GetAddressResult {
 
         private AddressEntity address;
         private CustomerEntity DefaultCustomer;
+        private String IsMasterAccount;
+        private int IsHaveSelectArea;
+        private List<Type> memberArealist;
+
+        public List<Type> getMemberArealist() {
+            return memberArealist;
+        }
+
+        public void setMemberArealist(List<Type> memberArealist) {
+            this.memberArealist = memberArealist;
+        }
+
+        public int getIsHaveSelectArea() {
+            return IsHaveSelectArea;
+        }
+
+        public void setIsHaveSelectArea(int isHaveSelectArea) {
+            IsHaveSelectArea = isHaveSelectArea;
+        }
+
+        public String getIsMasterAccount() {
+            return IsMasterAccount;
+        }
+
+        public void setIsMasterAccount(String isMasterAccount) {
+            IsMasterAccount = isMasterAccount;
+        }
 
         public AddressEntity getAddress() {
             return address;
@@ -74,8 +105,6 @@ public class GetAddressResult {
         public void setDefaultCustomer(CustomerEntity DefaultCustomer) {
             this.DefaultCustomer = DefaultCustomer;
         }
-
-
 
 
     }

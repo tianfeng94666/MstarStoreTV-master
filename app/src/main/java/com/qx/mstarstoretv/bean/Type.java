@@ -1,13 +1,25 @@
 package com.qx.mstarstoretv.bean;
 
-public class Type{
-        String id;
-        String typeName;
-        String content;
+import com.qx.mstarstoretv.utils.StringUtils;
 
+import java.io.Serializable;
+
+public class Type implements Serializable {
+    String id;
+    String typeName;
+    String content;
+    private String title;
     private String groupKey;
     public String value;
-        int type;
+    int type;
+
+    public String getTitle() {
+        return StringUtils.isEmpty(title)?typeName:title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getGroupKey() {
         return groupKey;
@@ -33,11 +45,11 @@ public class Type{
         this.type = type;
     }
 
-    private boolean isSelect=false;
+    private boolean isSelect = false;
 
-        public Type() {
+    public Type() {
 
-        }
+    }
 
     public String getContent() {
         return content;
@@ -60,18 +72,18 @@ public class Type{
     }
 
     public String getTypeName() {
-            return typeName;
-        }
+        return StringUtils.isEmpty(typeName)?title:typeName;
+    }
 
-        public void setTypeName(String typeName) {
-            this.typeName = typeName;
-        }
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
 
-        public boolean isSelect() {
-            return isSelect;
-        }
+    public boolean isSelect() {
+        return isSelect;
+    }
 
-        public void setSelect(boolean select) {
-            isSelect = select;
-        }
+    public void setSelect(boolean select) {
+        isSelect = select;
+    }
     }

@@ -58,14 +58,17 @@ public class LoginActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login_1);
         ButterKnife.bind(this);
+
         isNeedUpdate();
         getBackIntent();
         initView();
 
-
     }
+
+
+
     private void isNeedUpdate() {
-        String lgUrl = AppURL.URL_GET_UPDATE_VERSION + "device=" + "android"+"&version="+getResources().getString(R.string.app_version);
+        String lgUrl = AppURL.URL_GET_UPDATE_VERSION + "device=" + "android"+"&version="+getResources().getString(R.string.app_version_detail);
         L.e("netLogin" + lgUrl);
         VolleyRequestUtils.getInstance().getCookieRequest(this, lgUrl, new VolleyRequestUtils.HttpStringRequsetCallBack() {
             @Override
@@ -122,6 +125,7 @@ public class LoginActivity extends BaseActivity {
 
         Dialog noticeDialog = builder.create();
         noticeDialog.setCanceledOnTouchOutside(isNeed);
+        noticeDialog.setCancelable(isNeed);
         noticeDialog.show();
     }
     private void initView() {

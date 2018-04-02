@@ -14,18 +14,23 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.qx.mstarstoretv.R;
+import com.qx.mstarstoretv.adapter.BaseViewHolder;
+import com.qx.mstarstoretv.adapter.CommonAdapter;
 import com.qx.mstarstoretv.base.AppURL;
 import com.qx.mstarstoretv.base.BaseActivity;
 import com.qx.mstarstoretv.base.BaseApplication;
 import com.qx.mstarstoretv.base.Global;
 import com.qx.mstarstoretv.bean.Ring;
+import com.qx.mstarstoretv.bean.Type;
 import com.qx.mstarstoretv.json.CustomerEntity;
 import com.qx.mstarstoretv.json.GetAddressResult;
 import com.qx.mstarstoretv.json.MainPicResult;
@@ -33,6 +38,7 @@ import com.qx.mstarstoretv.json.VersionResult;
 import com.qx.mstarstoretv.net.VolleyRequestUtils;
 import com.qx.mstarstoretv.utils.L;
 import com.qx.mstarstoretv.utils.SpUtils;
+import com.qx.mstarstoretv.utils.StringUtils;
 import com.qx.mstarstoretv.utils.ToastManager;
 import com.qx.mstarstoretv.utils.UIUtils;
 import com.qx.mstarstoretv.viewutils.BadgeView;
@@ -73,6 +79,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView tvShowVideo;
     @Bind(R.id.tv_show_pics)
     TextView tvShowPics;
+    @Bind(R.id.iv_making)
+    TextView ivMaking;
 
     private int nowId;
     private String version;
@@ -83,6 +91,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private LeftPopupWindow leftPopupWindow;
     private CustomerEntity isDefaultCustomer;
     private boolean isCustomized;
+    private String memberAreaId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +111,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if(leftPopupWindow!=null){
+        if (leftPopupWindow != null) {
             leftPopupWindow.initPopupView();
         }
     }
@@ -120,6 +129,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     GetAddressResult getAddressResult = new Gson().fromJson(result, GetAddressResult.class);
                     if (getAddressResult.getData() == null) {
                         return;
+                    }
+                    if (getAddressResult.getData().getIsHaveSelectArea() == 0) {
+                        showChooseAearDialog(getAddressResult.getData().getMemberArealist());
                     }
                     if (Global.ring == null) {
                         Global.ring = new Ring();
@@ -147,6 +159,90 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         });
 
+    }
+
+
+    /**
+     * 显示选择区域对话框
+     */
+    private void showChooseAearDialog(final List<Type> list) {
+        memberAreaId = null;
+        View view = View.inflate(this, R.layout.list_itme, null);
+        ListView listView = (ListView) view.findViewById(R.id.lv_aear);
+        TextView tvComfirm = (TextView) view.findViewById(R.id.tv_comfirm);
+        TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
+        CommonAdapter commonAdapter = new CommonAdapter<Type>(list, R.layout.item_gv_text) {
+            @Override
+            public void convert(int position, BaseViewHolder helper, Type item) {
+                helper.setText(R.id.tv_item_text, list.get(position).getTitle());
+            }
+        };
+        listView.setAdapter(commonAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                memberAreaId = list.get(position).getId();
+            }
+        });
+
+        // 构造对话框
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        tvTitle.setText("请选择该用户所属区域");
+        builder.setView(view);
+        final Dialog noticeDialog = builder.create();
+        tvComfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (commitAear()) {
+                    noticeDialog.dismiss();
+                }
+            }
+        });
+        noticeDialog.setCanceledOnTouchOutside(false);
+        noticeDialog.show();
+    }
+
+    private boolean commitAear() {
+        boolean isOk = true;
+        if (StringUtils.isEmpty(memberAreaId)) {
+            showToastReal("所属区域未选择");
+            return false;
+        }
+        String url = AppURL.URL_GET_PLACE_CHANGE + "tokenKey=" + BaseApplication.getToken() + "&memberAreaId=" + memberAreaId;
+        L.e(url);
+        VolleyRequestUtils.getInstance().getCookieRequest(this, url, new VolleyRequestUtils.HttpStringRequsetCallBack() {
+            @Override
+            public void onSuccess(String result) {
+                L.e(result);
+                Gson gson = new Gson();
+                int error = gson.fromJson(result, JsonObject.class).get("error").getAsInt();
+                L.e("error" + error);
+                if (error == 0) {
+                    L.e("成功");
+                    showToastReal("所属区域选择成功");
+                }
+                if (error == 1) {
+                    String message = gson.fromJson(result, JsonObject.class).get("message").getAsString();
+                    ToastManager.showToastReal(message);
+                    L.e(message);
+                }
+                if (error == 2) {
+                    L.e("重新登录");
+                }
+                if (error == 3) {
+                    L.e("未审核");
+                } else {
+                    L.e("操作失败");
+                }
+            }
+
+            @Override
+            public void onFail(String fail) {
+
+            }
+
+        });
+        return true;
     }
 
     @Override
@@ -258,7 +354,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         int verCode = -1;
         try {
             verCode = context.getPackageManager().getPackageInfo(
-                    "com.qx.mstarstoreapp", 0).versionCode;
+                    "com.qx.mstarstoretv", 0).versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             Log.e("tage", e.getMessage());
         }
@@ -290,6 +386,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         ivMine.setOnClickListener(this);
         ivProduct.setOnClickListener(this);
         ivStone.setOnClickListener(this);
+        ivMaking.setOnClickListener(this);
         ivRingStone.setOnClickListener(this);
         ivStoneRing.setOnClickListener(this);
         llShowLess.setOnClickListener(this);
@@ -359,6 +456,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.tv_show_pics:
                 openActivity(PictureActivity.class, null);
+                break;
+            case R.id.iv_making:
+                openActivity(MakingActivity.class, null);
+
                 break;
         }
     }

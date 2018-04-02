@@ -27,7 +27,7 @@ public class WheelConstants {
     /**
      * 滚轮tag
      */
-    public static final String TAG = "com.qx.mstarstoreapp.viewutils.wheelview";
+    public static final String TAG = "com.qx.mstarstoretv.viewutils.wheelview";
 
     /**
      * 滚轮每一项的内边距

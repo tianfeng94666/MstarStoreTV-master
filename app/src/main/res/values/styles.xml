@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -96,6 +96,7 @@
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>
     </style>
+
     <style name="item_stone_search">
         <item name="android:width">60dp</item>
         <item name="android:height">35dp</item>
@@ -115,6 +116,7 @@
         <item name="android:layout_width">80dp
         </item>
     </style>
+
     <style name="SplashTheme" parent="AppTheme">
         <!-- 将splash图片设置在这，这样这张图片取代白屏 -->
         <item name="android:windowBackground">@drawable/first</item>
@@ -145,14 +147,19 @@
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_marginBottom">4dp</item>
     </style>
+
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">@dimen/setting_textsize</item>
     </style>
 
     <style name="MyPopupWindow_anim_style">
         <item name="android:windowEnterAnimation">@anim/in_from_right2</item>
-    <item name="android:windowExitAnimation">@anim/out_to_left</item>
-    </style>
+        <item name="android:windowExitAnimation">@anim/out_to_left</item>
 
+    </style>
+    <style name="MyPopupWindow_bottom_style">
+        <item name="android:windowEnterAnimation">@anim/enter_bottm_anim</item>
+        <item name="android:windowExitAnimation">@anim/out_bottom_anim</item>
+    </style>
 
 </resources>

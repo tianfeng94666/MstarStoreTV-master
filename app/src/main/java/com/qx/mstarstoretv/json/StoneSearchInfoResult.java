@@ -1,5 +1,7 @@
 package com.qx.mstarstoretv.json;
 
+import com.qx.mstarstoretv.utils.StringUtils;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -53,7 +55,7 @@ public class StoneSearchInfoResult extends Object implements Serializable {
         this.data = data;
     }
 
-    public static class DataBean implements Serializable{
+    public static class DataBean implements Serializable {
         /**
          * stone : {"list":[{"id":"1509","CertAuth":"","Weight":"0.3","Price":"13700","Shape":"","Color":"G","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1508","CertAuth":"","Weight":"0.33","Price":"10100","Shape":"","Color":"H","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1507","CertAuth":"","Weight":"0.5","Price":"13000","Shape":"","Color":"I","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1506","CertAuth":"","Weight":"0.25","Price":"9600","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1505","CertAuth":"","Weight":"1.02","Price":"47900","Shape":"","Color":"H","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1504","CertAuth":"","Weight":"0.41","Price":"14500","Shape":"","Color":"H","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1503","CertAuth":"GIA","Weight":"0.33","Price":"11700","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1502","CertAuth":"GIA","Weight":"0.38","Price":"12200","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1501","CertAuth":"GIA","Weight":"0.52","Price":"21700","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1500","CertAuth":"GIA","Weight":"0.3","Price":"14000","Shape":"","Color":"H","Purity":"IF","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1499","CertAuth":"GIA","Weight":"0.31","Price":"15100","Shape":"","Color":"F","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1498","CertAuth":"","Weight":"0.38","Price":"14500","Shape":"","Color":" ","Purity":"","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1497","CertAuth":"GIA","Weight":"0.5","Price":"21500","Shape":"","Color":"H","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1496","CertAuth":"GIA","Weight":"0.37","Price":"12000","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1495","CertAuth":"GIA","Weight":"0.31","Price":"13000","Shape":"","Color":"H","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1494","CertAuth":"GIA","Weight":"0.31","Price":"13000","Shape":"","Color":"H","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1493","CertAuth":"GIA","Weight":"0.38","Price":"13000","Shape":"","Color":"H","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1492","CertAuth":"GIA","Weight":"0.33","Price":"12000","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1491","CertAuth":"GIA","Weight":"0.51","Price":"19000","Shape":"","Color":"I","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1490","CertAuth":"GIA","Weight":"0.37","Price":"13000","Shape":"","Color":"H","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1489","CertAuth":"GIA","Weight":"1.02","Price":"62000","Shape":"","Color":"G","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1488","CertAuth":"GIA","Weight":"0.38","Price":"12000","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1487","CertAuth":"GIA","Weight":"0.39","Price":"12700","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1486","CertAuth":"GIA","Weight":"0.38","Price":"12700","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1485","CertAuth":"GIA","Weight":"0.36","Price":"12700","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1484","CertAuth":"GIA","Weight":"0.34","Price":"9900","Shape":"","Color":"H","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1483","CertAuth":"","Weight":"0.39","Price":"11300","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1482","CertAuth":"","Weight":"1.01","Price":"47600","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1481","CertAuth":"","Weight":"0.34","Price":"11300","Shape":"","Color":"G","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1480","CertAuth":"","Weight":"0.3","Price":"11800","Shape":"","Color":"F","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""}],"list_count":"1509","headline":["勾选","克拉","形状","颜色","净度","切工","抛光","对称","荧光","证书"]}
          */
@@ -68,7 +70,7 @@ public class StoneSearchInfoResult extends Object implements Serializable {
             this.stone = stone;
         }
 
-        public static class StoneBean implements Serializable{
+        public static class StoneBean implements Serializable {
             /**
              * list : [{"id":"1509","CertAuth":"","Weight":"0.3","Price":"13700","Shape":"","Color":"G","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1508","CertAuth":"","Weight":"0.33","Price":"10100","Shape":"","Color":"H","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1507","CertAuth":"","Weight":"0.5","Price":"13000","Shape":"","Color":"I","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1506","CertAuth":"","Weight":"0.25","Price":"9600","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1505","CertAuth":"","Weight":"1.02","Price":"47900","Shape":"","Color":"H","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1504","CertAuth":"","Weight":"0.41","Price":"14500","Shape":"","Color":"H","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1503","CertAuth":"GIA","Weight":"0.33","Price":"11700","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1502","CertAuth":"GIA","Weight":"0.38","Price":"12200","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1501","CertAuth":"GIA","Weight":"0.52","Price":"21700","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1500","CertAuth":"GIA","Weight":"0.3","Price":"14000","Shape":"","Color":"H","Purity":"IF","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1499","CertAuth":"GIA","Weight":"0.31","Price":"15100","Shape":"","Color":"F","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1498","CertAuth":"","Weight":"0.38","Price":"14500","Shape":"","Color":" ","Purity":"","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1497","CertAuth":"GIA","Weight":"0.5","Price":"21500","Shape":"","Color":"H","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1496","CertAuth":"GIA","Weight":"0.37","Price":"12000","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1495","CertAuth":"GIA","Weight":"0.31","Price":"13000","Shape":"","Color":"H","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1494","CertAuth":"GIA","Weight":"0.31","Price":"13000","Shape":"","Color":"H","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1493","CertAuth":"GIA","Weight":"0.38","Price":"13000","Shape":"","Color":"H","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1492","CertAuth":"GIA","Weight":"0.33","Price":"12000","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1491","CertAuth":"GIA","Weight":"0.51","Price":"19000","Shape":"","Color":"I","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1490","CertAuth":"GIA","Weight":"0.37","Price":"13000","Shape":"","Color":"H","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1489","CertAuth":"GIA","Weight":"1.02","Price":"62000","Shape":"","Color":"G","Purity":"VVS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1488","CertAuth":"GIA","Weight":"0.38","Price":"12000","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1487","CertAuth":"GIA","Weight":"0.39","Price":"12700","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1486","CertAuth":"GIA","Weight":"0.38","Price":"12700","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1485","CertAuth":"GIA","Weight":"0.36","Price":"12700","Shape":"","Color":"G","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1484","CertAuth":"GIA","Weight":"0.34","Price":"9900","Shape":"","Color":"H","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1483","CertAuth":"","Weight":"0.39","Price":"11300","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1482","CertAuth":"","Weight":"1.01","Price":"47600","Shape":"","Color":"H","Purity":"VVS2","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1481","CertAuth":"","Weight":"0.34","Price":"11300","Shape":"","Color":"G","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""},{"id":"1480","CertAuth":"","Weight":"0.3","Price":"11800","Shape":"","Color":"F","Purity":"VS1","Cut":"","Polishing":"","Symmetric":"","Fluorescence":""}]
              * list_count : 1509
@@ -112,7 +114,7 @@ public class StoneSearchInfoResult extends Object implements Serializable {
                 this.headline = headline;
             }
 
-            public static class ListBean implements Serializable{
+            public static class ListBean implements Serializable {
                 /**
                  * id : 1509
                  * CertAuth :
@@ -160,7 +162,7 @@ public class StoneSearchInfoResult extends Object implements Serializable {
                 }
 
                 public String getCertCode() {
-                    return CertCode;
+                    return StringUtils.isEmpty(CertCode) ? "" : CertCode;
                 }
 
                 public void setCertCode(String certCode) {
@@ -192,7 +194,7 @@ public class StoneSearchInfoResult extends Object implements Serializable {
                 }
 
                 public String getWeight() {
-                    return Weight;
+                    return StringUtils.isEmpty(Weight) ? "" : Weight;
                 }
 
                 public void setWeight(String Weight) {
@@ -208,7 +210,7 @@ public class StoneSearchInfoResult extends Object implements Serializable {
                 }
 
                 public String getShape() {
-                    return Shape;
+                    return StringUtils.isEmpty(Shape) ? "" : Shape;
                 }
 
                 public void setShape(String Shape) {
@@ -216,7 +218,7 @@ public class StoneSearchInfoResult extends Object implements Serializable {
                 }
 
                 public String getColor() {
-                    return Color;
+                    return StringUtils.isEmpty(Color) ? "" : Color;
                 }
 
                 public void setColor(String Color) {
@@ -224,7 +226,7 @@ public class StoneSearchInfoResult extends Object implements Serializable {
                 }
 
                 public String getPurity() {
-                    return Purity;
+                    return StringUtils.isEmpty(Purity) ? "" : Purity;
                 }
 
                 public void setPurity(String Purity) {
@@ -261,6 +263,11 @@ public class StoneSearchInfoResult extends Object implements Serializable {
 
                 public void setFluorescence(String Fluorescence) {
                     this.Fluorescence = Fluorescence;
+                }
+                public String changeStoneEntityToString() {
+
+                    return "类别："   +  ";形状：" + getShape() +
+                            ";颜色：" + getColor() + ";净度：" + getPurity() +  ";证书号：" + getCertCode();
                 }
             }
         }

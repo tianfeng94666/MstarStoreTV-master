@@ -6,6 +6,8 @@ import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.support.annotation.LayoutRes;
 import android.util.DisplayMetrics;
@@ -324,6 +326,32 @@ public class UIUtils {
 	public static void  setEdittextToEnd(EditText editText,String string){
 		editText.setText(string);
 		editText.setSelection(editText.getText().toString().length());
+	}
+	/**
+	 * 获取网络是否连接
+	 *
+	 * @return 连接与否
+	 */
+	public static boolean getNetConnecState(Context context) {
+		// 连接管理
+		if (context==null) {
+			return false;
+		}
+		ConnectivityManager connectMgr = (ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+
+		if (connectMgr != null) {
+			NetworkInfo[] info = connectMgr.getAllNetworkInfo();
+			if (info != null) {
+				for (int i = 0; i < info.length; i++) {
+					if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 }
 

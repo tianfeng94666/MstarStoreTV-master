@@ -12,6 +12,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.qx.mstarstoretv.base.BaseApplication;
+import com.qx.mstarstoretv.utils.ToastManager;
+import com.qx.mstarstoretv.utils.UIUtils;
 
 import org.json.JSONObject;
 
@@ -69,7 +71,9 @@ public class VolleyRequestUtils {
 
 	//！！！！！！！！get请求为了保证cookie一致  后来不要使用该方法！！！！！！！！！！
 	public  void getCookieRequest(Context context,String url,final HttpStringRequsetCallBack callback){
-
+		if(!UIUtils.getNetConnecState(context)){
+			ToastManager.showToastReal("请检查网络连接！");
+		}
 		JsonObjectRequest jsonObjectRequest = new NormalPostRequest( Request.Method.GET, url, null,
 				new Listener<JSONObject>() {
 

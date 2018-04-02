@@ -346,6 +346,13 @@
             android:windowSoftInputMode="adjustPan|stateHidden"
             />
         <activity android:name=".activity.PictureActivity"/>
+        <activity android:name=".activity.OrderExamineActivity"/>
+        <activity
+            android:name=".activity.MakingActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
     </application>
 
 </manifest>
