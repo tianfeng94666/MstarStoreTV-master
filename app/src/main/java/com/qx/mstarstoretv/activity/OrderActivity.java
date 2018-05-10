@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -129,7 +131,11 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
     String mcategory = "";   /*下啦筛选关键字*/
     String myAction = "";   /*判断是哪个页面的action*/
     private LeftPopupWindow leftPopupWindow;
-
+    private int numColumns=3;
+    private static final int WHAT_AUTO_PLAY = 1000;
+    //自动播放时间
+    private int mAutoPalyTime = 4000;
+    private int mCurrentPositon=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,7 +153,43 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
         loadNetData(getInitUrl());
     }
 
+    /**
+     * 设置自动滑动
+     */
+    private Handler mAutoPlayHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
 
+//            mCurrentPositon = mViewPager.getCurrentItem();
+            mCurrentPositon=mCurrentPositon+Global.divideAmount;
+            if(mCurrentPositon%data.size()==0){
+                idGvMenu.setSelection(mCurrentPositon%data.size());
+            }else {
+
+                idGvMenu.smoothScrollToPosition(mCurrentPositon%data.size());
+            }
+
+
+            mAutoPlayHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, mAutoPalyTime);
+
+        }
+    };
+
+
+    /**
+     * 开始播放
+     */
+    public void startAutoPlay() {
+        mCurrentPositon=0;
+        mAutoPlayHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, mAutoPalyTime);
+    }
+
+    /**
+     * 停止播放
+     */
+    public void stopAutoPlay() {
+        mAutoPlayHandler.removeMessages(WHAT_AUTO_PLAY);
+    }
     private void getDate() {
         selectStone = (StoneSearchInfoResult.DataBean.StoneBean.ListBean) getIntent().getSerializableExtra("stone");
         openType = getIntent().getStringExtra("openType");
@@ -156,6 +198,7 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Global.divideAmount = 6;
     }
 
 
@@ -347,6 +390,12 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Global.divideAmount = 6;
+    }
+
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         if (Global.isShowPopup != 0 && leftPopupWindow != null) {
@@ -413,20 +462,24 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if(Global.divideAmount==3){
+                    stopAutoPlay();
+                    mAutoPlayHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, mAutoPalyTime);
+                }
+
                 System.out.println("firstVisibleItem=" + firstVisibleItem);
                 if (firstVisibleItem == 0) {
                     firstVisibleItem = 1;
                 }
+                mCurrentPositon=firstVisibleItem;
 
                 tvPagerAmount.setText((int) (Math.ceil(firstVisibleItem / 24.0)) + "/" + (int) Math.ceil(totalAmount / 24.0));
 
             }
         });
-        if (isScreenChange()) {
-            idGvMenu.setNumColumns(6);
-        } else {
-            idGvMenu.setNumColumns(2);
-        }
+
+        idGvMenu.setNumColumns(6);
+
         idGvMenu.setAdapter(mGvAdapter);
 
         badge = new BadgeView(OrderActivity.this, idTvCurOrder);// 创建一个BadgeView对象，view为你需要显示提醒的控件
@@ -702,13 +755,22 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
                 //openActivity(ConfirmOrderActivity.class,null);
             }
         });
-
         idTvClassify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity(ClassifyActivity.class, null);
+                ++numColumns;
+                idGvMenu.setNumColumns(numColumns % 4 + 3);
+                Global.divideAmount = numColumns % 4 + 3;
+                if(Global.divideAmount==3){
+                    showToastReal("每行为3个时开启轮播");
+                    startAutoPlay();
+                }else {
+                    stopAutoPlay();
+                }
+                idGvMenu.setAdapter(mGvAdapter);
             }
         });
+
 
     }
     private void setPopupWindowDate(ModeListResult.DataEntity.ModelEntity.ModelListEntity modelListEntity) {
@@ -747,12 +809,16 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
                 holder.tv = (TextView) convertView.findViewById(R.id.name);
                 holder.llPrice = (LinearLayout) convertView.findViewById(R.id.ll_price);
                 holder.tvPrice = (TextView) convertView.findViewById(R.id.tv_sum_price);
-                holder.ig = (SquareImageView) convertView.findViewById(R.id.product_img);
+                holder.ig = (ImageView) convertView.findViewById(R.id.product_img);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
             // holder.ig.setImageResource(R.drawable.no_image);
+            ViewGroup.LayoutParams layoutParams = holder.ig.getLayoutParams();
+            layoutParams.width=UIUtils.getWindowWidth()/Global.divideAmount;
+            layoutParams.height = UIUtils.getWindowWidth() / Global.divideAmount;
+            holder.ig.setLayoutParams(layoutParams);
             holder.tv.setText(data.get(position).getTitle());
             holder.tvPrice.setText(UIUtils.stringChangeToTwoBitDouble(data.get(position).getPrice()));
             if (data.get(position).getPic() == null || !data.get(position).getPic().equals(holder.ig.getTag())) {
@@ -772,7 +838,7 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
 
         class ViewHolder {
             LinearLayout lay;
-            SquareImageView ig;
+           ImageView ig;
             TextView tv;
             TextView tvPrice;
             LinearLayout llPrice;

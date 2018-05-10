@@ -165,37 +165,39 @@ public class MakingActivity extends BaseActivity {
         if(getRingPartResult!=null){
             partsList = getRingPartResult.getData().getModelParts();
             countList = getRingPartResult.getData().getModelpartCount();
-        }
-
-        selectPids = new String[countList.size()];
-        /**
-         * 判断是否添加一个裸石选择
-         */
-        jewelStone = getRingPartResult.getData().getJewelStone();
-        ModelPartsBean stone = new ModelPartsBean();
-        if (partsAount == partsList.size()) {
-            if (jewelStone != null) {
-                stone.setTitle(jewelStone.getTotalString());
-            } else {
-                stone.setTitle("选择裸石");
-            }
-
-            partsList.add(stone);
-            String stoneAmount = "";
-            countList.add(stoneAmount);
-        } else {
-            if (selectedStoneEnity != null) {
-                if (jewelStone == null) {
-                    jewelStone = new JewelStone();
+            selectPids = new String[countList.size()];
+            /**
+             * 判断是否添加一个裸石选择
+             */
+            jewelStone = getRingPartResult.getData().getJewelStone();
+            ModelPartsBean stone = new ModelPartsBean();
+            if (partsAount == partsList.size()) {
+                if (jewelStone != null) {
+                    stone.setTitle(jewelStone.getTotalString());
+                } else {
+                    stone.setTitle("选择裸石");
                 }
-                jewelStone.setJewelStoneCode(selectedStoneEnity.getCertCode());
-                jewelStone.setJewelStoneId(selectedStoneEnity.getId());
-                jewelStone.setJewelStonePrice(selectedStoneEnity.getPrice());
-                stone.setTitle(selectedStoneEnity.changeStoneEntityToString());
-                partsList.set(partsAount, stone);
-                recycleViewPartAdapter.notifyDataSetChanged();
+
+                partsList.add(stone);
+                String stoneAmount = "";
+                countList.add(stoneAmount);
+            } else {
+                if (selectedStoneEnity != null) {
+                    if (jewelStone == null) {
+                        jewelStone = new JewelStone();
+                    }
+                    jewelStone.setJewelStoneCode(selectedStoneEnity.getCertCode());
+                    jewelStone.setJewelStoneId(selectedStoneEnity.getId());
+                    jewelStone.setJewelStonePrice(selectedStoneEnity.getPrice());
+                    stone.setTitle(selectedStoneEnity.changeStoneEntityToString());
+                    partsList.set(partsAount, stone);
+                    recycleViewPartAdapter.notifyDataSetChanged();
+                }
             }
         }
+
+
+
 
 //        if (recycleViewPartAdapter == null) {
 //            //设置item间距，30dp

@@ -7,7 +7,7 @@
               android:background="@drawable/border_white_line"
     >
 
-    <com.qx.mstarstoretv.viewutils.SquareImageView
+    <ImageView
         android:id="@+id/product_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

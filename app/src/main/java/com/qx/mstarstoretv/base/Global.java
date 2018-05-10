@@ -8,7 +8,7 @@ import com.qx.mstarstoretv.bean.Ring;
 
 public class Global {
     public static int STONE_POINT_CHANGE = 0;
-    public  static int divideAmount = 2;
+    public  static int divideAmount = 6;
     public static String APP_ID = "wx303dc6296f3aed55";
     //微信支付的类型，方式
     public  static String id;
