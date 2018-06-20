@@ -16,23 +16,25 @@
         android:layout_above="@+id/tv_websit"
         android:layout_centerHorizontal="true"
         android:text="安卓最新版"
+        android:textSize="25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
         android:layout_marginTop="4dp"
         android:id="@+id/tv_websit"
-        android:textColor="@color/theme_red"
+        android:textColor="@color/theme_color"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/iv_downlaoad"
-        android:text="网页下载点这里"
+        android:text="电视机版网页下载点这里"
         android:autoLink="web"
+        android:textSize="25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ImageView
         android:layout_marginTop="8dp"
         android:id="@+id/iv_downlaoad"
-        android:src="@drawable/ios_download"
+        android:src="@mipmap/iv_download"
         android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
 </RelativeLayout>

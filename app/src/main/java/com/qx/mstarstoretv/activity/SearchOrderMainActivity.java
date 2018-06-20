@@ -281,7 +281,7 @@ public class SearchOrderMainActivity extends BaseActivity implements ViewPager.O
         for (int i = 0; i < tabTextViews.size(); i++) {
             tabTextViews.get(i).setTextColor(getResources().getColor(R.color.text_color2));
         }
-        textView.setTextColor(getResources().getColor(R.color.theme_red));
+        textView.setTextColor(getResources().getColor(R.color.theme_color));
     }
 
     private int getScreenWidth() {

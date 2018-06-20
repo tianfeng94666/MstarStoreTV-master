@@ -85,7 +85,7 @@ public class SelectDotView extends View {
     protected void onDraw(Canvas canvas) {
         for (int i = 0; i < dotNum; i++) {
             if (i == selectDotNum) {
-                p1.setColor(mContext.getResources().getColor(R.color.theme_red));
+                p1.setColor(mContext.getResources().getColor(R.color.theme_color));
                 canvas.drawCircle(UIUtils.dip2px(RADIUS + i * DISTANCE), UIUtils.dip2px(RADIUS), UIUtils.dip2px(RADIUS), p1);
             } else {
                 p.setColor(mContext.getResources().getColor(R.color.color_black_st));

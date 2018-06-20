@@ -73,7 +73,7 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
     @Bind(R.id.textView)
     TextView textView;
     @Bind(R.id.gv_weight)
-    CustomGridView gvWeight;
+    GridView gvWeight;
     @Bind(R.id.et_weight_min)
     EditText etWeightMin;
     @Bind(R.id.et_weight_max)
@@ -93,7 +93,7 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
     @Bind(R.id.gv_shape)
     CustomGridView gvShape;
     @Bind(R.id.lv_others)
-    CustomLV lvOthers;
+    CustomGridView lvOthers;
     @Bind(R.id.tv_search)
     TextView tvSearch;
     @Bind(R.id.tv_reset)
@@ -137,7 +137,7 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_stone_storehouse1);
+        setContentView(R.layout.activity_stone_storehouse2);
         ButterKnife.bind(this);
         getDate();
         loadNetData();
@@ -194,7 +194,9 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
     private void initOthers() {
         stoneOthersAdapter = new StoneOthersAdapter(this, stoneSearchResult.getData());
         lvOthers.setAdapter(stoneOthersAdapter);
-        UIUtils.setListViewHeightBasedOnChildren(lvOthers);
+
+        lvOthers.setNumColumns(2);
+        setListViewHeightBasedOnChildren(lvOthers, 2);
     }
 
     private void initPurity() {
@@ -203,9 +205,9 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
             @Override
             public void convert(int position, BaseViewHolder helper, String item) {
                 if (purityChecks[position]) {
-                    helper.setText(R.id.tv_item_text, item, R.drawable.corners_red_bg, getResources().getColor(R.color.white));
+                    helper.setText(R.id.tv_item_text, item, R.drawable.border5_text, getResources().getColor(R.color.black));
                 } else {
-                    helper.setText(R.id.tv_item_text, item, R.drawable.corners_white_bg, getResources().getColor(R.color.text_color));
+                    helper.setText(R.id.tv_item_text, item, R.drawable.border5_black, getResources().getColor(R.color.black));
                 }
             }
         };
@@ -217,13 +219,10 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
                 commonAdapter.notifyDataSetChanged();
             }
         });
-        if (UIUtils.isPad(this)) {
-            gvQuality.setNumColumns(4);
-            setListViewHeightBasedOnChildren(gvQuality, 4);
-        } else {
-            gvQuality.setNumColumns(5);
-            setListViewHeightBasedOnChildren(gvQuality, 5);
-        }
+
+            gvQuality.setNumColumns(2);
+            setListViewHeightBasedOnChildren(gvQuality, 2);
+
 
     }
 
@@ -234,9 +233,9 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
             @Override
             public void convert(int position, BaseViewHolder helper, String item) {
                 if (colorChecks[position]) {
-                    helper.setText(R.id.tv_item_text, item, R.drawable.corners_red_bg, getResources().getColor(R.color.white));
+                    helper.setText(R.id.tv_item_text, item, R.drawable.border5_text, getResources().getColor(R.color.black));
                 } else {
-                    helper.setText(R.id.tv_item_text, item, R.drawable.corners_white_bg, getResources().getColor(R.color.text_color));
+                    helper.setText(R.id.tv_item_text, item, R.drawable.border5_black, getResources().getColor(R.color.black));
                 }
 
             }
@@ -249,13 +248,10 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
                 colorAdapter.notifyDataSetChanged();
             }
         });
-        if (UIUtils.isPad(this)) {
-            gvColor.setNumColumns(4);
-            setListViewHeightBasedOnChildren(gvColor, 4);
-        } else {
-            gvColor.setNumColumns(5);
-            setListViewHeightBasedOnChildren(gvColor, 5);
-        }
+
+            gvColor.setNumColumns(2);
+            setListViewHeightBasedOnChildren(gvColor, 2);
+
     }
 
     private void initShape() {
@@ -293,18 +289,10 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
 //                shapeAdapter.notifyDataSetChanged();
 //            }
 //        });
-        if (UIUtils.isPad(this)) {
-            gvShape.setNumColumns(6);
-            setListViewHeightBasedOnChildren(gvShape, 6);
-        } else {
-            if (UIUtils.isScreenChange(this)) {
-                gvShape.setNumColumns(8);
-                setListViewHeightBasedOnChildren(gvShape, 8);
-            } else {
-                gvShape.setNumColumns(5);
-                setListViewHeightBasedOnChildren(gvShape, 5);
-            }
-        }
+
+            gvShape.setNumColumns(10);
+            setListViewHeightBasedOnChildren(gvShape, 10);
+
 
 
     }
@@ -341,14 +329,14 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
         }
         weightChecks = new boolean[weightList.size()];
         priceChecks = new boolean[priceList.size()];
-        gvWeight.setNumColumns(weightList.size());
+        gvWeight.setNumColumns(1);
         final CommonAdapter weightAdapter = new CommonAdapter<KeyTitle>(weightList, R.layout.item_gv_text2) {
             @Override
             public void convert(int position, BaseViewHolder helper, KeyTitle item) {
                 if (weightChecks[position]) {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_red_bg, getResources().getColor(R.color.white));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.border5_text, getResources().getColor(R.color.black));
                 } else {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_white_bg, getResources().getColor(R.color.text_color));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.border5_black, getResources().getColor(R.color.black));
                 }
             }
         };
@@ -403,14 +391,14 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
         });
 
 
-        gvPrice.setNumColumns(4);
+        gvPrice.setNumColumns(1);
         final CommonAdapter priceAdapter = new CommonAdapter<KeyTitle>(priceList, R.layout.item_gv_text2) {
             @Override
             public void convert(int position, BaseViewHolder helper, KeyTitle item) {
                 if (priceChecks[position]) {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_red_bg, getResources().getColor(R.color.white));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.border5_text, getResources().getColor(R.color.black));
                 } else {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_white_bg, getResources().getColor(R.color.text_color));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.border5_black, getResources().getColor(R.color.black));
                 }
             }
 
@@ -629,11 +617,11 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
         etWeightMax.setText("");
         etWeightMin.setText("");
         certAuthBeanIsChooselist[0] = false;
-        tvCertificate1.setTextColor(getResources().getColor(R.color.text_color));
-        tvCertificate1.setBackgroundResource(R.drawable.corners_white_bg);
+        tvCertificate1.setTextColor(getResources().getColor(R.color.black));
+        tvCertificate1.setBackgroundResource(R.drawable.border5_black);
         certAuthBeanIsChooselist[1] = false;
-        tvCertificate2.setTextColor(getResources().getColor(R.color.text_color));
-        tvCertificate2.setBackgroundResource(R.drawable.corners_white_bg);
+        tvCertificate2.setTextColor(getResources().getColor(R.color.black));
+        tvCertificate2.setBackgroundResource(R.drawable.border5_black);
     }
 
     private boolean searchStone() {
@@ -764,22 +752,22 @@ public class StoneSearchInfoActivity extends BaseActivity implements View.OnClic
     private void isChoose(int i) {
         if (i == 0) {
             if (!certAuthBeanIsChooselist[0]) {
-                tvCertificate1.setTextColor(getResources().getColor(R.color.white));
-                tvCertificate1.setBackgroundResource(R.drawable.corners_red_bg);
+                tvCertificate1.setTextColor(getResources().getColor(R.color.black));
+                tvCertificate1.setBackgroundResource(R.drawable.border5_text);
                 certAuthBeanIsChooselist[0] = true;
             } else {
-                tvCertificate1.setTextColor(getResources().getColor(R.color.text_color));
-                tvCertificate1.setBackgroundResource(R.drawable.corners_white_bg);
+                tvCertificate1.setTextColor(getResources().getColor(R.color.black));
+                tvCertificate1.setBackgroundResource(R.drawable.border5_black);
                 certAuthBeanIsChooselist[0] = false;
             }
         } else {
             if (!certAuthBeanIsChooselist[1]) {
-                tvCertificate2.setTextColor(getResources().getColor(R.color.white));
-                tvCertificate2.setBackgroundResource(R.drawable.corners_red_bg);
+                tvCertificate2.setTextColor(getResources().getColor(R.color.black));
+                tvCertificate2.setBackgroundResource(R.drawable.border5_text);
                 certAuthBeanIsChooselist[1] = true;
             } else {
-                tvCertificate2.setTextColor(getResources().getColor(R.color.text_color));
-                tvCertificate2.setBackgroundResource(R.drawable.corners_white_bg);
+                tvCertificate2.setTextColor(getResources().getColor(R.color.black));
+                tvCertificate2.setBackgroundResource(R.drawable.border5_black);
                 certAuthBeanIsChooselist[1] = false;
             }
         }

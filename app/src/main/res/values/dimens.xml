@@ -71,4 +71,19 @@
     <dimen name="stone_search_activity_height">65dp</dimen>
     <dimen name="margin33">33dp</dimen>
     <dimen name="gold_textsize">35sp</dimen>
+    <dimen name="making_product_pading_v">6dp</dimen>
+    <dimen name="part_to_product">100dp</dimen>
+    <dimen name="making_part_width">220dp</dimen>
+    <dimen name="making_part_height">220dp</dimen>
+    <dimen name="making_part_iv">180dp</dimen>
+    <dimen name="making_rl_main_width">1380dp</dimen>
+    <dimen name="making_rl_main_height">780dp</dimen>
+    <dimen name="show_gold_textsize">35sp</dimen>
+    <dimen name="show_golden_text_margin">200dp</dimen>
+    <dimen name="goodListItem_padding">15dp</dimen>
+    <dimen name="search_stone_text_padding">40dp</dimen>
+    <dimen name="search_stone_text_margin_top">10dp</dimen>
+    <dimen name="search_stone_et_width">150dp</dimen>
+    <dimen name="search_stone_et_height">40dp</dimen>
+    <dimen name="search_stone_et_width_vertical">120dp</dimen>
 </resources>

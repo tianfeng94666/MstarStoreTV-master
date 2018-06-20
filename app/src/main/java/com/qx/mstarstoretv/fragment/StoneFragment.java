@@ -71,7 +71,7 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
     @Bind(R.id.textView)
     TextView textView;
     @Bind(R.id.gv_weight)
-    CustomGridView gvWeight;
+    GridView gvWeight;
     @Bind(R.id.et_weight_min)
     EditText etWeightMin;
     @Bind(R.id.et_weight_max)
@@ -91,7 +91,7 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
     @Bind(R.id.gv_shape)
     CustomGridView gvShape;
     @Bind(R.id.lv_others)
-    CustomLV lvOthers;
+    CustomGridView lvOthers;
     @Bind(R.id.tv_search)
     TextView tvSearch;
     @Bind(R.id.tv_reset)
@@ -129,7 +129,7 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.activity_stone_storehouse1, null);
+        View view = View.inflate(getActivity(), R.layout.activity_stone_storehouse2, null);
         ButterKnife.bind(this, view);
         baseShowWatLoading();
         loadNetData();
@@ -179,7 +179,9 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
     private void initOthers() {
         stoneOthersAdapter = new StoneOthersAdapter(getActivity(), stoneSearchResult.getData());
         lvOthers.setAdapter(stoneOthersAdapter);
-        UIUtils.setListViewHeightBasedOnChildren(lvOthers);
+
+        lvOthers.setNumColumns(2);
+        setListViewHeightBasedOnChildren(lvOthers, 2);
     }
 
     private void initPurity() {
@@ -188,9 +190,9 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
             @Override
             public void convert(int position, BaseViewHolder helper, String item) {
                 if (purityChecks[position]) {
-                    helper.setText(R.id.tv_item_text, item, R.drawable.corners_red_bg, getResources().getColor(R.color.white));
+                    helper.setText(R.id.tv_item_text, item, R.drawable.border5_text, getResources().getColor(R.color.black));
                 } else {
-                    helper.setText(R.id.tv_item_text, item, R.drawable.corners_white_bg, getResources().getColor(R.color.text_color));
+                    helper.setText(R.id.tv_item_text, item, R.drawable.border5_black, getResources().getColor(R.color.black));
                 }
             }
         };
@@ -203,7 +205,8 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
 
             }
         });
-        setListViewHeightBasedOnChildren(gvQuality, 5);
+        gvQuality.setNumColumns(2);
+        setListViewHeightBasedOnChildren(gvQuality, 2);
     }
 
     private void initColor() {
@@ -213,9 +216,9 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
             @Override
             public void convert(int position, BaseViewHolder helper, String item) {
                 if (colorChecks[position]) {
-                    helper.setText(R.id.tv_item_text, item, R.drawable.corners_red_bg, getResources().getColor(R.color.white));
+                    helper.setText(R.id.tv_item_text, item, R.drawable.border5_text, getResources().getColor(R.color.black));
                 } else {
-                    helper.setText(R.id.tv_item_text, item, R.drawable.corners_white_bg, getResources().getColor(R.color.text_color));
+                    helper.setText(R.id.tv_item_text, item, R.drawable.border5_black, getResources().getColor(R.color.black));
                 }
 
             }
@@ -229,7 +232,8 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
 
             }
         });
-        setListViewHeightBasedOnChildren(gvColor, 7);
+        gvColor.setNumColumns(2);
+        setListViewHeightBasedOnChildren(gvColor, 2);
     }
 
     private void initShape() {
@@ -267,18 +271,10 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
 //                shapeAdapter.notifyDataSetChanged();
 //            }
 //        });
-        if (UIUtils.isPad(getActivity())) {
+
             gvShape.setNumColumns(10);
             setListViewHeightBasedOnChildren(gvShape, 10);
-        } else {
-            if (UIUtils.isScreenChange(getActivity())) {
-                gvShape.setNumColumns(8);
-                setListViewHeightBasedOnChildren(gvShape, 8);
-            } else {
-                gvShape.setNumColumns(5);
-                setListViewHeightBasedOnChildren(gvShape, 5);
-            }
-        }
+
 
     }
 
@@ -314,14 +310,14 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
         }
         weightChecks = new boolean[weightList.size()];
         priceChecks = new boolean[priceList.size()];
-        gvWeight.setNumColumns(weightList.size());
+        gvWeight.setNumColumns(1);
         final CommonAdapter weightAdapter = new CommonAdapter<KeyTitle>(weightList, R.layout.item_gv_text2) {
             @Override
             public void convert(int position, BaseViewHolder helper, KeyTitle item) {
                 if (weightChecks[position]) {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_red_bg, getResources().getColor(R.color.white));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.border5_text, getResources().getColor(R.color.black));
                 } else {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_white_bg, getResources().getColor(R.color.text_color));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.border5_black, getResources().getColor(R.color.black));
                 }
             }
         };
@@ -374,14 +370,14 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
         });
 
 
-        gvPrice.setNumColumns(4);
+        gvPrice.setNumColumns(1);
         final CommonAdapter priceAdapter = new CommonAdapter<KeyTitle>(priceList, R.layout.item_gv_text2) {
             @Override
             public void convert(int position, BaseViewHolder helper, KeyTitle item) {
                 if (priceChecks[position]) {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_red_bg, getResources().getColor(R.color.white));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.border5_text, getResources().getColor(R.color.black));
                 } else {
-                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.corners_white_bg, getResources().getColor(R.color.text_color));
+                    helper.setText(R.id.tv_item_text, item.getTitle(), R.drawable.border5_black, getResources().getColor(R.color.black));
                 }
             }
 
@@ -589,11 +585,11 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
         etWeightMax.setText("");
         etWeightMin.setText("");
         certAuthBeanIsChooselist[0] = false;
-        tvCertificate1.setTextColor(getResources().getColor(R.color.text_color));
-        tvCertificate1.setBackgroundResource(R.drawable.corners_white_bg);
+        tvCertificate1.setTextColor(getResources().getColor(R.color.black));
+        tvCertificate1.setBackgroundResource(R.drawable.border5_black);
         certAuthBeanIsChooselist[1] = false;
-        tvCertificate2.setTextColor(getResources().getColor(R.color.text_color));
-        tvCertificate2.setBackgroundResource(R.drawable.corners_white_bg);
+        tvCertificate2.setTextColor(getResources().getColor(R.color.black));
+        tvCertificate2.setBackgroundResource(R.drawable.border5_black);
     }
 
     private String getPurity() {
@@ -677,22 +673,22 @@ public class StoneFragment extends BaseFragment implements View.OnClickListener 
     private void isChoose(int i) {
         if (i == 0) {
             if (!certAuthBeanIsChooselist[0]) {
-                tvCertificate1.setTextColor(getResources().getColor(R.color.white));
-                tvCertificate1.setBackgroundResource(R.drawable.corners_red_bg);
+                tvCertificate1.setTextColor(getResources().getColor(R.color.black));
+                tvCertificate1.setBackgroundResource(R.drawable.border5_text);
                 certAuthBeanIsChooselist[0] = true;
             } else {
-                tvCertificate1.setTextColor(getResources().getColor(R.color.text_color));
-                tvCertificate1.setBackgroundResource(R.drawable.corners_white_bg);
+                tvCertificate1.setTextColor(getResources().getColor(R.color.black));
+                tvCertificate1.setBackgroundResource(R.drawable.border5_black);
                 certAuthBeanIsChooselist[0] = false;
             }
         } else {
             if (!certAuthBeanIsChooselist[1]) {
-                tvCertificate2.setTextColor(getResources().getColor(R.color.white));
-                tvCertificate2.setBackgroundResource(R.drawable.corners_red_bg);
+                tvCertificate2.setTextColor(getResources().getColor(R.color.black));
+                tvCertificate2.setBackgroundResource(R.drawable.border5_text);
                 certAuthBeanIsChooselist[1] = true;
             } else {
-                tvCertificate2.setTextColor(getResources().getColor(R.color.text_color));
-                tvCertificate2.setBackgroundResource(R.drawable.corners_white_bg);
+                tvCertificate2.setTextColor(getResources().getColor(R.color.black));
+                tvCertificate2.setBackgroundResource(R.drawable.border5_black);
                 certAuthBeanIsChooselist[1] = false;
             }
         }

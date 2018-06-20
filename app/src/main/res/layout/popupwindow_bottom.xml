@@ -32,7 +32,7 @@
             android:text="确定"
             android:textSize="@dimen/setting_textsize"
             android:padding="10dp"
-            android:textColor="@color/theme_red"
+            android:textColor="@color/theme_color"
             android:layout_marginRight="6dp"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"

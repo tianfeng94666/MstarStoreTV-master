@@ -146,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:text="1334"
-                        android:textColor="@color/theme_red"
+                        android:textColor="@color/theme_color"
                         android:textSize="@dimen/text_size_medium1" />
 
 
@@ -165,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="订单类型：钻戒"
-                    android:textColor="@color/theme_red"
+                    android:textColor="@color/theme_color"
                     android:visibility="gone" />
 
             </LinearLayout>

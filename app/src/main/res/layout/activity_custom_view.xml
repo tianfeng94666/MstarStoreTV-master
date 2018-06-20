@@ -8,7 +8,7 @@
         android:id="@+id/id_cus_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:tv_color="@color/theme_red"
+        app:tv_color="@color/theme_color"
         app:tv_name="选择"
         app:tv_size="16sp"
         />

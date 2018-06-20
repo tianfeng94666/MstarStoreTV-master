@@ -24,7 +24,7 @@
         android:layout_marginRight="32dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:tabSelectedTextColor="@color/theme_red"
+        app:tabSelectedTextColor="@color/theme_color"
         app:tabTextAppearance="@style/TabLayoutTextStyle"
         app:tabGravity="fill"
         app:tabTextColor="@color/black">

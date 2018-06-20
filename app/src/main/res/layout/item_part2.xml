@@ -5,29 +5,20 @@
     android:layout_height="match_parent"
     android:background="@drawable/border_white_line"
     android:orientation="horizontal"
-    android:padding="1.5dp"
+    android:padding="3dp"
     >
 
     <ImageView
         android:id="@+id/iv_item_part"
         android:layout_width="match_parent"
-        android:layout_height="360dp"
-        android:paddingBottom="60dp"
+        android:layout_height="280dp"
+        android:paddingBottom="50dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp"
         />
 
-    <TextView
-        android:id="@+id/tv_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/theme_red"
-        android:paddingBottom="4dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="4dp"
-        android:text=""
-        android:visibility="gone"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_small" />
+
 
     <TextView
         android:id="@+id/tv_name"
@@ -35,27 +26,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="3dp"
+        android:textSize="24sp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:id="@+id/iv_is_select"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:visibility="gone"
-        android:layout_marginLeft="8dp"
-        android:layout_alignBottom="@+id/tv_name"
 
-        android:src="@drawable/icon_checked" />
 
-    <TextView
-        android:id="@+id/tv_stone"
-        android:layout_width="match_parent"
-        android:layout_height="360dp"
-        android:layout_centerInParent="true"
-        android:background="@color/white"
-        android:gravity="center"
-        android:padding="1px"
-        android:text="选择裸石"
-        android:visibility="gone" />
+
 </RelativeLayout>

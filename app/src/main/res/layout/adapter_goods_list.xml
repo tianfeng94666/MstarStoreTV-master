@@ -1,67 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:padding="2dp"
-    android:orientation="vertical"
-              android:background="@drawable/border_white_line"
+
+
     >
 
     <ImageView
         android:id="@+id/product_img"
+        android:padding="12dp"
+        android:background="@drawable/border_black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop" />
+        />
 
     <LinearLayout
-        android:background="@color/white"
+
         android:layout_gravity="center"
         android:id="@+id/img_container"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal" />
 
     <TextView
         android:id="@+id/name"
+        android:layout_alignBottom="@+id/product_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin5"
         android:ellipsize="end"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
         android:lines="2"
         android:text="黄金金条投资足金金砖"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_size_small_medium" />
+        android:textSize="@dimen/text_size_medium1" />
 
-    <!--风格线-->
-    <View
-        android:id="@+id/menu_line"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_above="@+id/name"
-        android:background="@color/theme_bg" />
+
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+
+        android:layout_height="50dp"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/margin5"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="@dimen/margin5"
-        android:layout_marginLeft="@dimen/margin5"
         android:gravity="center"
+        android:layout_below="@+id/product_img"
         android:id="@+id/ll_price"
-        android:background="@color/white"
+        android:background="@color/making_text_bg"
         >
         <TextView
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="¥ :  "
-            android:textColor="@color/theme_red" />
+
+            android:textColor="@color/black" />
 
         <TextView
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size_small_medium"
+            android:textSize="25sp"
             android:id="@+id/tv_sum_price"
 
             android:layout_width="wrap_content"
@@ -73,4 +75,4 @@
 
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.qx.mstarstoretv.R;
+
 import java.util.List;
 
 import com.qx.mstarstoretv.adapter.BaseViewHolder;
@@ -74,11 +75,9 @@ public class CustomselectStringButton extends RelativeLayout {
         if (!StringUtils.isEmpty(textName)) {
             this.tv.setText(textName);
             tv.setTextColor(getResources().getColor(R.color.black));
-            if(showType==0){
-                tv.setBackgroundResource(R.drawable.btn_bg_while );
-            }else {
-                tv.setBackgroundResource(R.color.white );
-            }
+
+            tv.setBackgroundResource(backgroundId);
+
 
         }
     }
@@ -113,24 +112,20 @@ public class CustomselectStringButton extends RelativeLayout {
     private void initView(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomselectStringButton);
         try {
-            showType = typedArray.getInt(R.styleable.CustomselectStringButton_show_type,0);
+            showType = typedArray.getInt(R.styleable.CustomselectStringButton_show_type, 0);
             textName = typedArray.getString(R.styleable.CustomselectStringButton_tv_string_name);
-            backgroundId = typedArray.getResourceId(R.styleable.CustomselectStringButton_tv_string_background,R.drawable.btn_bg_while );
-            textSize = typedArray.getDimension(R.styleable.CustomSelectButton_tv_size,UIUtils.sp2px(25));
+            backgroundId = typedArray.getResourceId(R.styleable.CustomselectStringButton_tv_string_background, R.drawable.btn_bg_while);
+            textSize = typedArray.getDimension(R.styleable.CustomSelectButton_tv_size, UIUtils.sp2px(25));
         } finally {
             typedArray.recycle();
         }
 
         View rootView = View.inflate(context, R.layout.custom_select_button2, this);
+
         tv = (TextView) rootView.findViewById(R.id.id_cus_tv);
+        tv.setBackgroundResource(backgroundId);
         if (!StringUtils.isEmpty(textName)) {
             tv.setText(textName);
-            if(showType==0){
-                tv.setBackgroundResource(R.drawable.btn_bg_while );
-            }else {
-                tv.setBackgroundResource(R.color.white );
-            }
-
         }
         tv.setTextSize(textSize);
         tv.setOnClickListener(new CustomselectStringButton.RadioClickListener());
@@ -193,7 +188,7 @@ public class CustomselectStringButton extends RelativeLayout {
         popupWindow.setOutsideTouchable(false);
         popupWindow.setFocusable(true);
         popupWindow.setAnimationStyle(R.style.Animation);
-      popupWindow.showAsDropDown(view1);
+        popupWindow.showAsDropDown(view1);
 
 //        popupWindow.showAtLocation(view1, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
         tvConfirm.setOnClickListener(new OnClickListener() {
@@ -225,6 +220,7 @@ public class CustomselectStringButton extends RelativeLayout {
             }
         });
     }
+
     public void showPopupWindow2() {
         String text = getTextName().toString();
         View view = View.inflate(mContext, R.layout.popupwindow_bottom2, null);
@@ -235,7 +231,7 @@ public class CustomselectStringButton extends RelativeLayout {
         adapter = new CommonAdapter<String>(types, R.layout.tv_item_type2) {
             @Override
             public void convert(int position, BaseViewHolder helper, String item) {
-                helper.setText(R.id.tv_item_type,item);
+                helper.setText(R.id.tv_item_type, item);
             }
 
         };
@@ -252,10 +248,10 @@ public class CustomselectStringButton extends RelativeLayout {
         popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(false);
         popupWindow.setAnimationStyle(R.style.Animation);
-        if(showType==0){
+        if (showType == 0) {
             popupWindow.showAsDropDown(view1);
-        }else {
-            popupWindow.showAsDropDown(view1,0,-500);
+        } else {
+            popupWindow.showAsDropDown(view1, 0, -500);
         }
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -288,6 +284,7 @@ public class CustomselectStringButton extends RelativeLayout {
             }
         });
     }
+
     public void closePupupWindow() {
         UIUtils.setBackgroundAlpha(mContext, 1.0f);//设置屏幕透明度
         popupWindow.dismiss();
@@ -338,7 +335,7 @@ public class CustomselectStringButton extends RelativeLayout {
         View getRootView();
     }
 
-    class SimpleWheelAdapter extends  com.qx.mstarstoretv.viewutils.wheelview.adapter.SimpleWheelAdapter {
+    class SimpleWheelAdapter extends com.qx.mstarstoretv.viewutils.wheelview.adapter.SimpleWheelAdapter {
 
         private Context mContext;
 

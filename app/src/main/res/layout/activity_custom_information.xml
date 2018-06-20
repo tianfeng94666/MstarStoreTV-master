@@ -564,7 +564,7 @@
         <TextView
             style="@style/layout_horizontal"
             android:layout_weight="1"
-            android:background="@color/theme_red"
+            android:background="@color/theme_color"
             android:gravity="center"
             android:text="当前订单" />
 

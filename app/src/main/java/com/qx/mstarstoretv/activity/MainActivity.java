@@ -81,6 +81,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView tvShowPics;
     @Bind(R.id.iv_making)
     TextView ivMaking;
+    @Bind(R.id.tv_product_pics)
+    TextView tvProductPics;
 
     private int nowId;
     private String version;
@@ -393,6 +395,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tvShowGold.setOnClickListener(this);
         tvShowVideo.setOnClickListener(this);
         tvShowPics.setOnClickListener(this);
+        tvProductPics.setOnClickListener(this);
     }
 
     public static BadgeView badge1;
@@ -458,7 +461,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 openActivity(PictureActivity.class, null);
                 break;
             case R.id.iv_making:
-                openActivity(MakingActivity.class, null);
+                openActivity(Making2Activity.class, null);
+
+                break;
+            case R.id.tv_product_pics:
+                openActivity(ProductListActivity.class, null);
 
                 break;
         }

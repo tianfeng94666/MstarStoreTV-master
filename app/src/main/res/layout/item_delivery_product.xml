@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="¥ 881.5"
-            android:textColor="@color/theme_red" />
+            android:textColor="@color/theme_color" />
     </RelativeLayout>
 
     <RelativeLayout

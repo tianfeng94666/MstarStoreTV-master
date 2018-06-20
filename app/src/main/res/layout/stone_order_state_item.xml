@@ -59,7 +59,7 @@
             android:layout_marginTop="10dp"
 
             android:text="代付款"
-            android:textColor="@color/theme_red"></TextView>
+            android:textColor="@color/theme_color"></TextView>
 
     </RelativeLayout>
 
@@ -134,7 +134,7 @@
                 android:background="@drawable/board_red_backgroud_white"
                 android:padding="@dimen/margin5"
                 android:text="去付款"
-                android:textColor="@color/theme_red" />
+                android:textColor="@color/theme_color" />
         </RelativeLayout>
 
 
@@ -209,7 +209,7 @@
             android:gravity="center"
             android:padding="5dp"
             android:text="¥1350"
-            android:textColor="@color/theme_red" />
+            android:textColor="@color/theme_color" />
     </RelativeLayout>
 
     <View

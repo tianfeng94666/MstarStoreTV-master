@@ -6,12 +6,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -46,9 +48,17 @@ public class LoginActivity extends BaseActivity {
     EditText idEdCode;
     String name, pwd, phone, code;
     CountTimerButton mCountDownTimerUtils;
+    @Bind(R.id.line_bottom)
+    View lineBottom;
+    @Bind(R.id.tv_get_auth_code)
+    Button tvGetAuthCode;
+    @Bind(R.id.ll_code)
+    LinearLayout llCode;
     private String version;
     private UpdataVersionResult updataVersionResult;
+
     private int updateValue;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +76,8 @@ public class LoginActivity extends BaseActivity {
     }
 
 
-
     private void isNeedUpdate() {
-        String lgUrl = AppURL.URL_GET_UPDATE_VERSION + "device=" + "android"+"&version="+getResources().getString(R.string.app_version_detail);
+        String lgUrl = AppURL.URL_GET_UPDATE_VERSION + "device=" + "android" + "&version=" + getResources().getString(R.string.app_version_detail);
         L.e("netLogin" + lgUrl);
         VolleyRequestUtils.getInstance().getCookieRequest(this, lgUrl, new VolleyRequestUtils.HttpStringRequsetCallBack() {
             @Override
@@ -76,15 +85,15 @@ public class LoginActivity extends BaseActivity {
                 JsonObject jsonResult = new Gson().fromJson(result, JsonObject.class);
                 String error = jsonResult.get("error").getAsString();
                 if (error.equals("0")) {
-                    updataVersionResult = new Gson().fromJson(result,UpdataVersionResult.class);
-                    if(updataVersionResult.getData()==null){
+                    updataVersionResult = new Gson().fromJson(result, UpdataVersionResult.class);
+                    if (updataVersionResult.getData() == null) {
                         return;
                     }
                     updateValue = updataVersionResult.getData().getValue();
-                    if(updateValue==1){
-                        showNoticeDialog(true,updataVersionResult.getData().getMessage());
-                    }else if (updateValue==2){
-                        showNoticeDialog(false,updataVersionResult.getData().getMessage());
+                    if (updateValue == 1) {
+                        showNoticeDialog(true, updataVersionResult.getData().getMessage());
+                    } else if (updateValue == 2) {
+                        showNoticeDialog(false, updataVersionResult.getData().getMessage());
                     }
 
                 } else if (error.equals("2")) {
@@ -109,7 +118,7 @@ public class LoginActivity extends BaseActivity {
     /**
      * 显示软件更新对话框
      */
-    private void showNoticeDialog(boolean isNeed,String string) {
+    private void showNoticeDialog(boolean isNeed, String string) {
         // 构造对话框
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.soft_update_title);
@@ -128,8 +137,9 @@ public class LoginActivity extends BaseActivity {
         noticeDialog.setCancelable(isNeed);
         noticeDialog.show();
     }
+
     private void initView() {
-        String token = BaseApplication.spUtils.getString(SpUtils.key_tokenKey);
+        token = BaseApplication.spUtils.getString(SpUtils.key_tokenKey);
         if (!StringUtils.isEmpty(token)) {
             BaseApplication.setToken(token);
             openActivity(MainActivity.class, null);
@@ -140,9 +150,13 @@ public class LoginActivity extends BaseActivity {
             }
             finish();
             return;
-        }else {
-            openActivity(LoginActivity.class,null);
+
+        } else {
+//            llCode.setVisibility(View.VISIBLE);
+//            lineBottom.setVisibility(View.VISIBLE);
+            showToastReal("要重新登录");
         }
+
         name = BaseApplication.spUtils.getString(SpUtils.key_username);
         pwd = BaseApplication.spUtils.getString(SpUtils.key_password);
         if (!StringUtils.isEmpty(name)) {
@@ -169,8 +183,8 @@ public class LoginActivity extends BaseActivity {
                 getNetCode();
             }
         });
-    }
 
+    }
 
 
     /*得到没登陆前的实例*/
@@ -184,9 +198,10 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void loadNetData() {
-        name = idEdName.getText().toString();
-        pwd = idEdPassword.getText().toString();
-        code = idEdCode.getText().toString();
+        name = idEdName.getText().toString().trim();
+        pwd = idEdPassword.getText().toString().trim();
+        code = "20170808";
+
         if (StringUtils.isEmpty(name)) {
             showToastReal("用户名不能为空！");
             return;
@@ -195,13 +210,12 @@ public class LoginActivity extends BaseActivity {
             showToastReal("密码不能为空！");
             return;
         }
-        if (StringUtils.isEmpty(code)) {
-            showToastReal("验证码不能为空！");
-            return;
-        }
+
+
         baseShowWatLoading();
         // 进行登录请求
-        String lgUrl = AppURL.URL_LOGIN + "userName=" + name + "&password=" + pwd + "&phoneCode=" + code;
+        String lgUrl = AppURL.URL_LOGIN + "userName=" + name + "&password=" + pwd + "&phoneCode=" +
+                code + "&system=android" + "&tokenKey=" + BaseApplication.getToken();
         L.e("netLogin" + lgUrl);
         VolleyRequestUtils.getInstance().getCookieRequest(this, lgUrl, new VolleyRequestUtils.HttpStringRequsetCallBack() {
             @Override
@@ -223,7 +237,14 @@ public class LoginActivity extends BaseActivity {
                 }
                 if (error == 1) {
                     String message = new Gson().fromJson(result, JsonObject.class).get("message").getAsString();
-                    ToastManager.showToastReal(message);
+
+                    if ("noVerifyCode".equals(message)) {
+//                        llCode.setVisibility(View.VISIBLE);
+//                        lineBottom.setVisibility(View.VISIBLE);
+                        showToastReal("请重新登录");
+                    } else {
+                        ToastManager.showToastReal(message);
+                    }
                     L.e(message);
                 }
                 if (error == 2) {
@@ -237,7 +258,7 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void onFail(String fail) {
-                 showToastReal(fail);
+                showToastReal(fail);
                 baseHideWatLoading();
             }
 
@@ -251,7 +272,7 @@ public class LoginActivity extends BaseActivity {
         if (nextActivity != null) {
             final Intent intent = new Intent(LoginActivity.this, nextActivity);
             //intent.putExtra(GET_TO, "");
-            (new android.os.Handler()).postDelayed(new Runnable() {
+            (new Handler()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     startActivity(intent);

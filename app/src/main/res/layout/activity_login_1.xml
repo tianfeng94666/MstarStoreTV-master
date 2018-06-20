@@ -15,7 +15,7 @@
         android:background="@drawable/icon_login_bg"
         >
 <TextView
-    android:layout_gravity="top|"
+    android:layout_gravity="top"
     android:textColor="@color/white"
     android:layout_marginLeft="8dp"
     android:layout_marginTop="4dp"
@@ -147,12 +147,16 @@
 
 
             <View
-                android:layout_marginTop="5dip"
+                android:id="@+id/line_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@drawable/gradual_line"
-                ></View>
+                android:layout_marginTop="5dip"
+                android:visibility="gone"
+                android:background="@drawable/gradual_line"></View>
+
             <LinearLayout
+                android:id="@+id/ll_code"
+                android:visibility="gone"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="10dip"
                 style="@style/layout_vertical"

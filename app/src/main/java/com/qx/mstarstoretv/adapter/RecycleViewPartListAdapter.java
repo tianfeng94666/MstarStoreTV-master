@@ -69,6 +69,10 @@ public class RecycleViewPartListAdapter extends RecyclerView.Adapter <RecycleVie
 
     }
 
+    public int getChoose()
+    {
+        return selectPosition;
+    }
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView mIv;

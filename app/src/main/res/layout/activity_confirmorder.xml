@@ -386,7 +386,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="¥0.0"
-                android:textColor="@color/theme_red"
+                android:textColor="@color/theme_color"
                 android:textSize="@dimen/text_size_medium1"/>
 
         </LinearLayout>
@@ -414,7 +414,7 @@
                 style="@style/layout_vertical"
                 android:layout_weight="1"
                 android:text="¥0.0"
-                android:textColor="@color/theme_red"
+                android:textColor="@color/theme_color"
                 android:textSize="16sp"/>
 
         </LinearLayout>

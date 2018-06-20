@@ -8,7 +8,7 @@
         android:bottom="1dip"/>
 
     <stroke android:width="1dip"
-        android:color="@color/theme_red"
+        android:color="@color/theme_color"
         />
     <!--边框宽度-->
     <size android:width="15dip"

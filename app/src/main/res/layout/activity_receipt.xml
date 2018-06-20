@@ -112,7 +112,7 @@
             android:id="@+id/id_tv_confir"
             style="@style/layout_horizontal"
             android:layout_weight="1"
-            android:background="@color/theme_red"
+            android:background="@color/theme_color"
             android:gravity="center"
             android:text="确定开票"
             android:textColor="@color/white"

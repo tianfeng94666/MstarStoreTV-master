@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/making_bg"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:src="@mipmap/logo"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="M S T A R"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        android:textSize="55sp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <RelativeLayout
+        android:id="@+id/rl_main"
+        android:layout_width="@dimen/making_rl_main_width"
+        android:layout_height="@dimen/making_rl_main_height"
+        android:layout_centerHorizontal="true"
+
+        android:layout_centerVertical="true">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_product"
+            android:layout_width="550dp"
+            android:layout_height="550dp"
+            app:civ_border_width="50dp"
+            app:civ_border_color="@color/white"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ring_main_test" />
+
+        <RelativeLayout
+            android:id="@+id/rl_ring_head"
+            android:layout_width="@dimen/making_part_width"
+            android:layout_height="@dimen/making_part_height"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/iv_product"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="@dimen/part_to_product"
+            android:layout_marginTop="-110dp"
+            android:background="@mipmap/product_bg_left"
+            android:paddingLeft="@dimen/making_product_pading_v"
+            android:paddingTop="@dimen/making_product_pading_v">
+
+            <ImageView
+                android:id="@+id/iv_ring_head"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/making_part_iv"
+
+                android:background="@color/white"
+                android:padding="@dimen/margin5"
+                android:src="@mipmap/ringtest" />
+
+            <TextView
+                android:id="@+id/tv_ring_head"
+                android:layout_width="@dimen/making_part_width"
+                android:layout_height="35dp"
+                android:layout_below="@+id/iv_ring_head"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="头/4"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_ring_interface"
+            android:layout_width="@dimen/making_part_width"
+            android:layout_height="@dimen/making_part_height"
+            android:layout_alignLeft="@+id/iv_product"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/iv_product"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-160dp"
+            android:background="@mipmap/product_bg_left"
+            android:paddingLeft="@dimen/making_product_pading_v"
+            android:paddingTop="@dimen/making_product_pading_v">
+
+            <ImageView
+                android:id="@+id/iv_ring_interface"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/making_part_iv"
+                android:background="@color/white"
+                android:padding="@dimen/margin5"
+                android:src="@mipmap/ringtest" />
+
+            <TextView
+                android:id="@+id/tv_ring_interface"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@+id/iv_ring_interface"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="接口/4"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_ring_body"
+            android:layout_width="@dimen/making_part_width"
+            android:layout_height="@dimen/making_part_height"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/rl_ring_head"
+            android:background="@mipmap/product_bg_right"
+            android:paddingRight="@dimen/making_product_pading_v"
+            android:paddingTop="@dimen/making_product_pading_v">
+
+            <ImageView
+                android:id="@+id/iv_ring_body"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/making_part_iv"
+
+                android:background="@color/white"
+                android:padding="0dp"
+                android:src="@mipmap/ringtest" />
+
+            <TextView
+                android:id="@+id/tv_ring_body"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@+id/iv_ring_body"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="圈/4"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_ring_stone"
+            android:layout_width="@dimen/making_part_width"
+            android:layout_height="@dimen/making_part_height"
+            android:layout_alignEnd="@+id/rl_ring_body"
+            android:layout_alignRight="@+id/iv_product"
+            android:layout_below="@+id/iv_product"
+            android:layout_marginTop="-160dp"
+            android:background="@mipmap/product_bg_right"
+            android:paddingRight="@dimen/making_product_pading_v"
+            android:paddingTop="@dimen/making_product_pading_v">
+
+
+            <TextView
+                android:id="@+id/tv_ring_stone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="选择裸石"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_main_commit"
+        android:layout_width="@dimen/making_rl_main_width"
+        android:layout_height="50dp"
+        android:layout_below="@+id/rl_main"
+        android:layout_centerHorizontal="true">
+
+        <com.qx.mstarstoretv.viewutils.CustomselectStringButton xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tv_choose_handsize"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            app:tv_string_background="@color/making_text_bg"
+            app:tv_string_color="@color/black"
+            android:textSize="24sp"
+            app:show_type="up"></com.qx.mstarstoretv.viewutils.CustomselectStringButton>
+
+        <TextView
+            android:id="@+id/tv_buy"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/tv_choose_handsize"
+
+            android:gravity="center"
+            android:text="总价"
+            android:background="@color/making_text_bg"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_reset"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@+id/tv_finish"
+            android:background="@color/making_text_bg"
+            android:gravity="center"
+            android:text="重置"
+            android:textColor="@color/black"
+
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_finish"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+
+
+            android:layout_marginRight="50dp"
+            android:background="@color/making_text_bg"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@color/black"
+
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_choose"
+        android:layout_width="@dimen/making_rl_main_width"
+        android:layout_height="@dimen/making_rl_main_height"
+        android:background="@mipmap/making_part_bg"
+        android:layout_centerInParent="true"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="80dp"
+        android:paddingRight="80dp"
+        android:visibility="gone">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_part"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_choose_commit"
+        android:visibility="gone"
+        android:layout_width="@dimen/making_rl_main_width"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/rl_choose"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/tv_cancle"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@+id/tv_delete"
+            android:background="@color/making_text_bg"
+
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/black"
+
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@+id/tv_comfirm"
+            android:gravity="center"
+            android:text="清除"
+            android:background="@color/making_text_bg"
+            android:textColor="@color/black"
+
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_comfirm"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/making_text_bg"
+            android:textColor="@color/black"
+            android:layout_marginRight="50dp"
+            android:gravity="center"
+            android:text="确定"
+
+            android:textSize="24sp" />
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/id_ig_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="5dp"
+        android:padding="20dip"
+        android:src="@drawable/icon_back_white" />
+</RelativeLayout>

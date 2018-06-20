@@ -364,7 +364,7 @@
                 android:id="@+id/tv_search"
                 style="@style/layout_horizontal"
                 android:layout_weight="1"
-                android:background="@color/theme_red"
+                android:background="@color/theme_color"
                 android:gravity="center"
                 android:textSize="@dimen/simple_styleinfromation_textsize"
                 android:text=""

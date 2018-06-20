@@ -254,7 +254,7 @@
         <activity
             android:name="com.qx.mstarstoretv.activity.StoneSearchInfoActivity"
             android:alwaysRetainTaskState="true"
-            android:launchMode="singleTask"
+            android:launchMode="singleTop"
             android:configChanges="orientation|keyboardHidden"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
@@ -352,6 +352,18 @@
             android:alwaysRetainTaskState="true"
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.Making2Activity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.ProductListActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan|stateHidden" />
     </application>
 

@@ -1,6 +1,7 @@
 package com.qx.mstarstoretv.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -62,7 +63,7 @@ public class StoneSearchResultAdapter extends BaseAdapter {
         }
         if(Global.isShowPopup!=0){
             viewHolder.cbIscheckStone.setText("定制");
-            viewHolder.cbIscheckStone.setTextColor(context.getResources().getColor(R.color.theme_red));
+            viewHolder.cbIscheckStone.setTextColor(context.getResources().getColor(R.color.theme_color));
         }
         else {
             viewHolder.cbIscheckStone.setText("");
@@ -86,50 +87,42 @@ public class StoneSearchResultAdapter extends BaseAdapter {
                     chooseItem.quotedPrice(bean.getId());
                 }
             });
-            viewHolder.tvItemQuotedPrice.setTextColor(context.getResources().getColor(R.color.theme_red));
+            viewHolder.tvItemQuotedPrice.setTextColor(context.getResources().getColor(R.color.theme_color));
         } else {
             viewHolder.tvItemPrice.setVisibility(View.GONE);
             viewHolder.tvItemQuotedPrice.setTextColor(context.getResources().getColor(R.color.text_color));
         }
-        if (bean.ischeck()) {
 
-            viewHolder.tvItemWeight.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.tvItemShape.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.tvItemColor.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.tvItemPurity.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.tvItemCut.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.tvItemPolish.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.tvItemSymmetric.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.tvItemFluorescence.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.tvItemCertauth.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.tvItemPrice.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.tvItemQuotedPrice.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.tvItemCerauthNumber.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
-            viewHolder.llCheck.setBackground(context.getResources().getDrawable(R.drawable.table_head_gray));
+
+        if (bean.ischeck()) {
+            setItemBackGroundColor(viewHolder, context.getResources().getDrawable(R.drawable.table_head_yello));
         } else {
-            viewHolder.tvItemWeight.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.tvItemShape.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.tvItemColor.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.tvItemPurity.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.tvItemCut.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.tvItemPolish.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.tvItemSymmetric.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.tvItemFluorescence.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.tvItemCertauth.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.tvItemPrice.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.tvItemQuotedPrice.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.tvItemCerauthNumber.setBackground(context.getResources().getDrawable(R.drawable.table_head));
-            viewHolder.llCheck.setBackground(context.getResources().getDrawable(R.drawable.table_head));
+            if(position%2==0){
+                setItemBackGroundColor(viewHolder, context.getResources().getDrawable(R.drawable.table_head_gray));
+            } else {
+                setItemBackGroundColor(viewHolder, context.getResources().getDrawable(R.drawable.table_head));
+            }
         }
         viewHolder.tvItemCerauthNumber.setText(bean.getCertCode());
-//        viewHolder.cbIscheckStone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//               bean.setIscheck(isChecked);
-//            }
-//        });
+
 
         return view;
+    }
+
+    private void setItemBackGroundColor(ViewHolder viewHolder, Drawable drawable) {
+        viewHolder.tvItemWeight.setBackground(drawable);
+        viewHolder.tvItemShape.setBackground(drawable);
+        viewHolder.tvItemColor.setBackground(drawable);
+        viewHolder.tvItemPurity.setBackground(drawable);
+        viewHolder.tvItemCut.setBackground(drawable);
+        viewHolder.tvItemPolish.setBackground(drawable);
+        viewHolder.tvItemSymmetric.setBackground(drawable);
+        viewHolder.tvItemFluorescence.setBackground(drawable);
+        viewHolder.tvItemCertauth.setBackground(drawable);
+        viewHolder.tvItemPrice.setBackground(drawable);
+        viewHolder.tvItemQuotedPrice.setBackground(drawable);
+        viewHolder.tvItemCerauthNumber.setBackground(drawable);
+        viewHolder.llCheck.setBackground(drawable);
     }
 
     public String getQuotedPriceId() {

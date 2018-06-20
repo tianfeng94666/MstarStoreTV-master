@@ -29,7 +29,7 @@ android:layout_marginLeft="@dimen/margin10"
         android:textSize="@dimen/simple_styleinfromation_textsize"
         android:maxLines="2"
         android:ellipsize="end"
-        android:textColor="@color/theme_red" />
+        android:textColor="@color/theme_color" />
 
     <ImageView
         android:id="@+id/iv_select_main_stone"

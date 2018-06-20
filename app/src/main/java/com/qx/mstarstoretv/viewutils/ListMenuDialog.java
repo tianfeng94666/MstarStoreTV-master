@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.qx.mstarstoretv.R;
 import com.qx.mstarstoretv.json.ModeListResult;
+import com.qx.mstarstoretv.utils.UIUtils;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class ListMenuDialog {
 		this.context = context;
 		this.mCustomList=customList;
 		View view = LayoutInflater.from(context).inflate(R.layout.dialog_order_menu, null);
-		popupWindow = new PopupWindow(view, LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT);
+		popupWindow = new PopupWindow(view, UIUtils.dip2px(300),LayoutParams.WRAP_CONTENT);
 		// 这个是为了点击“返回Back”也能使其消失，并且并不会影响你的背景（很神奇的）//设置监听
 		popupWindow.setBackgroundDrawable(new BitmapDrawable());
 

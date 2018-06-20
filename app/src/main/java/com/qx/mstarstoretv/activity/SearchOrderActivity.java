@@ -291,7 +291,7 @@ public class SearchOrderActivity extends BaseActivity implements View.OnClickLis
             }
         });
         if (searchDateScopeBean.getIsDefault() == 1) {
-            tv.setTextColor(getResources().getColor(R.color.theme_red));
+            tv.setTextColor(getResources().getColor(R.color.theme_color));
             tv.setBackgroundResource(R.drawable.board_red);
         } else {
             tv.setTextColor(getResources().getColor(R.color.text_color3));

@@ -14,7 +14,7 @@
     
     <color name="color_line">#dadada</color>
 
-    <color name="theme_red">#f12b31</color>
+    <color name="theme_color">#f12b31</color>
     <color name="theme_bg">#f0eff5</color>
     <color name="theme_yell">#FFEF8C01</color>
 
@@ -28,7 +28,7 @@
     <color name="color_down">#cccccc</color>
     <color name="color_bar">#f5f5f7</color>
     <color name="transparent">#0000</color>
-    <color name="color_light_grey">#969696</color>
+    <color name="color_light_grey">#EEEEEE</color>
     <color name="color_detach_line">#CFCFD1</color>
 
     <color name="color_check_bg">#F8CDCF</color>
@@ -56,4 +56,5 @@
     <color name="finish_item_bg">#f5f5f7</color>
 
     <color name="colorSeekBarDefault">#c3c3c3</color>
+    <color name="making_text_bg">#FED0AF</color>
 </resources>

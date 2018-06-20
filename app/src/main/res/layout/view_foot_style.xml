@@ -37,7 +37,7 @@
                 android:gravity="center"
                 android:background="@drawable/hint_superscript_red"
                 android:textSize="10.0dip"
-                android:textColor="@color/theme_red"
+                android:textColor="@color/theme_color"
                 android:text="1"
                 />
         </LinearLayout>
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="10.0dip"
-                android:textColor="@color/theme_red"
+                android:textColor="@color/theme_color"
                 android:text="1"
                 />
         </LinearLayout>

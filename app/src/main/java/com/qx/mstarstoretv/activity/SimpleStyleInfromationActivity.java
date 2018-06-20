@@ -1347,7 +1347,7 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
                     if (isEmptyStone(stoneEntity)) {
                         if (Global.isShowPopup == 0) {
                             viewHolder.tvMainStoneDate.setText("+ 添加主石");
-                            viewHolder.tvMainStoneDate.setTextColor(getResources().getColor(R.color.theme_red));
+                            viewHolder.tvMainStoneDate.setTextColor(getResources().getColor(R.color.theme_color));
                             viewHolder.tvMainStoneDate.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -1408,7 +1408,7 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
                     viewHolder.tvTitle.setText("副石A ");
                     if (isEmptyStone(stoneEntity)) {
                         viewHolder.tvMainStoneDate.setText("");
-                        viewHolder.tvMainStoneDate.setTextColor(getResources().getColor(R.color.theme_red));
+                        viewHolder.tvMainStoneDate.setTextColor(getResources().getColor(R.color.theme_color));
                         viewHolder.ivSelectMainStone.setVisibility(View.GONE);
                     } else {
                         viewHolder.tvMainStoneDate.setText(changeStoneEntityToString(stoneEntity));
@@ -1422,7 +1422,7 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
                     viewHolder.tvTitle.setText("副石B ");
                     if (isEmptyStone(stoneEntity)) {
                         viewHolder.tvMainStoneDate.setText("");
-                        viewHolder.tvMainStoneDate.setTextColor(getResources().getColor(R.color.theme_red));
+                        viewHolder.tvMainStoneDate.setTextColor(getResources().getColor(R.color.theme_color));
                         viewHolder.ivSelectMainStone.setVisibility(View.GONE);
                     } else {
                         viewHolder.tvMainStoneDate.setText(changeStoneEntityToString(stoneEntity));
@@ -1436,7 +1436,7 @@ public class SimpleStyleInfromationActivity extends BaseActivity implements View
                     viewHolder.tvTitle.setText("副石C ");
                     if (isEmptyStone(stoneEntity)) {
                         viewHolder.tvMainStoneDate.setText("");
-                        viewHolder.tvMainStoneDate.setTextColor(getResources().getColor(R.color.theme_red));
+                        viewHolder.tvMainStoneDate.setTextColor(getResources().getColor(R.color.theme_color));
                         viewHolder.ivSelectMainStone.setVisibility(View.GONE);
                     } else {
                         viewHolder.tvMainStoneDate.setText(changeStoneEntityToString(stoneEntity));

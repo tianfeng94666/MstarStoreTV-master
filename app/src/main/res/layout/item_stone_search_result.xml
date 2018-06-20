@@ -150,5 +150,5 @@
         android:gravity="center"
         android:text="报价"
         android:textSize="@dimen/text_size_medium"
-        android:textColor="@color/theme_red" />
+        android:textColor="@color/theme_color" />
 </LinearLayout>

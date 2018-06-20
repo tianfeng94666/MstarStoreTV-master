@@ -27,6 +27,7 @@ import com.qx.mstarstoretv.json.GetRingPartResult;
 import com.qx.mstarstoretv.json.JewelStone;
 import com.qx.mstarstoretv.json.ModelPartsBean;
 import com.qx.mstarstoretv.json.ModelPicBean;
+import com.qx.mstarstoretv.json.SelectProItemBean;
 import com.qx.mstarstoretv.json.StoneSearchInfoResult;
 import com.qx.mstarstoretv.manager.FitGridLayoutManager;
 import com.qx.mstarstoretv.net.VolleyRequestUtils;
@@ -90,7 +91,7 @@ public class MakingActivity extends BaseActivity {
     private String itemId;//编辑的订单Id
     private int type = 3;//打开类型 3直接打开 4编辑过来的 5待审核过来编辑
     private Bundle extras;//记录打开类型
-    private ModelPartsBean.SelectProItemBean selectProItem; //选中后的产品
+    private SelectProItemBean selectProItem; //选中后的产品
     private StoneSearchInfoResult.DataBean.StoneBean.ListBean selectedStoneEnity;
     private int partsAount;//记录parts个数 方便添加stone选择
     private JewelStone jewelStone;

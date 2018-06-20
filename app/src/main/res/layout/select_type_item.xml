@@ -20,7 +20,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="全部"
-                android:textColor="@color/theme_red"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_size_big_large"
                 />
 
@@ -33,13 +33,7 @@
                 android:src="@drawable/icon_list_nor"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="1dip"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="3dip"
-            android:layout_marginTop="3dip"
-            android:background="@color/theme_bg"
-            />
+
 
 
     <FrameLayout
@@ -63,20 +57,14 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="当前订单"
-                android:textColor="@color/text_color"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_size_big_large"
 
                 />
         </LinearLayout>
     </FrameLayout>
 
-    <LinearLayout
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="3dip"
-        android:layout_marginTop="3dip"
-        android:background="@color/theme_bg"
-        />
+
 
 
         <TextView
@@ -86,16 +74,10 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="历史订单"
-            android:textColor="@color/text_color"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_big_large"/>
 
-        <LinearLayout
-            android:layout_width="1dip"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="3dip"
-            android:layout_marginTop="3dip"
-            android:background="@color/theme_bg"
-            />
+
 
 
         <TextView
@@ -103,17 +85,11 @@
             style="@style/layout_horizontal"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="分类"
-            android:textColor="@color/text_color"
+            android:text="布局"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_big_large"/>
 
-            <LinearLayout
-                android:layout_width="1dip"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="3dip"
-                android:layout_marginTop="3dip"
-                android:background="@color/theme_bg"
-               />
+
 
 
             <LinearLayout
@@ -128,7 +104,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="筛选"
-                android:textColor="@color/text_color"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_size_big_large"/>
 
             <ImageView

@@ -214,7 +214,7 @@
                         android:background="@drawable/table_head"
                         android:gravity="center"
                         android:text=""
-                        android:textColor="@color/theme_red" />
+                        android:textColor="@color/theme_color" />
                 </LinearLayout>
 
 
@@ -392,7 +392,7 @@
             <TextView
                 android:id="@+id/tv_comfirm_stone"
                 style="@style/margin_parent"
-                android:layout_width="180dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="16dp"

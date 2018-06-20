@@ -572,7 +572,7 @@ public class StoneSearchResultActivity extends Activity implements View.OnClickL
             Intent intent;
             //判断是否要去个人定制
             if(type >2){
-                intent = new Intent(this, MakingActivity.class);
+                intent = new Intent(this, Making2Activity.class);
             }else {
                 if (!isCustomized) {
                     intent = new Intent(this, StyleInfromationActivity.class);

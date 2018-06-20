@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/iv_product"
+
+        android:layout_marginBottom="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:scaleType="fitXY">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:textColor="@color/black"
+        android:text=""
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/setting_textsize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/id_ig_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="5dp"
+        android:padding="20dip"
+        android:src="@drawable/icon_back_white" />
+
+    <com.qx.mstarstoretv.viewutils.XGallery
+        android:id="@+id/xg_product"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        app:xGallery_type="1"
+        app:xGallery_itemHeight="120dp"
+        app:xGallery_itemWidth="120dp"></com.qx.mstarstoretv.viewutils.XGallery>
+</RelativeLayout>

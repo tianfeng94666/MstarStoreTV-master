@@ -54,7 +54,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:text="订单状态"
-            android:textColor="@color/theme_red"
+            android:textColor="@color/theme_color"
             android:layout_margin="@dimen/margin10"></TextView>
 
     </RelativeLayout>
@@ -212,7 +212,7 @@
             android:text="参考总价："
             />
         <TextView
-            android:textColor="@color/theme_red"
+            android:textColor="@color/theme_color"
             android:id="@+id/tv_total_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -228,7 +228,7 @@
             android:layout_alignParentRight="true"
             android:gravity="center"
             android:text="总计：¥1350"
-            android:textColor="@color/theme_red"
+            android:textColor="@color/theme_color"
              />
     </RelativeLayout>
 

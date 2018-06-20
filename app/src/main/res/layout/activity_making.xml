@@ -109,7 +109,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@color/theme_red"
+                        android:background="@color/theme_color"
                         android:gravity="center"
                         android:text="购买"
                         android:textColor="@color/white"

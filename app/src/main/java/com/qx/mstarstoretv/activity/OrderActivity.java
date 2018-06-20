@@ -83,7 +83,7 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
     LinearLayout llShowLess;
     private LinearLayout idLyAll, idLyFilter, idRel2;
     private GridViewWithHeaderAndFooter idGvMenu;
-    private TextView idCurOrder, idTvSelect;
+    private TextView  idTvSelect;
     private Context context;
     private ImageView idIgNor, idIgNor1;
     private SideFilterDialog filterDialog;
@@ -142,9 +142,10 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_order);
+        setContentView(R.layout.activity_order2);
         ButterKnife.bind(this);
         isCustomized = SpUtils.getInstace(this).getBoolean("isCustomized", true);
+        Global.divideAmount = 6;
         context = this;
         getDate();
         addStoneRang();
@@ -162,12 +163,17 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
 
 //            mCurrentPositon = mViewPager.getCurrentItem();
             mCurrentPositon=mCurrentPositon+Global.divideAmount;
-            if(mCurrentPositon%data.size()==0){
-                idGvMenu.setSelection(mCurrentPositon%data.size());
-            }else {
 
-                idGvMenu.smoothScrollToPosition(mCurrentPositon%data.size());
-            }
+
+            idGvMenu.smoothScrollToPosition(mCurrentPositon%data.size());
+            idGvMenu.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    idGvMenu.setSelection(mCurrentPositon%data.size());
+                }
+            }, 100);
+
+
 
 
             mAutoPlayHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, mAutoPalyTime);
@@ -229,7 +235,7 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
 
 
     private String getInitUrl() {
-        String url = AppURL.URL_MODE_LIST + "tokenKey=" + BaseApplication.getToken() + "&cpage=" + curpage + getCheckBoxUrl() + getRadioGroupUrl()+ "&pageNum=24";
+        String url = AppURL.URL_MODE_LIST + "tokenKey=" + BaseApplication.getToken() + "&cpage=" + curpage + getCheckBoxUrl() + getRadioGroupUrl()+ "&pageNum=48";
 
         return url;
     }
@@ -333,7 +339,7 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
                         return;
                     }
                     if (isShowPrice) {
-                        idTvHisOrder.setTextColor(getResources().getColor(R.color.text_color));
+                        idTvHisOrder.setTextColor(getResources().getColor(R.color.black));
                     } else {
                         idTvHisOrder.setTextColor(getResources().getColor(R.color.text_color3));
                     }
@@ -392,7 +398,7 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
     @Override
     protected void onResume() {
         super.onResume();
-        Global.divideAmount = 6;
+
     }
 
     @Override
@@ -441,7 +447,6 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
         idRel2 = (LinearLayout) findViewById(R.id.id_rel2);
         //筛选
         idLyFilter = (LinearLayout) findViewById(R.id.id_ly_filter);
-        idCurOrder = (TextView) findViewById(R.id.id_cur_order);
         idGvMenu = (GridViewWithHeaderAndFooter) findViewById(R.id.id_gv_menu);
         loadStateView = View.inflate(this, R.layout.grid_food_layout, null);
         hint_txt = (TextView) loadStateView.findViewById(R.id.tv_hint_txt);
@@ -471,7 +476,7 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
                 if (firstVisibleItem == 0) {
                     firstVisibleItem = 1;
                 }
-                mCurrentPositon=firstVisibleItem;
+//                mCurrentPositon=firstVisibleItem;
 
                 tvPagerAmount.setText((int) (Math.ceil(firstVisibleItem / 24.0)) + "/" + (int) Math.ceil(totalAmount / 24.0));
 
@@ -696,15 +701,6 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
         });
 
 
-        idCurOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // openActivity(CustommadeInformationActivity.class, null);
-            }
-        });
-
-
-
         /*开始搜索事件*/
         idIgSeach.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -759,7 +755,7 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
             @Override
             public void onClick(View v) {
                 ++numColumns;
-                idGvMenu.setNumColumns(numColumns % 4 + 3);
+                idGvMenu.setNumColumns(numColumns % 4+ 3);
                 Global.divideAmount = numColumns % 4 + 3;
                 if(Global.divideAmount==3){
                     showToastReal("每行为3个时开启轮播");
@@ -822,7 +818,12 @@ public class OrderActivity extends BaseActivity implements PullToRefreshView.OnH
             holder.tv.setText(data.get(position).getTitle());
             holder.tvPrice.setText(UIUtils.stringChangeToTwoBitDouble(data.get(position).getPrice()));
             if (data.get(position).getPic() == null || !data.get(position).getPic().equals(holder.ig.getTag())) {
-                ImageLoader.getInstance().displayImage(data.get(position).getPicm(), holder.ig, ImageLoadOptions.getOptions());
+                if(Global.divideAmount==3){
+                    ImageLoader.getInstance().displayImage(data.get(position).getPicb(), holder.ig, ImageLoadOptions.getOptions());
+                }else {
+                    ImageLoader.getInstance().displayImage(data.get(position).getPicm(), holder.ig, ImageLoadOptions.getOptions());
+                }
+
                 holder.ig.setTag(data.get(position).getPic());
             }
             if (curpage == 1) {

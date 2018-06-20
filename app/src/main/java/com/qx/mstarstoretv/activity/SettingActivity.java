@@ -152,6 +152,10 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     ImageView ivAear;
     @Bind(R.id.rl_aear)
     RelativeLayout rlAear;
+    @Bind(R.id.tv_is_update)
+    TextView tvIsUpdate;
+    @Bind(R.id.rl_update)
+    RelativeLayout rlUpdate;
 
 
     private LayoutInflater inflater;
@@ -315,8 +319,6 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     }
 
 
-
-
     public void loadNetData() {
         String url = AppURL.URL_USER_MODIFY + "tokenKey=" + BaseApplication.getToken();
         baseShowWatLoading();
@@ -443,6 +445,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         rlGoldSetting.setOnClickListener(this);
         rlVideoSetting.setOnClickListener(this);
         rlPicSetting.setOnClickListener(this);
+        rlUpdate.setOnClickListener(this);
     }
 
     private void showShare() {
@@ -691,6 +694,11 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.rl_order:
                 openActivity(OrderExamineActivity.class, null);
+                break;
+            case R.id.rl_update:
+                Bundle bundle = new Bundle();
+                bundle.putString("type","1");
+                openActivity(DownloadActivity.class,bundle);
                 break;
         }
     }

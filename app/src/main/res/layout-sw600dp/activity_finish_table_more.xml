@@ -125,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="¥ 881.5"
-                        android:textColor="@color/theme_red" />
+                        android:textColor="@color/theme_color" />
                 </RelativeLayout>
 
                 <LinearLayout
@@ -197,7 +197,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="¥ 881.5"
-                        android:textColor="@color/theme_red"
+                        android:textColor="@color/theme_color"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true" />
@@ -271,7 +271,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="¥ 881.5"
-                        android:textColor="@color/theme_red" />
+                        android:textColor="@color/theme_color" />
                 </RelativeLayout>
 
                 <LinearLayout
@@ -341,7 +341,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="¥ 881.5"
-                        android:textColor="@color/theme_red" />
+                        android:textColor="@color/theme_color" />
                 </RelativeLayout>
 
                 <LinearLayout
@@ -417,7 +417,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="¥18880.0"
-                    android:textColor="@color/theme_red" />
+                    android:textColor="@color/theme_color" />
             </RelativeLayout>
 
             <RelativeLayout

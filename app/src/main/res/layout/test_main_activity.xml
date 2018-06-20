@@ -198,7 +198,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="35dip"
-            android:background="@color/theme_red" />
+            android:background="@color/theme_color" />
 
     </LinearLayout>
 

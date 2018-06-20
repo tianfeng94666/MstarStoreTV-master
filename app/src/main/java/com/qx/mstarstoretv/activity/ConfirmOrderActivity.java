@@ -1357,7 +1357,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
             if (listData.get(position).getShowPageType().equals("1")) {
                 bundle.putInt("type", 5);
                 bundle.putString("orderId", orderId);
-                openActivity(MakingActivity.class, bundle);
+                openActivity(Making2Activity.class, bundle);
             } else {
                 if (isCustomized) {
                     openActivity(SimpleStyleInfromationActivity.class, bundle);
@@ -1374,7 +1374,7 @@ public class ConfirmOrderActivity extends BaseActivity implements PullToRefreshV
             }
         } else if (type == 3 || type == 4) {
             bundle.putInt("type", 4);
-            openActivity(MakingActivity.class, bundle);
+            openActivity(Making2Activity.class, bundle);
         }
     }
 

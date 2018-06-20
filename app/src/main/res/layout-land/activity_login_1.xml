@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|"
+            android:layout_gravity="top"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
             android:text="@string/app_version_detail"
@@ -39,8 +39,8 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:scaleType="fitXY"
-            android:visibility="invisible"
-            android:src="@mipmap/logo_land" />
+            android:src="@mipmap/logo_land"
+            android:visibility="invisible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,9 +68,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="8dip"
-                    android:layout_weight="1"
+
                     android:gravity="center_vertical">
 
                     <ImageView
@@ -114,9 +114,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="10dip"
-                    android:layout_weight="1"
                     android:gravity="center_vertical">
 
                     <ImageView
@@ -154,17 +153,20 @@
 
 
                 <View
+                    android:id="@+id/line_bottom"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:layout_marginTop="5dip"
-                    android:background="@drawable/gradual_line"></View>
+                    android:background="@drawable/gradual_line"
+                    android:visibility="gone"></View>
 
                 <LinearLayout
+                    android:id="@+id/ll_code"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="10dip"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="wrap_content"

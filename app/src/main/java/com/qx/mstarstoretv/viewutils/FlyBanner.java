@@ -315,7 +315,8 @@ public class FlyBanner extends RelativeLayout {
                     }
                 }
             });
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+
             if (mIsImageUrl) {
                 ImageLoader.getInstance().displayImage(mImageUrls.get(toRealPosition(position)), imageView, ImageLoadOptions.getOptionsHight());
             } else {
@@ -333,6 +334,8 @@ public class FlyBanner extends RelativeLayout {
                 object = null;
         }
     }
+
+
 
 
     /**

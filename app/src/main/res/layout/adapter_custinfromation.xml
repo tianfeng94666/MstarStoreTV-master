@@ -17,7 +17,7 @@
         android:textSize="18dp" />
 
     <com.qx.mstarstoretv.viewutils.CustomSelectButton
-        app:tv_color="@color/theme_red"
+        app:tv_color="@color/theme_color"
         app:tv_name="选择"
         app:tv_size="16sp"
         android:id="@+id/id_custom_select_btn"

@@ -10,41 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/ll_banner"
-            android:layout_width="450dp"
-            android:layout_height="match_parent"
-            android:background="@color/white">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.qx.mstarstoretv.viewutils.FlyBanner
-                    android:id="@+id/flybanner"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"></com.qx.mstarstoretv.viewutils.FlyBanner>
-                <ImageView
-                    android:id="@+id/iv_preview"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:src="@drawable/preview"
-                    android:visibility="gone"
-                    android:layout_width="300dp"
-                    android:layout_height="154dp" />
-                <TextView
-                    android:id="@+id/tv_preview_title"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:gravity="center"
-                    android:text="nihaoma"
-                    android:visibility="gone"
-                    android:maxEms="5"
-                    android:textSize="20sp"
-                    android:layout_width="300dp"
-                    android:layout_height="154dp" />
-            </RelativeLayout>
-        </LinearLayout>
 
         <com.qx.mstarstoretv.viewutils.MyScrollView
             android:layout_width="match_parent"
@@ -59,7 +25,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/ll_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.qx.mstarstoretv.viewutils.FlyBanner
+                            android:id="@+id/flybanner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"></com.qx.mstarstoretv.viewutils.FlyBanner>
+                        <ImageView
+                            android:id="@+id/iv_preview"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:src="@drawable/preview"
+                            android:visibility="gone"
+                            android:layout_width="300dp"
+                            android:layout_height="154dp" />
+                        <TextView
+                            android:id="@+id/tv_preview_title"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="nihaoma"
+                            android:visibility="gone"
+                            android:maxEms="5"
+                            android:textSize="20sp"
+                            android:layout_width="300dp"
+                            android:layout_height="154dp" />
+                    </RelativeLayout>
+                </LinearLayout>
 
                 <RelativeLayout
                     android:id="@+id/rl_top"
@@ -428,7 +428,7 @@
                             android:paddingLeft="20dp"
                             android:text="预览"
                             android:textSize="@dimen/simple_styleinfromation_textsize"
-                            android:textColor="@color/theme_red" />
+                            android:textColor="@color/theme_color" />
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
@@ -513,6 +513,7 @@
 <View
     android:id="@+id/space_view"
     android:layout_width="450dp"
+    android:visibility="gone"
     android:layout_height="match_parent"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -587,7 +588,7 @@
                     android:singleLine="true"
                     android:text="1000.2"
 
-                    android:textColor="@color/theme_red"
+                    android:textColor="@color/theme_color"
                     android:textSize="@dimen/simple_styleinfromation_textsize" />
 
                 <TextView

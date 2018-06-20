@@ -119,7 +119,7 @@
             android:id="@+id/id_tv_confirfilterr"
             style="@style/layout_horizontal"
             android:layout_weight="1"
-            android:background="@color/theme_red"
+            android:background="@color/theme_color"
             android:gravity="center"
             android:text="刷新待审核订单"
             android:textColor="@color/white"

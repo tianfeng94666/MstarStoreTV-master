@@ -60,7 +60,7 @@ public class GetRingPartResult {
          * modelPuritys : [{"id":49,"title":"14K黄白分色"},{"id":8,"title":"Au750白"},{"id":5,"title":"G18K白"},{"id":4,"title":"G18K黄"},{"id":6,"title":"G18K玫瑰金"},{"id":7,"title":"G18K玫瑰金分色"},{"id":9,"title":"G750白"},{"id":3,"title":"Pd950"},{"id":1,"title":"PT900"},{"id":2,"title":"PT950"},{"id":47,"title":"千足黄金"}]
          */
 
-        private ModelItemBean modelItem;
+        private SelectProItemBean modelItem;
         private List<ModelPartsBean> modelParts;
         private List<String> modelpartCount;
         private List<ModelPuritysBean> modelPuritys;
@@ -83,12 +83,12 @@ public class GetRingPartResult {
             this.handSizeData = handSizeData;
         }
 
-        public ModelItemBean getModelItem() {
-            return modelItem;
+        public void setModelItem(SelectProItemBean modelItem) {
+            this.modelItem = modelItem;
         }
 
-        public void setModelItem(ModelItemBean modelItem) {
-            this.modelItem = modelItem;
+        public SelectProItemBean getModelItem() {
+            return modelItem;
         }
 
         public List<ModelPartsBean> getModelParts() {
@@ -115,72 +115,6 @@ public class GetRingPartResult {
             this.modelPuritys = modelPuritys;
         }
 
-        public static class ModelItemBean {
-            /**
-             * id :
-             * title :
-             * price :
-             * handSize :
-             * word :
-             * modelPic : [{"pics":"http://appapi1.fanerweb.com/images/imageForApi/custom/modelExamplePics.png","picm":"http://appapi1.fanerweb.com/images/imageForApi/custom/modelExamplePicm.png","picb":"http://appapi1.fanerweb.com/images/imageForApi/custom/modelExamplePicb.png"}]
-             */
-
-            private String id;
-            private String title;
-            private String price;
-            private String handSize;
-            private String word;
-            private List<ModelPicBean> modelPic;
-
-            public String getId() {
-                return id;
-            }
-
-            public void setId(String id) {
-                this.id = id;
-            }
-
-            public String getTitle() {
-                return title;
-            }
-
-            public void setTitle(String title) {
-                this.title = title;
-            }
-
-            public String getPrice() {
-                return price;
-            }
-
-            public void setPrice(String price) {
-                this.price = price;
-            }
-
-            public String getHandSize() {
-                return handSize;
-            }
-
-            public void setHandSize(String handSize) {
-                this.handSize = handSize;
-            }
-
-            public String getWord() {
-                return word;
-            }
-
-            public void setWord(String word) {
-                this.word = word;
-            }
-
-            public List<ModelPicBean> getModelPic() {
-                return modelPic;
-            }
-
-            public void setModelPic(List<ModelPicBean> modelPic) {
-                this.modelPic = modelPic;
-            }
-
-        }
 
 
 

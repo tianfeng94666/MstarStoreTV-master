@@ -227,7 +227,7 @@
                                 android:inputType="number|numberDecimal"
                                 android:padding="5dp"
                                 android:text=""
-                                android:textColor="@color/theme_red"
+                                android:textColor="@color/theme_color"
                                 android:textSize="@dimen/text_size_medium1" />
 
                             <ImageView
@@ -265,7 +265,7 @@
                                 android:gravity="center"
                                 android:inputType="number|numberDecimal"
                                 android:text=""
-                                android:textColor="@color/theme_red"
+                                android:textColor="@color/theme_color"
                                 android:textSize="@dimen/text_size_medium1" />
 
                             <ImageView
@@ -358,7 +358,7 @@
                             android:gravity="center"
                             android:inputType="number|numberDecimal"
                             android:text=""
-                            android:textColor="@color/theme_red"
+                            android:textColor="@color/theme_color"
                             android:textSize="@dimen/text_size_medium1" />
 
                         <TextView
@@ -381,7 +381,7 @@
                             android:gravity="center"
                             android:inputType="number|numberDecimal"
                             android:text=""
-                            android:textColor="@color/theme_red"
+                            android:textColor="@color/theme_color"
                             android:textSize="@dimen/text_size_medium1" />
 
                         <TextView
@@ -557,7 +557,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/theme_red"
+            android:background="@color/theme_color"
             android:gravity="center"
             android:text="查询"
             android:textColor="@color/white"

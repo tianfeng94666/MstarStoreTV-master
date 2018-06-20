@@ -6,13 +6,12 @@
     >
 
     <TextView
-        android:layout_margin="2dip"
         android:id="@+id/id_cus_tv"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textColor="@color/text_color"
         android:background="@drawable/btn_bg_while"
-        android:textSize="10sp"
+        android:textSize="14sp"
         />
 </LinearLayout>

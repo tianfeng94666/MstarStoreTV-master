@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MS珠宝定制TV</string>
-    <string name="app_version">2.1</string>
-    <string name="app_version_detail">2.1.01</string>
+    <string name="app_version">2.2.2</string>
+    <string name="app_version_detail">T2.2.2</string>
     <string name="version">4</string>
 
     <string name="pull_to_refresh_pull_label">下拉刷新</string>

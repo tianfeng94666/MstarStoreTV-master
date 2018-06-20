@@ -103,11 +103,11 @@ public class StoneOthersAdapter extends BaseAdapter {
         tv.setLayoutParams(params);
         tv.setGravity(Gravity.CENTER);
         if (isCheck) {
-            tv.setBackgroundResource(R.drawable.corners_red_bg);
-            tv.setTextColor(context.getResources().getColor(R.color.white));
+            tv.setBackgroundResource(R.drawable.border5_text);
+            tv.setTextColor(context.getResources().getColor(R.color.black));
         } else {
-            tv.setBackgroundResource(R.drawable.corners_white_bg);
-            tv.setTextColor(context.getResources().getColor(R.color.text_color));
+            tv.setBackgroundResource(R.drawable.border5_black);
+            tv.setTextColor(context.getResources().getColor(R.color.black));
         }
 
         return tv;

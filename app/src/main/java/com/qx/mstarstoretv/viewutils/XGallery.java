@@ -42,8 +42,12 @@ public class XGallery extends FrameLayout implements View.OnTouchListener {
     private int mAutoPalyTime = 4000;
     //图片长度
     private int dataSize = 1;
-    private int mCurrentPositon;
+
+
+    public int mCurrentPositon;
     private BottomScalePageTransformer bottomScalePageTransformer = new BottomScalePageTransformer();
+    private ScaleTranstormer scaleTranstormer = new ScaleTranstormer();
+    private int type;
 
     public XGallery(@NonNull Context context) {
         super(context);
@@ -65,6 +69,7 @@ public class XGallery extends FrameLayout implements View.OnTouchListener {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XGallery, defStyleAttr, 0);
         int itemWidth = a.getDimensionPixelOffset(R.styleable.XGallery_xGallery_itemWidth, LayoutParams.MATCH_PARENT);
         int itemHeight = a.getDimensionPixelOffset(R.styleable.XGallery_xGallery_itemHeight, LayoutParams.MATCH_PARENT);
+        type = a.getInteger(R.styleable.XGallery_xGallery_type, 0);
         a.recycle();
 
         mViewPager = new ViewPager(context);
@@ -88,9 +93,12 @@ public class XGallery extends FrameLayout implements View.OnTouchListener {
 
             }
         });
+        if (type == 0) {
+            setPageTransformer(bottomScalePageTransformer);
+        } else {
+            setPageTransformer(scaleTranstormer);
+        }
 
-
-        setPageTransformer(bottomScalePageTransformer);
 
         LayoutParams params = new LayoutParams(itemWidth, itemHeight);
         params.gravity = Gravity.CENTER;
@@ -111,7 +119,7 @@ public class XGallery extends FrameLayout implements View.OnTouchListener {
 
 //            mCurrentPositon = mViewPager.getCurrentItem();
             mCurrentPositon++;
-            mViewPager.setCurrentItem(mCurrentPositon, true);
+            mViewPager.setCurrentItem(mCurrentPositon % dataSize, true);
 
             mAutoPlayHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, mAutoPalyTime);
 
@@ -141,17 +149,7 @@ public class XGallery extends FrameLayout implements View.OnTouchListener {
                 mStartPoint.set(event.getX(), event.getY());
                 break;
             case MotionEvent.ACTION_UP:
-                float centerDistance = mStartPoint.x - getWidth() / 2.f;
-                boolean isRightSide = centerDistance >= 0;
-                int space = (int) (Math.abs(centerDistance) + mViewPagerWidth / 2.f) / mViewPagerWidth;
-                int position = mViewPager.getCurrentItem() + (isRightSide ? space : -space);
-                int currentItem = mViewPager.getCurrentItem();
-                if (currentItem == position) { // 没有改变
-                    if (mOnGalleryPageSelectListener != null) {
-                        mOnGalleryPageSelectListener.onGalleryPageSelected(position);
-                    }
-                }
-
+                stopTouch();
                 break;
 
             default:
@@ -159,6 +157,19 @@ public class XGallery extends FrameLayout implements View.OnTouchListener {
         }
 
         return super.dispatchTouchEvent(event);
+    }
+
+    public void stopTouch() {
+        float centerDistance = mStartPoint.x - getWidth() / 2.f;
+        boolean isRightSide = centerDistance >= 0;
+        int space = (int) (Math.abs(centerDistance) + mViewPagerWidth / 2.f) / mViewPagerWidth;
+        int position = mViewPager.getCurrentItem() + (isRightSide ? space : -space);
+        int currentItem = mViewPager.getCurrentItem();
+        if (currentItem == position) { // 没有改变
+            if (mOnGalleryPageSelectListener != null) {
+                mOnGalleryPageSelectListener.onGalleryPageSelected(position);
+            }
+        }
     }
 
     @Override
@@ -224,6 +235,15 @@ public class XGallery extends FrameLayout implements View.OnTouchListener {
     }
 
     /**
+     * 设置ViewPager额外显示的最大页数。
+     *
+     * @param limit 页数
+     */
+    public void setPageOffscreenLimit(int limit) {
+        mViewPager.setOffscreenPageLimit(limit);
+    }
+
+    /**
      * 设置Item的切换动画。
      *
      * @param transformer 切换动画
@@ -231,15 +251,6 @@ public class XGallery extends FrameLayout implements View.OnTouchListener {
     public void setPageTransformer(BasePageTransformer transformer) {
         mPageTransformer = transformer;
         mViewPager.setPageTransformer(true, transformer);
-    }
-
-    /**
-     * 设置ViewPager额外显示的最大页数。
-     *
-     * @param limit 页数
-     */
-    public void setPageOffscreenLimit(int limit) {
-        mViewPager.setOffscreenPageLimit(limit);
     }
 
     /**
@@ -281,6 +292,7 @@ public class XGallery extends FrameLayout implements View.OnTouchListener {
      */
     public void setOnGalleryPageSelectListener(OnGalleryPageSelectListener listener) {
         bottomScalePageTransformer.setmOnGalleryPageSelectListener(listener);
+        scaleTranstormer.setmOnGalleryPageSelectListener(listener);
         this.mOnGalleryPageSelectListener = listener;
 
     }
@@ -288,6 +300,14 @@ public class XGallery extends FrameLayout implements View.OnTouchListener {
     public interface OnGalleryPageSelectListener {
 
         void onGalleryPageSelected(int position);
+    }
+
+    public int getmCurrentPositon() {
+        return mCurrentPositon ;
+    }
+
+    public void setmCurrentPositon(int mCurrentPositon) {
+        this.mCurrentPositon = mCurrentPositon;
     }
 
 }

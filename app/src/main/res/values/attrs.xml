@@ -119,5 +119,6 @@
         <attr name="xGallery_itemWidth" format="dimension" />
         <!-- Item的高度 -->
         <attr name="xGallery_itemHeight" format="dimension" />
+        <attr name="xGallery_type" format="integer" />
     </declare-styleable>
 </resources>
